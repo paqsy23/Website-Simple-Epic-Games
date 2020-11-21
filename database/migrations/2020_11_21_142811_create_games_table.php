@@ -30,7 +30,7 @@ class CreateGamesTable extends Migration
             $table->string('twitter');
             $table->integer('price');
             $table->integer('rating');
-            $table->unsignedBigInteger('add_ons');
+            $table->unsignedBigInteger('add_ons')->nullable();
             $table->timestamps();
 
             $table->foreign('developer_id')->references('id')->on('developer')->onDelete('cascade');
