@@ -11019,11 +11019,11 @@ iframe {
 	border-left: 0;
 	border-right: 1px solid #000;
 }
-.rtl .entry-content .entry-summary table.shop_table tr th.title, 
+.rtl .entry-content .entry-summary table.shop_table tr th.title,
 .rtl .entry-content .entry-summary table.shop_table tr td.title {
 	border-left: 1px solid #000;
 }
-.rtl .entry-content .entry-summary table.shop_table tr th.product-total, 
+.rtl .entry-content .entry-summary table.shop_table tr th.product-total,
 .rtl .entry-content .entry-summary table.shop_table tr td.product-total {
 	border-right: 1px solid #000;
 }

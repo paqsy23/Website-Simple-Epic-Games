@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>@yield('title')</title>
+    {{-- title --}}
+    @yield('title')
 	<meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
@@ -39,7 +40,63 @@
 	<link rel="stylesheet" href="{{asset('css/app-responsive.css')}}" />
 </head>
 
+{{-- include header di body --}}
 @yield('body')
+
+@include('footer.footer')
+
+{{-- DIALOGS --}}
+<div class="modal fade" id="login_form" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog block-popup-login">
+        <a href="javascript:void(0)" title="Close" class="close close-login" data-dismiss="modal">Close</a>
+
+        <div class="tt_popup_login">
+            <strong>Sign in Or Register</strong>
+        </div>
+
+        <div class="block-content">
+            <div class="col-reg registered-account">
+                <div class="email-input">
+                    <input type="text" class="form-control input-text username" name="username" id="username" placeholder="Username" />
+                </div>
+
+                <div class="pass-input">
+                    <input class="form-control input-text password" type="password" placeholder="Password" name="password" id="password" />
+                </div>
+
+                <div class="ft-link-p">
+                    <a href="lost_password.html" title="Forgot your password">Forgot your password?</a>
+                </div>
+
+                <div class="actions">
+                    <div class="submit-login">
+                        <input type="submit" class="button btn-submit-login" name="login" value="Login" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-reg login-customer">
+                <h2>NEW HERE?</h2>
+
+                <p class="note-reg">Registration is free and easy!</p>
+
+                <ul class="list-log">
+                    <li>Faster checkout</li>
+
+                    <li>Save multiple shipping addresses</li>
+
+                    <li>View and track orders and more</li>
+                </ul>
+
+                <a href="create_account.html" title="Register" class="btn-reg-popup">Create an account</a>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+
+</div>
+<a id="etrostore-totop" href="#"></a>
 
 <script type="text/javascript" src="{{asset('js/jquery/jquery.min.js')}}"></script>
 	<script type="text/javascript" src="{{asset('js/jquery/jquery-migrate.min.js')}}"></script>
