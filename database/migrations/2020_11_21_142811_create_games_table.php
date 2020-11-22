@@ -29,7 +29,7 @@ class CreateGamesTable extends Migration
             $table->string('twitch');
             $table->string('twitter');
             $table->integer('price');
-            $table->integer('rating');
+            $table->integer('rating')->nullable();
             $table->unsignedBigInteger('add_ons')->nullable();
             $table->timestamps();
 
