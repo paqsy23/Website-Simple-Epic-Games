@@ -17,6 +17,8 @@ class CreateDeveloperTable extends Migration
         Schema::create('developer', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
+            $table->string('username')->unique();
+            $table->string('password');
             $table->timestamps();
         });
     }

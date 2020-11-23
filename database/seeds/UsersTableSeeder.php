@@ -14,26 +14,26 @@ class UsersTableSeeder extends Seeder
     {
         DB::table('users')->insert(
             array(
-                'name' => 'Stevanus',
-                'username' => 'stevanus',
-                'password' => '123',
-                'email' => 'stevanus123@gmail.com',
+                'name' => 'Paqsy',
+                'username' => 'paqsy',
+                'password' => password_hash('123', PASSWORD_BCRYPT),
+                'email' => 'Paqsy123@gmail.com',
             )
         );
         DB::table('users')->insert(
             array(
                 'name' => 'Billy',
                 'username' => 'billy',
-                'password' => '123',
+                'password' => password_hash('123', PASSWORD_BCRYPT),
                 'email' => 'billy123@gmail.com',
             )
         );
         DB::table('users')->insert(
             array(
-                'name' => 'Abraham',
-                'username' => 'abraham',
-                'password' => '123',
-                'email' => 'abraham123@gmail.com',
+                'name' => 'Vincent',
+                'username' => 'vincent',
+                'password' => password_hash('123', PASSWORD_BCRYPT),
+                'email' => 'vincent123@gmail.com',
             )
         );
     }
