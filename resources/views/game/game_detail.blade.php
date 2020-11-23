@@ -41,27 +41,27 @@
 										<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 clear_xs">
 											<div class="slider_img_productd">
 												<!-- woocommerce_show_product_images -->
-												<div id="product_img_01" class="product-images loading" data-rtl="false">
+												<div id="product_img_01" class="product-images" data-rtl="false">
 													<div class="product-images-container clearfix thumbnail-bottom">
 														<!-- Image Slider -->
 														<div class="slider product-responsive">
 															<div class="item-img-slider">
 																<div class="images">
-																	<a href="{{asset('images/1903/49.jpg')}}" data-rel="prettyPhoto[product-gallery]" class="zoom">
-																		<img width="600" height="600" src="{{asset('images/1903/49.jpg')}}" class="attachment-shop_single size-shop_single" alt="" srcset="{{asset('images/1903/49.jpg')}} 600w, {{asset('images/1903/49-150x150.jpg')}} 150w,{{asset(' images/1903/49-300x300.jpg')}} 300w, {{asset('images/1903/49-180x180.jpg')}} 180w" sizes="(max-width: 600px) 100vw, 600px">
+																	<a href="{{url('https://cdn2.unrealengine.com/egs-outriders-peoplecanfly-g1a-03-1920x1080-285553599.jpg?h=1080&resize=1&w=1920')}}" data-rel="prettyPhoto[product-gallery]" class="zoom">
+																		<img width="600" height="600" src="{{url('https://cdn2.unrealengine.com/egs-outriders-peoplecanfly-g1a-03-1920x1080-285553599.jpg?h=1080&resize=1&w=1920')}}" class="attachment-shop_single size-shop_single" alt="" srcset="{{url('https://cdn2.unrealengine.com/egs-outriders-peoplecanfly-g1a-03-1920x1080-285553599.jpg?h=1080&resize=1&w=1920')}} 600w, {{url('https://cdn2.unrealengine.com/egs-outriders-peoplecanfly-g1a-03-1920x1080-285553599.jpg?h=1080&resize=1&w=1920')}} 150w,{{url('https://cdn2.unrealengine.com/egs-outriders-peoplecanfly-g1a-03-1920x1080-285553599.jpg?h=1080&resize=1&w=1920')}} 300w, {{url('https://cdn2.unrealengine.com/egs-outriders-peoplecanfly-g1a-03-1920x1080-285553599.jpg?h=1080&resize=1&w=1920')}} 180w" sizes="(max-width: 600px) 100vw, 600px">
 																	</a>
 																</div>
 															</div>
 
-															<div class="item-img-slider">
+															{{-- <div class="item-img-slider">
 																<div class="images">
-																	<a href="{{asset('images/1903/48.jpg')}}" data-rel="prettyPhoto[product-gallery]" class="zoom">
-																		<img width="600" height="600" src="{{asset('images/1903/48.jpg')}}" class="attachment-shop_single size-shop_single" alt="" srcset="{{asset('images/1903/48.jpg')}} 600w, {{asset('images/1903/48-150x150.jpg')}} 150w,{{asset(' images/1903/48-300x300.jpg')}} 300w, {{asset('images/1903/48-180x180.jpg')}} 180w" sizes="(max-width: 600px) 100vw, 600px">
+																	<a href="{{url('https://cdn2.unrealengine.com/egs-outriders-peoplecanfly-g1a-04-1920x1080-285553574.jpg?h=1080&resize=1&w=1920')}}" data-rel="prettyPhoto[product-gallery]" class="zoom">
+																		<img width="600" height="600" src="{{url('https://cdn2.unrealengine.com/egs-outriders-peoplecanfly-g1a-04-1920x1080-285553574.jpg?h=1080&resize=1&w=1920')}}" class="attachment-shop_single size-shop_single" alt="" srcset="{{url('https://cdn2.unrealengine.com/egs-outriders-peoplecanfly-g1a-04-1920x1080-285553574.jpg?h=1080&resize=1&w=1920')}} 600w, {{url('https://cdn2.unrealengine.com/egs-outriders-peoplecanfly-g1a-04-1920x1080-285553574.jpg?h=1080&resize=1&w=1920')}} 150w,{{url('https://cdn2.unrealengine.com/egs-outriders-peoplecanfly-g1a-04-1920x1080-285553574.jpg?h=1080&resize=1&w=1920')}} 300w, {{url('https://cdn2.unrealengine.com/egs-outriders-peoplecanfly-g1a-04-1920x1080-285553574.jpg?h=1080&resize=1&w=1920')}} 180w" sizes="(max-width: 600px) 100vw, 600px">
 																	</a>
 																</div>
-															</div>
+															</div> --}}
 
-															<div class="item-img-slider">
+															{{-- <div class="item-img-slider">
 																<div class="images">
 																	<a href="{{asset('images/1903/47.jpg')}}" data-rel="prettyPhoto[product-gallery]" class="zoom">
 																		<img width="600" height="600" src="{{asset('images/1903/47.jpg')}}" class="attachment-shop_single size-shop_single" alt="" srcset="{{asset('images/1903/47.jpg')}} 600w, {{asset('images/1903/47-150x150.jpg')}} 150w,{{asset(' images/1903/47-300x300.jpg')}} 300w, {{asset('images/1903/47-180x180.jpg')}} 180w" sizes="(max-width: 600px) 100vw, 600px">
@@ -91,11 +91,11 @@
 																		<img width="600" height="600" src="{{asset('images/1903/43.jpg')}}" class="attachment-shop_single size-shop_single" alt="" srcset="{{asset('images/1903/43.jpg')}} 600w, {{asset('images/1903/43-150x150.jpg')}} 150w,{{asset(' images/1903/43-300x300.jpg')}} 300w, {{asset('images/1903/43-180x180.jpg')}} 180w" sizes="(max-width: 600px) 100vw, 600px">
 																	</a>
 																</div>
-															</div>
+															</div> --}}
 														</div>
 
 														<!-- Thumbnail Slider -->
-														<div class="slider product-responsive-thumbnail" id="product_thumbnail_247">
+														{{-- <div class="slider product-responsive-thumbnail" id="product_thumbnail_247">
 															<div class="item-thumbnail-product">
 																<div class="thumbnail-wrapper">
 																	<img width="180" height="180" src="{{asset('images/1903/49-180x180.jpg')}}" class="attachment-shop_thumbnail size-shop_thumbnail" alt="" srcset="{{asset('images/1903/49-180x180.jpg')}} 180w, {{asset('images/1903/49-150x150.jpg')}} 150w, {{asset('images/1903/49-300x300.jpg')}} 300w, {{asset('images/1903/49.jpg')}} 600w" sizes="(max-width: 180px) 100vw, 180px">
@@ -131,7 +131,7 @@
 																<img width="180" height="180" src="{{asset('images/1903/43-180x180.jpg')}}" class="attachment-shop_thumbnail size-shop_thumbnail" alt="" srcset="{{asset('images/1903/43-180x180.jpg')}} 180w, {{asset('images/1903/43-150x150.jpg')}} 150w, {{asset('images/1903/43-300x300.jpg')}} 300w, {{asset('images/1903/43.jpg')}} 600w" sizes="(max-width: 180px) 100vw, 180px">
 																</div>
 															</div>
-														</div>
+														</div> --}}
 													</div>
 												</div>
 											</div>
