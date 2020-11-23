@@ -56,55 +56,15 @@
                     </div> --}}
                 </div>
 
-                {{-- Kalau Belum Sign In --}}
                 <div class="wrap-myacc pull-right">
-                    <div class="pull-left top2">
-                        <div class="widget-1 widget-first widget nav_menu-2 widget_nav_menu">
-                            <div class="widget-inner">
-                                <ul id="menu-checkout" class="menu">
-                                    <li class="menu-checkout">
-                                        <a href="javascript:void(0);" data-toggle="modal" data-target="#login_form">
-                                            <span>Sign In</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    {{-- Kalau Sudah Sign In --}}
-                    {{-- <div class="sidebar-account pull-left">
-                        <div class="account-title">My account</div>
-
-                        <div id="my-account" class="my-account">
-                            <div class="widget-1 widget-first widget nav_menu-4 widget_nav_menu">
+                    @if (Session::get('user-login') == null)
+                        {{-- Kalau Belum Sign In --}}
+                        <div class="pull-left top2">
+                            <div class="widget-1 widget-first widget nav_menu-2 widget_nav_menu">
                                 <div class="widget-inner">
-                                    <ul id="menu-my-account" class="menu">
-                                        <li class="menu-my-account">
-                                            <a class="item-link" href="my_account.html">
-                                                <span class="menu-title">My Account</span>
-                                            </a>
-                                        </li>
-
-                                        <li class="menu-cart">
-                                            <a class="item-link" href="cart.html">
-                                                <span class="menu-title">Cart</span>
-                                            </a>
-                                        </li>
-
+                                    <ul id="menu-checkout" class="menu">
                                         <li class="menu-checkout">
-                                            <a class="item-link" href="checkout.html">
-                                                <span class="menu-title">Checkout</span>
-                                            </a>
-                                        </li>
-
-                                        <li class="menu-wishlist">
-                                            <a class="item-link" href="wishlist.html">
-                                                <span class="menu-title">Wishlist</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0);" data-toggle="modal" data-target="#login_form">
+                                            <a href="{{ url('login') }}">
                                                 <span>Login</span>
                                             </a>
                                         </li>
@@ -112,21 +72,63 @@
                                 </div>
                             </div>
                         </div>
-                    </div> --}}
-{{--
-                    <div class="pull-left top2">
-                        <div class="widget-1 widget-first widget nav_menu-2 widget_nav_menu">
-                            <div class="widget-inner">
-                                <ul id="menu-checkout" class="menu">
-                                    <li class="menu-checkout">
-                                        <a class="item-link" href="checkout.html">
-                                            <span class="menu-title">Checkout</span>
-                                        </a>
-                                    </li>
-                                </ul>
+                    @else
+                        {{-- Kalau Sudah Sign In --}}
+                        <div class="sidebar-account pull-left">
+                            <div class="account-title">{{ Session::get('user-login')->nama }}</div>
+
+                            <div id="my-account" class="my-account">
+                                <div class="widget-1 widget-first widget nav_menu-4 widget_nav_menu">
+                                    <div class="widget-inner">
+                                        <ul id="menu-my-account" class="menu">
+                                            <li class="menu-my-account">
+                                                <a class="item-link" href="my_account.html">
+                                                    <span class="menu-title">My Account</span>
+                                                </a>
+                                            </li>
+
+                                            <li class="menu-cart">
+                                                <a class="item-link" href="cart.html">
+                                                    <span class="menu-title">Cart</span>
+                                                </a>
+                                            </li>
+
+                                            <li class="menu-checkout">
+                                                <a class="item-link" href="checkout.html">
+                                                    <span class="menu-title">Checkout</span>
+                                                </a>
+                                            </li>
+
+                                            <li class="menu-wishlist">
+                                                <a class="item-link" href="wishlist.html">
+                                                    <span class="menu-title">Wishlist</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ url('logout') }}">
+                                                    <span>Logout</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div> --}}
+
+                        <div class="pull-left top2">
+                            <div class="widget-1 widget-first widget nav_menu-2 widget_nav_menu">
+                                <div class="widget-inner">
+                                    <ul id="menu-checkout" class="menu">
+                                        <li class="menu-checkout">
+                                            <a class="item-link" href="checkout.html">
+                                                <span class="menu-title">Checkout</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>

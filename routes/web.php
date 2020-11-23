@@ -22,6 +22,7 @@ Route::get('login', 'LoginRegisterController@showLogin');
 Route::post('login', 'LoginRegisterController@loginProcess');
 Route::get('register', 'LoginRegisterController@showRegister');
 Route::post('register', 'LoginRegisterController@registerProcess');
+Route::get('logout', 'LoginRegisterController@logout');
 
 Route::get('/game/{id}','GameController@showGameDetail');
 Route::get('/tambahTag','GameController@tambahTag');

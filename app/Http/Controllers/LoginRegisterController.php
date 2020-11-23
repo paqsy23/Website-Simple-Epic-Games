@@ -64,4 +64,10 @@ class LoginRegisterController extends Controller
 
         return back();
     }
+
+    public function logout(Request $request)
+    {
+        $request->session()->forget('user-login');
+        return back();
+    }
 }
