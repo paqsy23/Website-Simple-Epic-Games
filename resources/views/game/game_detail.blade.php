@@ -49,7 +49,7 @@
 																<div class="images">
 																	<a href="{{url('https://cdn2.unrealengine.com/egs-outriders-peoplecanfly-g1a-03-1920x1080-285553599.jpg?h=1080&resize=1&w=1920')}}" data-rel="prettyPhoto[product-gallery]" class="zoom">
 																		<img width="600" height="600" src="{{url('https://cdn2.unrealengine.com/egs-outriders-peoplecanfly-g1a-03-1920x1080-285553599.jpg?h=1080&resize=1&w=1920')}}" class="attachment-shop_single size-shop_single" alt="" srcset="{{url('https://cdn2.unrealengine.com/egs-outriders-peoplecanfly-g1a-03-1920x1080-285553599.jpg?h=1080&resize=1&w=1920')}} 600w, {{url('https://cdn2.unrealengine.com/egs-outriders-peoplecanfly-g1a-03-1920x1080-285553599.jpg?h=1080&resize=1&w=1920')}} 150w,{{url('https://cdn2.unrealengine.com/egs-outriders-peoplecanfly-g1a-03-1920x1080-285553599.jpg?h=1080&resize=1&w=1920')}} 300w, {{url('https://cdn2.unrealengine.com/egs-outriders-peoplecanfly-g1a-03-1920x1080-285553599.jpg?h=1080&resize=1&w=1920')}} 180w" sizes="(max-width: 600px) 100vw, 600px">
-																	</a>
+                                                                    </a>
 																</div>
 															</div>
 
