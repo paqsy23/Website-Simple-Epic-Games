@@ -12,10 +12,7 @@ class PlatformTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('platform')->insert(
-            array(
-                'name' => 'Windows',
-            )
-        );
+        DB::table('platform')->insert(array('name' => 'Windows',));
+        DB::table('platform')->insert(array('name' => 'Mac',));
     }
 }
