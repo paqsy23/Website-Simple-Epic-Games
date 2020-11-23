@@ -18,5 +18,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('login', 'LoginRegisterController@showLogin');
+Route::post('login', 'LoginRegisterController@loginProcess');
+Route::get('register', 'LoginRegisterController@showRegister');
+Route::post('register', 'LoginRegisterController@registerProcess');
+
 Route::get('/game/{id}','GameController@showGameDetail');
 

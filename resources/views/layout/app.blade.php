@@ -88,7 +88,7 @@
                     <li>View and track orders and more</li>
                 </ul>
 
-                <a href="create_account.html" title="Register" class="btn-reg-popup">Create an account</a>
+                <a href="{{ url('register') }}" title="Register" class="btn-reg-popup">Create an account</a>
             </div>
         </div>
         <div class="clear"></div>
