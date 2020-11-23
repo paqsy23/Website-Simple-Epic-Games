@@ -83,7 +83,7 @@
                 <ul class="list-log">
                     <li>Faster checkout</li>
 
-                    <li>Save multiple shipping addresses</li>
+                    <li>Save multiple game</li>
 
                     <li>View and track orders and more</li>
                 </ul>

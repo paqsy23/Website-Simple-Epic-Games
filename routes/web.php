@@ -24,4 +24,5 @@ Route::get('register', 'LoginRegisterController@showRegister');
 Route::post('register', 'LoginRegisterController@registerProcess');
 
 Route::get('/game/{id}','GameController@showGameDetail');
+Route::get('/tambahTag','GameController@tambahTag');
 

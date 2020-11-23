@@ -1,7 +1,7 @@
 @extends('layout.app')
 
 @section('title')
-    <title>{{$game->nama}}</title>
+    <title>{{$game->name}}</title>
 @endsection
 
 @section('body')
@@ -13,14 +13,14 @@
 		<div class="listings-title">
 			<div class="container">
 				<div class="wrap-title">
-					<h1>{{$game->nama}}</h1>
+					<h1>{{$game->name}}</h1>
 					<div class="bread">
 						<div class="breadcrumbs theme-clearfix">
 							<div class="container">
 								<ul class="breadcrumb">
 									<li><a href="home_page_3.html">Store</a><span class="go-page"></span></li>
 									{{-- <li><a href="group_product.html">Group Product</a><span class="go-page"></span></li> --}}
-									<li class="active"><span>{{$game->nama}}</span></li>
+									<li class="active"><span>{{$game->name}}</span></li>
 								</ul>
 							</div>
 						</div>
@@ -140,37 +140,55 @@
 										<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 clear_xs">
 											<div class="content_product_detail">
                                                 {{-- Nama Game --}}
-												<h1 class="product_title entry-title">{{$game->nama}}</h1>
+												<h1 class="product_title entry-title">{{$game->name}}</h1>
 
-												<div class="reviews-content">
+												{{-- <div class="reviews-content">
 													<div class="star"></div>
 													<a href="#reviews" class="woocommerce-review-link" rel="nofollow"><span class="count">0</span> Review(s)</a>
-												</div>
+												</div> --}}
                                                 {{-- Harga Game --}}
 												<div>
 													<p class="price"><span class="woocommerce-Price-amount amount">${{$game->price}}</span></p>
 												</div>
 
-												<div class="product-info clearfix">
+												{{-- <div class="product-info clearfix">
 													<div class="product-stock pull-left out-stock">
 														<span>Out stock</span>
 													</div>
-												</div>
+												</div> --}}
 
 												<div class="description" itemprop="description">
-													<p>Proin nunc nibh, adipiscing eu nisi id, ultrices suscipit augue. Sed rhoncus hendrerit lacus, et venenatis felis. Donec ut fringilla magna ultrices suscipit augue. Proin nunc nibh, adipiscing eu nisi id, ultrices suscipit augue. Sed rhoncus hendrerit lacus, et venenatis felis. Donec ut fringilla magna ultrices suscipit augue.</p>
+													<p>{{$game->description}}</p>
 												</div>
 
-												<p class="stock out-of-stock">Out of stock</p>
+												{{-- <p class="stock out-of-stock">Out of stock</p> --}}
 
 												<div class="social-share">
-													<div class="title-share">Share</div>
+													<div class="title-share">Follow Us</div>
 													<div class="wrap-content">
-														<a href="http://www.facebook.com/" onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"><i class="fa fa-facebook"></i></a>
+                                                        @if ($game->instagram!=null)
+                                                        <a href="{{url($game->instagram)}}" onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"><i class="fa fa-instagram"></i></a>
+                                                        @endif
+                                                        @if ($game->website!=null)
+                                                        <a href="{{url($game->website)}}" onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"><i class="fa fa-dribbble"></i></a>
+                                                        @endif
+                                                        @if ($game->reddit!=null)
+                                                        <a href="{{url($game->reddit)}}" onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"><i class="fa fa-reddit"></i></a>
+                                                        @endif
+                                                        @if ($game->facebook!=null)
+                                                        <a href="{{url($game->facebook)}}" onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"><i class="fa fa-facebook"></i></a>
+                                                        @endif
+                                                        @if ($game->youtube!=null)
+                                                        <a href="{{url($game->youtube)}}" onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"><i class="fa fa-youtube"></i></a>
+                                                        @endif
+                                                        @if ($game->twitter!=null)
+                                                        <a href="{{url($game->twitter)}}" onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"><i class="fa fa-twitter"></i></a>
+                                                        @endif
+														{{-- <a href="http://www.facebook.com/" onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"><i class="fa fa-facebook"></i></a>
 														<a href="http://twitter.com/" onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"><i class="fa fa-twitter"></i></a>
 														<a href="https://plus.google.com/" onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"><i class="fa fa-google-plus"></i></a>
 														<a href="#"><i class="fa fa-dribbble"></i></a>
-														<a href="#"><i class="fa fa-instagram"></i></a>
+														<a href="#"><i class="fa fa-instagram"></i></a> --}}
 													</div>
 												</div>
 											</div>
@@ -181,11 +199,11 @@
 								<div class="tabs clearfix">
 									<div class="tabbable">
 										<ul class="nav nav-tabs">
-											<li class="description_tab active">
-												<a href="#tab-description" data-toggle="tab">Description</a>
+											<li class="aboutGame_tab active">
+												<a href="#tab-aboutGame" data-toggle="tab">About Game</a>
 											</li>
-											<li class="requirement_tab">
-												<a href="#tab-requirement" data-toggle="tab">System Requirement</a>
+											<li class="specification_tab">
+												<a href="#tab-specification" data-toggle="tab">Specification</a>
 											</li>
 											<li class="reviews_tab ">
 												<a href="#tab-reviews" data-toggle="tab">Reviews (0)</a>
@@ -195,11 +213,27 @@
 										<div class="clear"></div>
 
 										<div class=" tab-content">
-											<div class="tab-pane active" id="tab-description">
-												<h2>Product Description</h2>
-												<p>{{$game->description}}</p>
+											<div class="tab-pane active" id="tab-aboutGame">
+												<h2>About Game</h2>
+                                                <h3>Release Date</h3>
+                                                <h5>{{$game->release}}</h5>
+                                                <h3>Developer</h3>
+                                                <h5>{{$game->developer->name}}</h5>
+                                                <h3>Publisher</h3>
+                                                <h5>{{$game->publisher->name}}</h5>
+                                                <h3>Tags</h3>
+                                                <h5>
+                                                    {{-- untuk memisah tag dengan koma --}}
+                                                    @foreach ($game->tags as $curTag)
+                                                        @if ($game->tags[0]->name == $curTag->name)
+                                                            {{$curTag->name}}
+                                                        @else
+                                                            , {{$curTag->name}}
+                                                        @endif
+                                                    @endforeach
+                                                </h5>
 											</div>
-											<div class="tab-pane" id="tab-requirement">
+											<div class="tab-pane" id="tab-specification">
 												<h2>System </h2>
 												<p>Proident adipisicing laborum beef ribs tri-tip dolore meatball tempor rump flank prosciutto elit do. Duis tenderloin culpa excepteur. Fugiat irure est cupim dolor, ut nulla id andouille chicken spare ribs eiusmod brisket biltong. Eiusmod minim tail cupim labore ad filet mignon, andouille esse enim. Sausage salami dolor ex adipisicing consequat. Ground round nostrud ut fatback voluptate consequat in minim drumstick culpa dolore. Ea beef prosciutto in sirloin fatback enim velit consectetur in pork belly pancetta culpa shank.</p>
 												<p>Shank quis in duis, id officia nulla. Pancetta sunt filet mignon porchetta doner turkey occaecat. Meatball corned beef elit ut fugiat. Hamburger biltong tail beef in cupim proident turducken picanha. Sausage chicken incididunt ad occaecat porchetta pancetta corned beef ham hock laborum nisi ullamco pork loin kielbasa aliqua.</p>

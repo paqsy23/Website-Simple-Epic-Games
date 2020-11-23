@@ -1,8 +1,7 @@
 <?php
 
-namespace Database\Seeders;
-
 use Illuminate\Database\Seeder;
+use PharIo\Manifest\Library;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,6 +12,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $this->call(UsersTableSeeder::class);
+        $this->call(DeveloperTableSeeder::class);
+        $this->call(PlatformTableSeeder::class);
+        $this->call(GamesTableSeeder::class);
+        $this->call(LibraryTableSeeder::class);
+        $this->call(TagTableSeeder::class);
+        $this->call(HtagTableSeeder::class);
+        $this->call(HplatformTableSeeder::class);
     }
 }
