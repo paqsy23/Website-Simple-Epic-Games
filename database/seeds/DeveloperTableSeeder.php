@@ -27,5 +27,8 @@ class DeveloperTableSeeder extends Seeder
         DB::table('developer')->insert(array('name' => 'Deep Silver','username' => 'DS','password' => password_hash('DS', PASSWORD_BCRYPT)));//13
         DB::table('developer')->insert(array('name' => 'Psyonix LLC','username' => 'PL','password' => password_hash('PL', PASSWORD_BCRYPT)));//14
         DB::table('developer')->insert(array('name' => 'Frontier Developments','username' => 'FD','password' => password_hash('FD', PASSWORD_BCRYPT)));//15
+
+
+
     }
 }
