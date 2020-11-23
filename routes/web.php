@@ -19,4 +19,5 @@ Route::get('/', function () {
 });
 
 Route::get('/game/{id}','GameController@showGameDetail');
+Route::get('/tambahTag','GameController@tambahTag');
 

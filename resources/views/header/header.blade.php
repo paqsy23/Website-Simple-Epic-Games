@@ -6,9 +6,9 @@
                 <div class="pull-left top1">
                     <div class="widget text-2 widget_text pull-left">
                         <div class="widget-inner">
-                            <div class="textwidget">
+                            {{-- <div class="textwidget">
                                 <div class="call-us"><span>Call Us Now: </span>0123-444-666654123</div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
 
@@ -56,8 +56,24 @@
                     </div> --}}
                 </div>
 
+                {{-- Kalau Belum Sign In --}}
                 <div class="wrap-myacc pull-right">
-                    <div class="sidebar-account pull-left">
+                    <div class="pull-left top2">
+                        <div class="widget-1 widget-first widget nav_menu-2 widget_nav_menu">
+                            <div class="widget-inner">
+                                <ul id="menu-checkout" class="menu">
+                                    <li class="menu-checkout">
+                                        <a href="javascript:void(0);" data-toggle="modal" data-target="#login_form">
+                                            <span>Sign In</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- Kalau Sudah Sign In --}}
+                    {{-- <div class="sidebar-account pull-left">
                         <div class="account-title">My account</div>
 
                         <div id="my-account" class="my-account">
@@ -96,7 +112,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
 {{--
                     <div class="pull-left top2">
                         <div class="widget-1 widget-first widget nav_menu-2 widget_nav_menu">
@@ -778,11 +794,11 @@
                                     <a href="home_page_1.html" class="item-link dropdown-toggle">
                                         <span class="have-title">
                                             <span class="menu-color" data-color="#f034ca"></span>
-                                            <span class="menu-title">Home</span>
+                                            <span class="menu-title">Store</span>
                                         </span>
                                     </a>
 
-                                    <ul class="dropdown-menu nav-level1 column-3">
+                                    {{-- <ul class="dropdown-menu nav-level1 column-3">
                                         <li class="dropdown-submenu column-3 menu-home-pages">
                                             <a href="#">
                                                 <span class="have-title">
@@ -900,7 +916,7 @@
                                                 </li>
                                             </ul>
                                         </li>
-                                    </ul>
+                                    </ul> --}}
                                 </li>
 
                                 <li class="active dropdown menu-shop etrostore-mega-menu level1 etrostore-menu-img">
