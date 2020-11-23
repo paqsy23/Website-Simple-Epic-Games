@@ -20,5 +20,6 @@ class DatabaseSeeder extends Seeder
         $this->call(TagTableSeeder::class);
         $this->call(HtagTableSeeder::class);
         $this->call(HplatformTableSeeder::class);
+        $this->call(ImageTableSeeder::class);
     }
 }
