@@ -68,6 +68,6 @@ class LoginRegisterController extends Controller
     public function logout(Request $request)
     {
         $request->session()->forget('user-login');
-        return back();
+        return redirect('login');
     }
 }

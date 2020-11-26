@@ -9,6 +9,7 @@ class UserController extends Controller
     public function dashboard(Request $request)
     {
         $user_login = $request->session()->get('user-login');
+
         if ($user_login == null) {
             $request->session()->flash('warning', 'Please Login Firstly');
             return redirect('login');
@@ -31,6 +32,15 @@ class UserController extends Controller
 
     public function accountDetails(Request $request)
     {
+        $user_login = $request->session()->get('user-login');
 
+        if ($user_login == null) {
+            $request->session()->flash('warning', 'Please Login Firstly');
+            return redirect('login');
+        }
+
+        return view('account.account_details', [
+            'location' => 'account-details'
+        ]);
     }
 }
