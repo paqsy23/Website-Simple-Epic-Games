@@ -19,6 +19,8 @@ class UsersTableSeeder extends Seeder
                 'username' => 'paqsy',
                 'password' => password_hash('123', PASSWORD_BCRYPT),
                 'email' => 'Paqsy123@gmail.com',
+                'status' => 1,
+                'money' => 0,
             )
         );
         DB::table('users')->insert(
@@ -27,6 +29,8 @@ class UsersTableSeeder extends Seeder
                 'username' => 'billy',
                 'password' => password_hash('123', PASSWORD_BCRYPT),
                 'email' => 'billy123@gmail.com',
+                'status' => 0,
+                'money' => 0,
             )
         );
         DB::table('users')->insert(
@@ -35,6 +39,8 @@ class UsersTableSeeder extends Seeder
                 'username' => 'vincent',
                 'password' => password_hash('123', PASSWORD_BCRYPT),
                 'email' => 'vincent123@gmail.com',
+                'status' => -1,
+                'money' => 0,
             )
         );
 
@@ -46,6 +52,8 @@ class UsersTableSeeder extends Seeder
                     'username' => $faker->userName,
                     'password' => password_hash('123', PASSWORD_BCRYPT),
                     'email' => $faker->safeEmail,
+                    'status' => 1,
+                    'money' => 0,
                 )
             );
         }

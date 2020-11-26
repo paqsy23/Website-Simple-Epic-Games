@@ -36,3 +36,13 @@ Route::group(['prefix' => 'account'], function () {
 Route::get('/game/{id}','GameController@showGameDetail');
 Route::get('/tambahTag','GameController@tambahTag');
 
+Route::group(['prefix' => 'admin'], function () {
+    Route::get('/', function () {
+        return view('admin.login');
+    });
+    Route::post('/login','AdminController@login');
+    Route::get('/home','AdminController@home');
+    Route::get('/developer','AdminController@developer');
+    Route::get('/report','AdminController@report');
+    Route::get('/logout','AdminController@logout');
+});
