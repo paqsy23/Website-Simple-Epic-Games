@@ -14,183 +14,183 @@ class ImageTableSeeder extends Seeder
     {
         DB::table('image')->insert(array(
             'game_id' => '1',
-            'link' => '1_1'
+            'link' => '1/1'
         ));
         DB::table('image')->insert(array(
             'game_id' => '1',
-            'link' => '1_2'
+            'link' => '1/2'
         ));
         DB::table('image')->insert(array(
             'game_id' => '1',
-            'link' => '1_logo'
+            'link' => '1/logo'
         ));
         DB::table('image')->insert(array(
             'game_id' => '2',
-            'link' => '2_1'
+            'link' => '2/1'
         ));
         DB::table('image')->insert(array(
             'game_id' => '2',
-            'link' => '2_2'
+            'link' => '2/2'
         ));
         DB::table('image')->insert(array(
             'game_id' => '2',
-            'link' => '2_logo'
+            'link' => '2/logo'
         ));
         DB::table('image')->insert(array(
             'game_id' => '3',
-            'link' => '3_1'
+            'link' => '3/1'
         ));
         DB::table('image')->insert(array(
             'game_id' => '3',
-            'link' => '3_2'
+            'link' => '3/2'
         ));
         DB::table('image')->insert(array(
             'game_id' => '3',
-            'link' => '3_logo'
+            'link' => '3/logo'
         ));
         DB::table('image')->insert(array(
             'game_id' => '4',
-            'link' => '4_1'
+            'link' => '4/1'
         ));
         DB::table('image')->insert(array(
             'game_id' => '4',
-            'link' => '4_2'
+            'link' => '4/2'
         ));
         DB::table('image')->insert(array(
             'game_id' => '4',
-            'link' => '4_logo'
+            'link' => '4/logo'
         ));
         DB::table('image')->insert(array(
             'game_id' => '5',
-            'link' => '5_1'
+            'link' => '5/1'
         ));
         DB::table('image')->insert(array(
             'game_id' => '5',
-            'link' => '5_2'
+            'link' => '5/2'
         ));
         DB::table('image')->insert(array(
             'game_id' => '5',
-            'link' => '5_logo'
+            'link' => '5/logo'
         ));
         DB::table('image')->insert(array(
             'game_id' => '6',
-            'link' => '6_1'
+            'link' => '6/1'
         ));
         DB::table('image')->insert(array(
             'game_id' => '6',
-            'link' => '6_2'
+            'link' => '6/2'
         ));
         DB::table('image')->insert(array(
             'game_id' => '6',
-            'link' => '6_logo'
+            'link' => '6/logo'
         ));
         DB::table('image')->insert(array(
             'game_id' => '7',
-            'link' => '7_1'
+            'link' => '7/1'
         ));
         DB::table('image')->insert(array(
             'game_id' => '7',
-            'link' => '7_2'
+            'link' => '7/2'
         ));
         DB::table('image')->insert(array(
             'game_id' => '7',
-            'link' => '7_logo'
+            'link' => '7/logo'
         ));
         DB::table('image')->insert(array(
             'game_id' => '8',
-            'link' => '8_1'
+            'link' => '8/1'
         ));
         DB::table('image')->insert(array(
             'game_id' => '8',
-            'link' => '8_2'
+            'link' => '8/2'
         ));
         DB::table('image')->insert(array(
             'game_id' => '8',
-            'link' => '8_logo'
+            'link' => '8/logo'
         ));
         DB::table('image')->insert(array(
             'game_id' => '9',
-            'link' => '9_1'
+            'link' => '9/1'
         ));
         DB::table('image')->insert(array(
             'game_id' => '9',
-            'link' => '9_2'
+            'link' => '9/2'
         ));
         DB::table('image')->insert(array(
             'game_id' => '9',
-            'link' => '9_logo'
+            'link' => '9/logo'
         ));
         DB::table('image')->insert(array(
             'game_id' => '10',
-            'link' => '10_1'
+            'link' => '10/1'
         ));
         DB::table('image')->insert(array(
             'game_id' => '10',
-            'link' => '10_2'
+            'link' => '10/2'
         ));
         DB::table('image')->insert(array(
             'game_id' => '10',
-            'link' => '10_logo'
+            'link' => '10/logo'
         ));
         DB::table('image')->insert(array(
             'game_id' => '11',
-            'link' => '11_1'
+            'link' => '11/1'
         ));
         DB::table('image')->insert(array(
             'game_id' => '11',
-            'link' => '11_2'
+            'link' => '11/2'
         ));
         DB::table('image')->insert(array(
             'game_id' => '11',
-            'link' => '11_logo'
+            'link' => '11/logo'
         ));
         DB::table('image')->insert(array(
             'game_id' => '12',
-            'link' => '12_1'
+            'link' => '12/1'
         ));
         DB::table('image')->insert(array(
             'game_id' => '12',
-            'link' => '12_2'
+            'link' => '12/2'
         ));
         DB::table('image')->insert(array(
             'game_id' => '12',
-            'link' => '12_logo'
+            'link' => '12/logo'
         ));
         DB::table('image')->insert(array(
             'game_id' => '3',
-            'link' => '13_1'
+            'link' => '13/1'
         ));
         DB::table('image')->insert(array(
             'game_id' => '13',
-            'link' => '13_2'
+            'link' => '13/2'
         ));
         DB::table('image')->insert(array(
             'game_id' => '13',
-            'link' => '13_logo'
+            'link' => '13/logo'
         ));
         DB::table('image')->insert(array(
             'game_id' => '14',
-            'link' => '14_1'
+            'link' => '14/1'
         ));
         DB::table('image')->insert(array(
             'game_id' => '14',
-            'link' => '14_2'
+            'link' => '14/2'
         ));
         DB::table('image')->insert(array(
             'game_id' => '14',
-            'link' => '14_logo'
+            'link' => '14/logo'
         ));
         DB::table('image')->insert(array(
             'game_id' => '15',
-            'link' => '15_1'
+            'link' => '15/1'
         ));
         DB::table('image')->insert(array(
             'game_id' => '15',
-            'link' => '15_2'
+            'link' => '15/2'
         ));
         DB::table('image')->insert(array(
             'game_id' => '15',
-            'link' => '15_logo'
+            'link' => '15/logo'
         ));
 
     }
