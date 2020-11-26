@@ -14,27 +14,184 @@ class ImageTableSeeder extends Seeder
     {
         DB::table('image')->insert(array(
             'game_id' => '1',
-            'link' => 'https://cdn2.unrealengine.com/egs-outriders-peoplecanfly-g1a-02-1920x1080-285554257.jpg?h=1080&resize=1&w=1920'
+            'link' => '1/1'
         ));
         DB::table('image')->insert(array(
             'game_id' => '1',
-            'link' => 'https://cdn2.unrealengine.com/egs-outriders-peoplecanfly-g1a-03-1920x1080-285553599.jpg?h=1080&resize=1&w=1920'
+            'link' => '1/2'
         ));
         DB::table('image')->insert(array(
             'game_id' => '1',
-            'link' => 'https://cdn2.unrealengine.com/egs-outriders-peoplecanfly-g1a-04-1920x1080-285553574.jpg?h=1080&resize=1&w=1920'
+            'link' => '1/logo'
         ));
         DB::table('image')->insert(array(
             'game_id' => '2',
-            'link' => 'https://cdn2.unrealengine.com/egs-outriders-peoplecanfly-g1a-04-1920x1080-285553574.jpg?h=1080&resize=1&w=1920'
+            'link' => '2/1'
         ));
         DB::table('image')->insert(array(
             'game_id' => '2',
-            'link' => 'https://cdn2.unrealengine.com/egs-outriders-peoplecanfly-g1a-04-1920x1080-285553574.jpg?h=1080&resize=1&w=1920'
+            'link' => '2/2'
         ));
         DB::table('image')->insert(array(
             'game_id' => '2',
-            'link' => 'https://cdn2.unrealengine.com/egs-outriders-peoplecanfly-g1a-04-1920x1080-285553574.jpg?h=1080&resize=1&w=1920'
+            'link' => '2/logo'
         ));
+        DB::table('image')->insert(array(
+            'game_id' => '3',
+            'link' => '3/1'
+        ));
+        DB::table('image')->insert(array(
+            'game_id' => '3',
+            'link' => '3/2'
+        ));
+        DB::table('image')->insert(array(
+            'game_id' => '3',
+            'link' => '3/logo'
+        ));
+        DB::table('image')->insert(array(
+            'game_id' => '4',
+            'link' => '4/1'
+        ));
+        DB::table('image')->insert(array(
+            'game_id' => '4',
+            'link' => '4/2'
+        ));
+        DB::table('image')->insert(array(
+            'game_id' => '4',
+            'link' => '4/logo'
+        ));
+        DB::table('image')->insert(array(
+            'game_id' => '5',
+            'link' => '5/1'
+        ));
+        DB::table('image')->insert(array(
+            'game_id' => '5',
+            'link' => '5/2'
+        ));
+        DB::table('image')->insert(array(
+            'game_id' => '5',
+            'link' => '5/logo'
+        ));
+        DB::table('image')->insert(array(
+            'game_id' => '6',
+            'link' => '6/1'
+        ));
+        DB::table('image')->insert(array(
+            'game_id' => '6',
+            'link' => '6/2'
+        ));
+        DB::table('image')->insert(array(
+            'game_id' => '6',
+            'link' => '6/logo'
+        ));
+        DB::table('image')->insert(array(
+            'game_id' => '7',
+            'link' => '7/1'
+        ));
+        DB::table('image')->insert(array(
+            'game_id' => '7',
+            'link' => '7/2'
+        ));
+        DB::table('image')->insert(array(
+            'game_id' => '7',
+            'link' => '7/logo'
+        ));
+        DB::table('image')->insert(array(
+            'game_id' => '8',
+            'link' => '8/1'
+        ));
+        DB::table('image')->insert(array(
+            'game_id' => '8',
+            'link' => '8/2'
+        ));
+        DB::table('image')->insert(array(
+            'game_id' => '8',
+            'link' => '8/logo'
+        ));
+        DB::table('image')->insert(array(
+            'game_id' => '9',
+            'link' => '9/1'
+        ));
+        DB::table('image')->insert(array(
+            'game_id' => '9',
+            'link' => '9/2'
+        ));
+        DB::table('image')->insert(array(
+            'game_id' => '9',
+            'link' => '9/logo'
+        ));
+        DB::table('image')->insert(array(
+            'game_id' => '10',
+            'link' => '10/1'
+        ));
+        DB::table('image')->insert(array(
+            'game_id' => '10',
+            'link' => '10/2'
+        ));
+        DB::table('image')->insert(array(
+            'game_id' => '10',
+            'link' => '10/logo'
+        ));
+        DB::table('image')->insert(array(
+            'game_id' => '11',
+            'link' => '11/1'
+        ));
+        DB::table('image')->insert(array(
+            'game_id' => '11',
+            'link' => '11/2'
+        ));
+        DB::table('image')->insert(array(
+            'game_id' => '11',
+            'link' => '11/logo'
+        ));
+        DB::table('image')->insert(array(
+            'game_id' => '12',
+            'link' => '12/1'
+        ));
+        DB::table('image')->insert(array(
+            'game_id' => '12',
+            'link' => '12/2'
+        ));
+        DB::table('image')->insert(array(
+            'game_id' => '12',
+            'link' => '12/logo'
+        ));
+        DB::table('image')->insert(array(
+            'game_id' => '3',
+            'link' => '13/1'
+        ));
+        DB::table('image')->insert(array(
+            'game_id' => '13',
+            'link' => '13/2'
+        ));
+        DB::table('image')->insert(array(
+            'game_id' => '13',
+            'link' => '13/logo'
+        ));
+        DB::table('image')->insert(array(
+            'game_id' => '14',
+            'link' => '14/1'
+        ));
+        DB::table('image')->insert(array(
+            'game_id' => '14',
+            'link' => '14/2'
+        ));
+        DB::table('image')->insert(array(
+            'game_id' => '14',
+            'link' => '14/logo'
+        ));
+        DB::table('image')->insert(array(
+            'game_id' => '15',
+            'link' => '15/1'
+        ));
+        DB::table('image')->insert(array(
+            'game_id' => '15',
+            'link' => '15/2'
+        ));
+        DB::table('image')->insert(array(
+            'game_id' => '15',
+            'link' => '15/logo'
+        ));
+
     }
 }
