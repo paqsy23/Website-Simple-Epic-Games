@@ -11,7 +11,18 @@ class GameController extends Controller
     public function showGameDetail($id){
         $game = Game::find($id);
 
-        return view('game.game_detail',["game"=>$game]);
+        // dd($game->img);
+        $gambar = [];
+        $index = 0;
+
+        foreach($game->img as $curGambar){
+            $gambar[]=(object)[
+                'index'=> $index,
+                'link'=> $curGambar->link
+            ];
+            $index= $index+1;
+        }
+        return view('game.game_detail',["game"=>$game,"gambar"=>$gambar]);
     }
 
     //note buat kalau mau insert tag game

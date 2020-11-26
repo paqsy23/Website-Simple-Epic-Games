@@ -18,7 +18,7 @@
 											<div class="item-inner">
 												<div class="image-client pull-left">
 													<a href="#" title="">
-														<img width="127" height="127" src="images/1903/tm3.jpg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" />
+														<img width="127" height="127" src="{{asset('images/1903/tm3.jpg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" />
 													</a>
 												</div>
 
@@ -189,7 +189,7 @@
 													<div class="wpb_wrapper">
 														<div class="ya-logo">
 															<a href="home_page_1.html">
-																<img src="images/icons/logo-footer.png" alt="logo" />
+																<img src="{{asset('images/icons/logo-footer.png')}}" alt="logo" />
 															</a>
 														</div>
 													</div>
@@ -212,11 +212,11 @@
 
 															<div class="store">
 																<a href="#">
-																	<img src="images/1903/app-store.png" alt="store" title="store" />
+																	<img src="{{asset('images/1903/app-store.png')}}" alt="store" title="store" />
 																</a>
 
 																<a href="#">
-																	<img src="images/1903/google-store.png" alt="store" title="store" />
+																	<img src="{{asset('images/1903/google-store.png')}}" alt="store" title="store" />
 																</a>
 															</div>
 														</div>
@@ -348,7 +348,7 @@
 																<h2>find a store</h2>
 															</div>
 
-															<img src="images/1903/map.jpg" alt="map" title="map" />
+															<img src="{{asset('images/1903/map.jpg')}}" alt="map" title="map" />
 
 															<a href="#" class="link-map">Store locator</a>
 														</div>
@@ -420,7 +420,7 @@
 								<div class="textwidget">
 									<div class="payment">
 										<a href="#">
-											<img src="images/1903/paypal.png" alt="payment" title="payment" />
+											<img src="{{asset('images/1903/paypal.png" alt="payment" title="payment" />
 										</a>
 									</div>
 								</div>

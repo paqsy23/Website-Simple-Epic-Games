@@ -75,7 +75,7 @@
                     @else
                         {{-- Kalau Sudah Sign In --}}
                         <div class="sidebar-account pull-left">
-                            <div class="account-title">{{ Session::get('user-login')->nama }}</div>
+                            <div class="account-title">{{ Session::get('user-login')->name }}</div>
 
                             <div id="my-account" class="my-account">
                                 <div class="widget-1 widget-first widget nav_menu-4 widget_nav_menu">

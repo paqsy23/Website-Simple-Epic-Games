@@ -24,6 +24,13 @@ Route::get('register', 'LoginRegisterController@showRegister');
 Route::post('register', 'LoginRegisterController@registerProcess');
 Route::get('logout', 'LoginRegisterController@logout');
 
+Route::group(['prefix' => 'account'], function () {
+    Route::get('/', 'UserController@dashboard');
+    Route::get('orders', 'UserController@order');
+    Route::get('address', 'UserController@addresses');
+    Route::get('detail', 'UserController@accountDetails');
+});
+
 Route::get('/game/{id}','GameController@showGameDetail');
 Route::get('/tambahTag','GameController@tambahTag');
 
