@@ -31,6 +31,16 @@ class CreateGamesTable extends Migration
             $table->integer('price');
             $table->integer('rating')->nullable();
             $table->unsignedBigInteger('add_ons')->nullable();
+            $table->integer('status');
+            $table->string('OS')->nullable();
+            $table->string('CPU')->nullable();
+            $table->string('GPU')->nullable();
+            $table->string('processor')->nullable();
+            $table->string('memory')->nullable();
+            $table->string('storage')->nullable();
+            $table->string('direct_x')->nullable();
+            $table->string('graphics')->nullable();
+            $table->string('note')->nullable();
             $table->timestamps();
 
             $table->foreign('developer_id')->references('id')->on('developer')->onDelete('cascade');

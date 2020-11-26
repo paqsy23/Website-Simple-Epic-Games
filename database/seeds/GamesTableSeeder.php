@@ -30,6 +30,16 @@ class GamesTableSeeder extends Seeder
                 'price' => 60,
                 'rating' => null,
                 'add_ons' => null,
+                'status' => 1,
+                'OS' => null,
+                'CPU' => null,
+                'GPU' => null,
+                'processor' => null,
+                'memory' => null,
+                'storage' => null,
+                'direct_x' => null,
+                'graphics' => null,
+                'note' => null,
             )
         );//1
         DB::table('games')->insert(
@@ -49,6 +59,16 @@ class GamesTableSeeder extends Seeder
                 'price' =>57,
                 'rating' => 92,
                 'add_ons' => null,
+                'status' => 1,
+                'OS' => 'Windows 10 (64-bit only)',
+                'CPU' => 'Ryzen 5 1600 - 3.2 Ghz / i7-4790 - 3.6 Ghz',
+                'GPU' => 'AMD RX 570 - 8GB / GeForce GTX 1060 - 6GB',
+                'processor' => null,
+                'memory' => '8 GB (Dual-channel mode)',
+                'storage' => '50 GB HDD (SSD Recommended)',
+                'direct_x' => 'DirectX 12',
+                'graphics' => null,
+                'note' => 'Requires GPU with DirectX 12 (Feature Level 12_0) support',
             )
         );//2
         DB::table('games')->insert(
@@ -68,6 +88,16 @@ class GamesTableSeeder extends Seeder
                 'price' =>57,
                 'rating' => 92,
                 'add_ons' => 2,
+                'status' => 1,
+                'OS' => 'Windows 10 (64-bit only)',
+                'CPU' => 'Ryzen 5 1600 - 3.2 Ghz / i7-4790 - 3.6 Ghz',
+                'GPU' => 'AMD RX 570 - 8GB / GeForce GTX 1060 - 6GB',
+                'processor' => null,
+                'memory' => '8 GB (Dual-channel mode)',
+                'storage' => '50 GB HDD (SSD Recommended)',
+                'direct_x' => 'DirectX 12',
+                'graphics' => null,
+                'note' => 'Requires GPU with DirectX 12 (Feature Level 12_0) support',
             )
         );//3
         DB::table('games')->insert(
@@ -87,6 +117,16 @@ class GamesTableSeeder extends Seeder
                 'price' =>45,
                 'rating' => 60,
                 'add_ons' => null,
+                'status' => 1,
+                'OS' => 'Windows 7, Windows 8.1, Windows 10 (64-bit versions only)',
+                'CPU' => null,
+                'GPU' => null,
+                'processor' => 'Intel Core i7-2600K | AMD FX-8350 or equivalent',
+                'memory' => '8 GB RAM',
+                'storage' => '20 GB available space',
+                'direct_x' => null,
+                'graphics' => 'NVIDIA GeForce GTX 780 | AMD Radeon R9 280X or equivalent',
+                'note' => 'Windows-compatible keyboard, mouse, headset, optional controller.',
             )
         );//4
         DB::table('games')->insert(
@@ -106,7 +146,17 @@ class GamesTableSeeder extends Seeder
                 'price' =>45,
                 'rating' => 60,
                 'add_ons' => 4,
-            )
+                'status' => 1,
+                'OS' => 'Windows 7, Windows 8.1, Windows 10 (64-bit versions only)',
+                'CPU' => null,
+                'GPU' => null,
+                'processor' => 'Intel Core i7-2600K | AMD FX-8350 or equivalent',
+                'memory' => '8 GB RAM',
+                'storage' => '20 GB available space',
+                'direct_x' => null,
+                'graphics' => 'NVIDIA GeForce GTX 780 | AMD Radeon R9 280X or equivalent',
+                'note' => 'Windows-compatible keyboard, mouse, headset, optional controller. ',
+                )
         );//5
         DB::table('games')->insert(
             array(
@@ -125,6 +175,13 @@ class GamesTableSeeder extends Seeder
                 'price' =>30,
                 'rating' => null,
                 'add_ons' => null,
+                'status' => 1,
+                'OS' => 'Windows 7 (SP1), 8/8.1, 10 (Update 1903/May 2019 or later) – 64-bit',
+                'processor' => 'Intel Core 2 or AMD Athlon 64 – 1.8 GHz +',
+                'memory' => '4GB',
+                'storage' => '7GB',
+                'direct_x' => '11',
+                'graphics' => 'Intel GMA X4500, NVIDIA GeForce 9600M GT or AMD/ATI Mobility Radeon HD 3650 – 256MB VRAM DirectX API: Version 11',
             )
         );//6
         DB::table('games')->insert(
@@ -144,6 +201,16 @@ class GamesTableSeeder extends Seeder
                 'price' =>11,
                 'rating' => 76,
                 'add_ons' => null,
+                'status' => 1,
+                'OS' => 'Windows 8.1+',
+                'CPU' => '2.33 GHz Quad Core or Greater',
+                'GPU' => null,
+                'processor' => null,
+                'memory' => '8 GB',
+                'storage' => '3 GB',
+                'direct_x' => null,
+                'graphics' => 'GeForce 600+ / Radeon 6000+',
+                'note' => 'Internet Connection Required',
             )
         );//7
         DB::table('games')->insert(
@@ -163,6 +230,16 @@ class GamesTableSeeder extends Seeder
                 'price' =>25,
                 'rating' => 81,
                 'add_ons' => null,
+                'status' => 1,
+                'OS' => 'Windows 7/8/10 (64-bit)',
+                'CPU' => null,
+                'GPU' => null,
+                'processor' => 'Intel i7-8700 3.2 GHz / AMD Ryzen 7 2700 3.2 GHz',
+                'memory' => '16 GB',
+                'storage' => '20 GB',
+                'direct_x' => 'Version 11',
+                'graphics' => '4 GB, GeForce GTX 970 / Radeon RX 580',
+                'note' => null,
             )
         );//8
         DB::table('games')->insert(
@@ -182,6 +259,16 @@ class GamesTableSeeder extends Seeder
                 'price' =>37,
                 'rating' => 81,
                 'add_ons' => 8,
+                'status' => 1,
+                'OS' => 'Windows 7/8/10 (64-bit)',
+                'CPU' => null,
+                'GPU' => null,
+                'processor' => 'Intel i7-8700 3.2 GHz / AMD Ryzen 7 2700 3.2 GHz',
+                'memory' => '16 GB',
+                'storage' => '20 GB',
+                'direct_x' => 'Version 11',
+                'graphics' => '4 GB, GeForce GTX 970 / Radeon RX 580',
+                'note' => null,
             )
         );//9
         DB::table('games')->insert(
@@ -201,6 +288,16 @@ class GamesTableSeeder extends Seeder
                 'price' =>32,
                 'rating' => 67,
                 'add_ons' => null,
+                'status' => 1,
+                'OS' => 'Windows 7/8.1/10 64 Bit',
+                'CPU' => null,
+                'GPU' => null,
+                'processor' => 'Intel i5-6600 / Ryzen 5 2600X',
+                'memory' => '8 GB',
+                'storage' => '26 GB',
+                'direct_x' => 'Version 11',
+                'graphics' => 'Nvidia GTX 970 / AMD Radeon R9 270X 2 GB',
+                'note' => null,
             )
         );//10
         DB::table('games')->insert(
@@ -220,6 +317,16 @@ class GamesTableSeeder extends Seeder
                 'price' => 12,
                 'rating' => 97,
                 'add_ons' => null,
+                'status' => 1,
+                'OS' => 'Windows 10',
+                'CPU' => null,
+                'GPU' => null,
+                'processor' => 'Intel Core i7 or equivalent',
+                'memory' => '8 GB',
+                'storage' => '20 GB',
+                'direct_x' => '11',
+                'graphics' => 'NVIDIA Geforce 1060 or equivalent',
+                'note' => null,
             )
         );//11
         DB::table('games')->insert(
@@ -240,6 +347,16 @@ class GamesTableSeeder extends Seeder
                 'price' => 32,
                 'rating' => null,
                 'add_ons' => null,
+                'status' => 1,
+                'OS' => 'Windows 10 x64',
+                'CPU' => null,
+                'GPU' => null,
+                'processor' => 'Intel Core i7 or equivalent',
+                'memory' => '16 GB RAM',
+                'storage' => '30 GB available space',
+                'direct_x' => 'Version 11',
+                'graphics' => 'GeForce RTX 2060 or AMD equivalent, 4 GB VRAM',
+                'note' => null,
             )
         );//12
         DB::table('games')->insert(
@@ -259,6 +376,16 @@ class GamesTableSeeder extends Seeder
                 'price' => 55,
                 'rating' => null,
                 'add_ons' => 12,
+                'status' => 1,
+                'OS' => 'Windows 10 x64',
+                'CPU' => null,
+                'GPU' => null,
+                'processor' => 'Intel Core i7 or equivalent',
+                'memory' => '16 GB RAM',
+                'storage' => '30 GB available space',
+                'direct_x' => 'Version 11',
+                'graphics' => 'GeForce RTX 2060 or AMD equivalent, 4 GB VRAM',
+                'note' => null,
             )
         );//13
         DB::table('games')->insert(
@@ -278,6 +405,16 @@ class GamesTableSeeder extends Seeder
                 'price' => 0,
                 'rating' => 93,
                 'add_ons' => null,
+                'status' => 1,
+                'OS' => 'Windows 7 (64 bit) or Newer (64 bit) Windows OS',
+                'CPU' => null,
+                'GPU' => null,
+                'processor' => '3.0+ GHz Quad core',
+                'memory' => '8 GB',
+                'storage' => '20 GB',
+                'direct_x' => 'DirectX 11',
+                'graphics' => 'NVIDIA GeForce GTX 1060, AMD Radeon RX 470, or better',
+                'note' => null,
             )
         );//14
         DB::table('games')->insert(
@@ -297,6 +434,16 @@ class GamesTableSeeder extends Seeder
                 'price' => 27,
                 'rating' => 72,
                 'add_ons' => null,
+                'status' => 1,
+                'OS' => 'Windows 7/8/10 64-bit',
+                'CPU' => null,
+                'GPU' => null,
+                'processor' => 'Intel Core i7-3770K Quad Core CPU or better / AMD FX 4350 Quad Core CPU or better',
+                'memory' => '8 GB RAM',
+                'storage' => '25 GB available space',
+                'direct_x' => 'Version 11',
+                'graphics' => 'Nvidia GTX 770 / AMD Radeon R9 280X',
+                'note' => 'Broadband Internet connection',
             )
         );//15
     }
