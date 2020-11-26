@@ -20,4 +20,8 @@ class Game extends Model
     public function tags(){
         return $this->belongsToMany(tag::class,'h_tag','game_id','tag_id')->withPivot(['id'])->as("game_tag");
     }
+
+    public function img(){
+        return $this->hasMany(Image::class,'game_id','id');
+    }
 }

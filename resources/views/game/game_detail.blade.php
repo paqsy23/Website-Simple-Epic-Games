@@ -43,95 +43,45 @@
 												<!-- woocommerce_show_product_images -->
 												<div id="product_img_01" class="product-images" data-rtl="false">
 													<div class="product-images-container clearfix thumbnail-bottom">
-														<!-- Image Slider -->
-														<div class="slider product-responsive">
-															<div class="item-img-slider">
-																<div class="images">
-																	<a href="{{url('https://cdn2.unrealengine.com/egs-outriders-peoplecanfly-g1a-03-1920x1080-285553599.jpg?h=1080&resize=1&w=1920')}}" data-rel="prettyPhoto[product-gallery]" class="zoom">
-																		<img width="600" height="600" src="{{url('https://cdn2.unrealengine.com/egs-outriders-peoplecanfly-g1a-03-1920x1080-285553599.jpg?h=1080&resize=1&w=1920')}}" class="attachment-shop_single size-shop_single" alt="" srcset="{{url('https://cdn2.unrealengine.com/egs-outriders-peoplecanfly-g1a-03-1920x1080-285553599.jpg?h=1080&resize=1&w=1920')}} 600w, {{url('https://cdn2.unrealengine.com/egs-outriders-peoplecanfly-g1a-03-1920x1080-285553599.jpg?h=1080&resize=1&w=1920')}} 150w,{{url('https://cdn2.unrealengine.com/egs-outriders-peoplecanfly-g1a-03-1920x1080-285553599.jpg?h=1080&resize=1&w=1920')}} 300w, {{url('https://cdn2.unrealengine.com/egs-outriders-peoplecanfly-g1a-03-1920x1080-285553599.jpg?h=1080&resize=1&w=1920')}} 180w" sizes="(max-width: 600px) 100vw, 600px">
-                                                                    </a>
-																</div>
-															</div>
-
-															{{-- <div class="item-img-slider">
-																<div class="images">
-																	<a href="{{url('https://cdn2.unrealengine.com/egs-outriders-peoplecanfly-g1a-04-1920x1080-285553574.jpg?h=1080&resize=1&w=1920')}}" data-rel="prettyPhoto[product-gallery]" class="zoom">
-																		<img width="600" height="600" src="{{url('https://cdn2.unrealengine.com/egs-outriders-peoplecanfly-g1a-04-1920x1080-285553574.jpg?h=1080&resize=1&w=1920')}}" class="attachment-shop_single size-shop_single" alt="" srcset="{{url('https://cdn2.unrealengine.com/egs-outriders-peoplecanfly-g1a-04-1920x1080-285553574.jpg?h=1080&resize=1&w=1920')}} 600w, {{url('https://cdn2.unrealengine.com/egs-outriders-peoplecanfly-g1a-04-1920x1080-285553574.jpg?h=1080&resize=1&w=1920')}} 150w,{{url('https://cdn2.unrealengine.com/egs-outriders-peoplecanfly-g1a-04-1920x1080-285553574.jpg?h=1080&resize=1&w=1920')}} 300w, {{url('https://cdn2.unrealengine.com/egs-outriders-peoplecanfly-g1a-04-1920x1080-285553574.jpg?h=1080&resize=1&w=1920')}} 180w" sizes="(max-width: 600px) 100vw, 600px">
-																	</a>
-																</div>
-															</div> --}}
-
-															{{-- <div class="item-img-slider">
-																<div class="images">
-																	<a href="{{asset('images/1903/47.jpg')}}" data-rel="prettyPhoto[product-gallery]" class="zoom">
-																		<img width="600" height="600" src="{{asset('images/1903/47.jpg')}}" class="attachment-shop_single size-shop_single" alt="" srcset="{{asset('images/1903/47.jpg')}} 600w, {{asset('images/1903/47-150x150.jpg')}} 150w,{{asset(' images/1903/47-300x300.jpg')}} 300w, {{asset('images/1903/47-180x180.jpg')}} 180w" sizes="(max-width: 600px) 100vw, 600px">
-																	</a>
-																</div>
-															</div>
-
-															<div class="item-img-slider">
-																<div class="images">
-																	<a href="{{asset('images/1903/46.jpg')}}" data-rel="prettyPhoto[product-gallery]" class="zoom">
-																		<img width="600" height="600" src="{{asset('images/1903/46.jpg')}}" class="attachment-shop_single size-shop_single" alt="" srcset="{{asset('images/1903/46.jpg')}} 600w, {{asset('images/1903/46-150x150.jpg')}} 150w,{{asset(' images/1903/46-300x300.jpg')}} 300w, {{asset('images/1903/46-180x180.jpg')}} 180w" sizes="(max-width: 600px) 100vw, 600px">
-																	</a>
-																</div>
-															</div>
-
-															<div class="item-img-slider">
-																<div class="images">
-																	<a href="{{asset('images/1903/49.jpg')}}" data-rel="prettyPhoto[product-gallery]" class="zoom">
-																		<img width="600" height="600" src="{{asset('images/1903/49.jpg')}}" class="attachment-shop_single size-shop_single" alt="" srcset="{{asset('images/1903/49.jpg')}} 600w, {{asset('images/1903/49-150x150.jpg')}} 150w,{{asset(' images/1903/49-300x300.jpg')}} 300w, {{asset('images/1903/49-180x180.jpg')}} 180w" sizes="(max-width: 600px) 100vw, 600px">
-																	</a>
-																</div>
-															</div>
-
-															<div class="item-img-slider">
-																<div class="images">
-																	<a href="{{asset('images/1903/43.jpg')}}" data-rel="prettyPhoto[product-gallery]" class="zoom">
-																		<img width="600" height="600" src="{{asset('images/1903/43.jpg')}}" class="attachment-shop_single size-shop_single" alt="" srcset="{{asset('images/1903/43.jpg')}} 600w, {{asset('images/1903/43-150x150.jpg')}} 150w,{{asset(' images/1903/43-300x300.jpg')}} 300w, {{asset('images/1903/43-180x180.jpg')}} 180w" sizes="(max-width: 600px) 100vw, 600px">
-																	</a>
-																</div>
-															</div> --}}
-														</div>
-
-														<!-- Thumbnail Slider -->
-														{{-- <div class="slider product-responsive-thumbnail" id="product_thumbnail_247">
-															<div class="item-thumbnail-product">
-																<div class="thumbnail-wrapper">
-																	<img width="180" height="180" src="{{asset('images/1903/49-180x180.jpg')}}" class="attachment-shop_thumbnail size-shop_thumbnail" alt="" srcset="{{asset('images/1903/49-180x180.jpg')}} 180w, {{asset('images/1903/49-150x150.jpg')}} 150w, {{asset('images/1903/49-300x300.jpg')}} 300w, {{asset('images/1903/49.jpg')}} 600w" sizes="(max-width: 180px) 100vw, 180px">
-																</div>
-															</div>
-
-															<div class="item-thumbnail-product">
-																<div class="thumbnail-wrapper">
-																	<img width="180" height="180" src="{{asset('images/1903/48-180x180.jpg')}}" class="attachment-shop_thumbnail size-shop_thumbnail" alt="" srcset="{{asset('images/1903/48-180x180.jpg')}} 180w, {{asset('images/1903/48-150x150.jpg')}} 150w, {{asset('images/1903/48-300x300.jpg')}} 300w, {{asset('images/1903/48.jpg')}} 600w" sizes="(max-width: 180px) 100vw, 180px">
-																</div>
-															</div>
-
-															<div class="item-thumbnail-product">
-																<div class="thumbnail-wrapper">
-																	<img width="180" height="180" src="{{asset('images/1903/47-180x180.jpg')}}" class="attachment-shop_thumbnail size-shop_thumbnail" alt="" srcset="{{asset('images/1903/47-180x180.jpg')}} 180w, {{asset('images/1903/47-150x150.jpg')}} 150w, {{asset('images/1903/47-300x300.jpg')}} 300w, {{asset('images/1903/47.jpg')}} 600w" sizes="(max-width: 180px) 100vw, 180px">
-																</div>
-															</div>
-
-															<div class="item-thumbnail-product">
-																<div class="thumbnail-wrapper">
-																	<img width="180" height="180" src="{{asset('images/1903/46-180x180.jpg')}}" class="attachment-shop_thumbnail size-shop_thumbnail" alt="" srcset="{{asset('images/1903/46-180x180.jpg')}} 180w, {{asset('images/1903/46-150x150.jpg')}} 150w, {{asset('images/1903/46-300x300.jpg')}} 300w, {{asset('images/1903/46.jpg')}} 600w" sizes="(max-width: 180px) 100vw, 180px">
-																</div>
-															</div>
-
-															<div class="item-thumbnail-product">
-																<div class="thumbnail-wrapper">
-																	<img width="180" height="180" src="{{asset('images/1903/49-180x180.jpg')}}" class="attachment-shop_thumbnail size-shop_thumbnail" alt="" srcset="{{asset('images/1903/49-180x180.jpg')}} 180w, {{asset('images/1903/49-150x150.jpg')}} 150w, {{asset('images/1903/49-300x300.jpg')}} 300w, {{asset('images/1903/49.jpg')}} 600w" sizes="(max-width: 180px) 100vw, 180px">
-																</div>
-															</div>
-
-															<div class="item-thumbnail-product">
-																<div class="thumbnail-wrapper">
-																<img width="180" height="180" src="{{asset('images/1903/43-180x180.jpg')}}" class="attachment-shop_thumbnail size-shop_thumbnail" alt="" srcset="{{asset('images/1903/43-180x180.jpg')}} 180w, {{asset('images/1903/43-150x150.jpg')}} 150w, {{asset('images/1903/43-300x300.jpg')}} 300w, {{asset('images/1903/43.jpg')}} 600w" sizes="(max-width: 180px) 100vw, 180px">
-																</div>
-															</div>
-														</div> --}}
+														<!-- Image Slider Carousel-->
+                                                        <div id="{{$game->name}}" class="carousel slide slider product-responsive" data-ride="carousel">
+                                                            <ol class="carousel-indicators">
+                                                                @foreach ($gambar as $item)
+                                                                <li data-target="#{{$game->name}}" data-slide-to="{{$item->index}}"
+                                                                     @if ($item->index==0)
+                                                                        class="active"
+                                                                    @endif>
+                                                                </li>
+                                                                @endforeach
+                                                            </ol>
+                                                            <div class="carousel-inner">
+                                                                @foreach ($gambar as $item)
+                                                                    @if ($item->index==0)
+                                                                        <div class="item active">
+                                                                            <img class="d-block w-100" src="{{url($item->link)}}">
+                                                                        </div>
+                                                                    @else
+                                                                    <div class="item">
+                                                                        <img class="d-block w-100" src="{{url($item->link)}}">
+                                                                    </div>
+                                                                    @endif
+                                                                @endforeach
+                                                            </div>
+                                                            <a class="carousel-control left" href="#{{$game->name}}" data-slide="prev">
+                                                              <i class="fa fa-arrow-left" aria-hidden="true" style=" margin: 0;
+                                                              position: absolute;
+                                                              top: 50%;
+                                                              -ms-transform: translateY(-50%);
+                                                              transform: translateY(-50%);"></i>
+                                                            </a>
+                                                            <a class="carousel-control right" href="#{{$game->name}}" data-slide="next">
+                                                                <i class="fa fa-arrow-right" aria-hidden="true" style=" margin: 0;
+                                                                position: absolute;
+                                                                top: 50%;
+                                                                -ms-transform: translateY(-50%);
+                                                                transform: translateY(-50%);"></i>
+                                                            </a>
+                                                        </div>
 													</div>
 												</div>
 											</div>
@@ -214,15 +164,14 @@
 
 										<div class=" tab-content">
 											<div class="tab-pane active" id="tab-aboutGame">
-												<h2>About Game</h2>
-                                                <h3>Release Date</h3>
-                                                <h5>{{$game->release}}</h5>
-                                                <h3>Developer</h3>
-                                                <h5>{{$game->developer->name}}</h5>
-                                                <h3>Publisher</h3>
-                                                <h5>{{$game->publisher->name}}</h5>
-                                                <h3>Tags</h3>
-                                                <h5>
+                                                <h4>Developer</h4>
+                                                <h4>{{$game->developer->name}}</h4>
+                                                <h4>Publisher</h4>
+                                                <h4>{{$game->publisher->name}}</h4>
+                                                <h4>Release Date</h4>
+                                                <h4>{{$game->release}}</h4>
+                                                <h4>Tags</h4>
+                                                <h4>
                                                     {{-- untuk memisah tag dengan koma --}}
                                                     @foreach ($game->tags as $curTag)
                                                         @if ($game->tags[0]->name == $curTag->name)
@@ -231,7 +180,7 @@
                                                             , {{$curTag->name}}
                                                         @endif
                                                     @endforeach
-                                                </h5>
+                                                </h4>
 											</div>
 											<div class="tab-pane" id="tab-specification">
 												<h2>System </h2>
