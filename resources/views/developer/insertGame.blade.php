@@ -163,8 +163,11 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><i class="fa fa-instagram"></i></div>
                                 </div>
-                                <input type="number" class="form-control" name="instagram" placeholder="Instgram Link" value="{{old('instagram')}}">
+                                <input type="text" class="form-control" name="instagram" placeholder="Instagram Link" value="{{old('instagram')}}">
                             </div>
+                            @error('instagram')
+                                <small class="text-danger">{{ $message }}</small>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label>Website</label>
@@ -172,8 +175,11 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><i class="fa fa-dribbble"></i></div>
                                 </div>
-                                <input type="number" class="form-control" name="Website" placeholder="Website Link" value="{{old('website')}}">
+                                <input type="text" class="form-control" name="Website" placeholder="Website Link" value="{{old('website')}}">
                             </div>
+                            @error('website')
+                                <small class="text-danger">{{ $message }}</small>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label>Reddit</label>
@@ -181,8 +187,11 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><i class="fa fa-reddit"></i></div>
                                 </div>
-                                <input type="number" class="form-control" name="reddit" placeholder="Reddit Link" value="{{old('reddit')}}">
+                                <input type="text" class="form-control" name="reddit" placeholder="Reddit Link" value="{{old('reddit')}}">
                             </div>
+                            @error('reddit')
+                                <small class="text-danger">{{ $message }}</small>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label>Youtube</label>
@@ -190,8 +199,11 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><i class="fa fa-youtube"></i></div>
                                 </div>
-                                <input type="number" class="form-control" name="youtube" placeholder="Youtube Link" value="{{old('youtube')}}">
+                                <input type="text" class="form-control" name="youtube" placeholder="Youtube Link" value="{{old('youtube')}}">
                             </div>
+                            @error('youtube')
+                                <small class="text-danger">{{ $message }}</small>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label>Facebook</label>
@@ -199,8 +211,11 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><i class="fa fa-facebook"></i></div>
                                 </div>
-                                <input type="number" class="form-control" name="facebook" placeholder="Facebook Link" value="{{old('facebook')}}">
+                                <input type="text" class="form-control" name="facebook" placeholder="Facebook Link" value="{{old('facebook')}}">
                             </div>
+                            @error('facebook')
+                                <small class="text-danger">{{ $message }}</small>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label>Twitch</label>
@@ -208,8 +223,11 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><i class="fa fa-twitch"></i></div>
                                 </div>
-                                <input type="number" class="form-control" name="twitch" placeholder="Twitch Link" value="{{old('twitch')}}">
+                                <input type="text" class="form-control" name="twitch" placeholder="Twitch Link" value="{{old('twitch')}}">
                             </div>
+                            @error('twitch')
+                                <small class="text-danger">{{ $message }}</small>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label>Twitter</label>
@@ -217,16 +235,16 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><i class="fa fa-twitter"></i></div>
                                 </div>
-                                <input type="number" class="form-control" name="twitter" placeholder="Twitter Link" value="{{old('twitter')}}">
+                                <input type="text" class="form-control" name="twitter" placeholder="Twitter Link" value="{{old('twitter')}}">
                             </div>
+                            @error('twitter')
+                                <small class="text-danger">{{ $message }}</small>
+                            @enderror
                         </div>
                     </div>
                     {{-- End Right Input --}}
                 </div>
-                  <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                  </div>
+
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
@@ -235,8 +253,6 @@
               </form>
             </div>
             <!-- /.card -->
-
-
         </div>
         <!-- /.row -->
       </div><!-- /.container-fluid -->

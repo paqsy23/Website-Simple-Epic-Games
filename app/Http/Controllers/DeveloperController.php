@@ -61,14 +61,29 @@ class DeveloperController extends Controller
         $request->validate([
             'developer' => ['required'],
             'publisher' => ['required'],
-            'name' => ['required'],
-            'release' => ['required'],
+            'name' => ['required','unique:App\Models\Game,name'],
+            'release' => ['required','date'],
             'description' => ['required'],
             'price'=>['required'],
             'tags'=>['required'],
             'gameImage.*' => 'required|mimes:png,jpg,jpeg|max:2048',
             'gameLogo' => 'required|mimes:png,jpg,jpeg|max:2048',
+            'instagram'=>'url|nullable',
+            'website'=>'url|nullable',
+            'reddit'=>'url|nullable',
+            'youtube'=>'url|nullable',
+            'facebook'=>'url|nullable',
+            'twitch'=>'url|nullable',
+            'twitter'=>'url|nullable',
         ]);
+
+        $instagram = $request->instagram;
+        $website = $request->website;
+        $reddit = $request->reddit;
+        $youtube = $request->youtube;
+        $facebook = $request->facebook;
+        $twitch = $request->twitch;
+        $twitter = $request->twitter;
 
         $gameId = Game::insertGetId([
             'developer_id' => $request->developer,
@@ -77,7 +92,14 @@ class DeveloperController extends Controller
             'release' => Carbon::parse($request->release),
             'description'=> $request->description,
             'price'=>$request->price,
-            'status'=>0
+            'status'=>0,
+            'instagram'=>$instagram,
+            'website'=>$website,
+            'reddit'=>$reddit,
+            'youtube'=>$youtube,
+            'facebook'=>$facebook,
+            'twitch'=>$twitch,
+            'twitter'=>$twitter
         ]);
 
         foreach($request->tags as $curTag){

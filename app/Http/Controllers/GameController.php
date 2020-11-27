@@ -10,8 +10,11 @@ use Illuminate\Support\Str;
 class GameController extends Controller
 {
     public function showGameDetail($id){
-        $game = Game::find($id);
+        $game = Game::where('id',$id)->where('status',1)->first();
 
+        if($game==null){
+            return back();
+        }
         // dd($game->img);
         $gambar = [];
         $index = 0;
@@ -25,6 +28,8 @@ class GameController extends Controller
                 $index= $index+1;
             }
         }
+
+        // dd($gambar);
         return view('game.game_detail',["game"=>$game,"gambar"=>$gambar]);
     }
 
