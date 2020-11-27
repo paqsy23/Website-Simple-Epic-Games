@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\developer;
 use App\Models\Game;
 use App\Models\h_tag;
+use App\Models\Image;
 use App\Models\tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -86,16 +87,25 @@ class DeveloperController extends Controller
             ]);
         }
 
-        $namaPhoto = "logo.".$request->file('gameLogo')->getClientOriginalExtension();
-        $namaFolderPhoto = "games/1";
+        $namaPhoto = "logo.".$request->file('gameLogo')->extension();
+        $namaFolderPhoto = "games/".$gameId;
         $pathPhoto = $request->gameLogo->storeAs($namaFolderPhoto,$namaPhoto,"public");
+
+        Image::create([
+            'game_id'=>$gameId,
+            'link'=>$gameId."/".$namaPhoto
+        ]);
 
         $index = 1;
         foreach($request->file('gameImage') as $photo){
-            $namaPhoto = $index.".".$photo->getClientOriginalExtension();
+            $namaPhoto = $index.".".$photo->extension();
             $namaFolderPhoto = "games/".$gameId;
             $pathPhoto = $photo->storeAs($namaFolderPhoto,$namaPhoto,"public");
             $index = $index+1;
+            Image::create([
+                'game_id'=>$gameId,
+                'link'=>$gameId."/".$namaPhoto
+            ]);
         }
 
         $request->session()->flash('message', 'Game Registered!! Waiting for Admin Confirmation');
