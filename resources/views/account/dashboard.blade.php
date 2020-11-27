@@ -1,8 +1,10 @@
 @extends('layout.my_account')
 
+@section('title', 'Dashboard')
+
 @section('content')
     <p>
-        Hello <strong>{{ Session::get('user-login')->nama }}</strong> (not {{ Session::get('user-login') }}? <a href="{{ url('logout') }}">Sign out</a>)
+        Hello <strong>{{ Session::get('user-login')->name }}</strong> (not {{ Session::get('user-login')->name }}? <a href="{{ url('logout') }}">Sign out</a>)
     </p>
     <p>
         From your account dashboard you can view your

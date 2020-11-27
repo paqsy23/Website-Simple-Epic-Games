@@ -29,6 +29,8 @@ Route::group(['prefix' => 'account'], function () {
     Route::get('orders', 'UserController@order');
     Route::get('address', 'UserController@addresses');
     Route::get('detail', 'UserController@accountDetails');
+    Route::post('edit', 'UserController@editDetails');
+    Route::post('edit-password', 'UserController@editPassword');
 });
 
 Route::get('/game/{id}','GameController@showGameDetail');

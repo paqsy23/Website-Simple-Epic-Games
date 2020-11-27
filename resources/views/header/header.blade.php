@@ -82,7 +82,7 @@
                                     <div class="widget-inner">
                                         <ul id="menu-my-account" class="menu">
                                             <li class="menu-my-account">
-                                                <a class="item-link" href="my_account.html">
+                                                <a class="item-link" href="{{ url('account') }}">
                                                     <span class="menu-title">My Account</span>
                                                 </a>
                                             </li>
