@@ -6,12 +6,12 @@
 <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1>Game Confirmation</h1>
+        <h1>{{$developer->name}}</h1>
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="#">Home</a></li>
-          <li class="breadcrumb-item active">Game Confirmation</li>
+          <li class="breadcrumb-item active">{{$developer->name}}</li>
         </ol>
       </div>
     </div>
@@ -26,7 +26,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">List of Game Waiting For Confirmation</h3>
+                <h3 class="card-title">List Of Game Developed by {{$developer->name}}</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -40,7 +40,7 @@
                   </tr>
                   </thead>
                   <tbody>
-                  @foreach ($game as $curGame)
+                  @foreach ($developer->gameDeveloper as $curGame)
                   <tr>
                     <td>{{$curGame->developer->name}}</td>
                     <td>{{$curGame->publisher->name}}</td>
@@ -56,6 +56,38 @@
               </div>
               <!-- /.card-body -->
             </div>
+            <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">List Of Game Published by {{$developer->name}}</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                  <table id="example2" class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                      <th>Developer</th>
+                      <th>Publisher</th>
+                      <th>Game Name</th>
+                      <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach ($developer->gamePublisher as $curGame)
+                    <tr>
+                      <td>{{$curGame->developer->name}}</td>
+                      <td>{{$curGame->publisher->name}}</td>
+                      <td>{{$curGame->name}}</td>
+                      <td>
+                          <a href="{{url('admin/confirm/game/'.$curGame->id)}}"><button class="btn btn-success">Confirm</button></a>
+                          <a href="{{url('admin/ban/game/'.$curGame->id)}}"><button class="btn btn-danger">Reject</button></a>
+                      </td>
+                    </tr>
+                    @endforeach
+                    </tbody>
+                  </table>
+                </div>
+                <!-- /.card-body -->
+              </div>
             <!-- /.card -->
           </div>
           <!-- /.col -->
@@ -88,7 +120,10 @@
         "responsive": true,
         "autoWidth": false,
       });
-
+      $("#example2").DataTable({
+        "responsive": true,
+        "autoWidth": false,
+      });
     });
   </script>
 @stop

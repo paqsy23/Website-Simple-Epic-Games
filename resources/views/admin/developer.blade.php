@@ -39,22 +39,16 @@
                   </tr>
                   </thead>
                   <tbody>
-                  <tr>
-                    <td>Developer</td>
-                    <td><a href="{{url('admin/developer/game/1')}}"><button class="btn btn-primary">Game List</button></a></td>
-                    <td>
-                        <a href="{{url('admin/confirm/game/1')}}"><button class="btn btn-success">Confirm</button></a>
-                        <a href="{{url('admin/ban/game/1')}}"><button class="btn btn-danger">Reject</button></a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Developer</td>
-                    <td><a href="{{url('admin/developer/game/1')}}"><button class="btn btn-primary">Game List</button></a></td>
-                    <td>
-                        <a href="{{url('admin/confirm/game/1')}}"><button class="btn btn-success">Confirm</button></a>
-                        <a href="{{url('admin/ban/game/1')}}"><button class="btn btn-danger">Reject</button></a>
-                    </td>
-                  </tr>
+                    @foreach ($developer as $curDeveloper)
+                    <tr>
+                        <td>{{$curDeveloper->name}}</td>
+                        <td><a href="{{url('admin/developer/'.$curDeveloper->id)}}"><button class="btn btn-primary">Developer Detail</button></a></td>
+                        <td>
+                            <a href="{{url('admin/confirm/game/1')}}"><button class="btn btn-success">Confirm</button></a>
+                            <a href="{{url('admin/ban/game/1')}}"><button class="btn btn-danger">Reject</button></a>
+                        </td>
+                      </tr>
+                    @endforeach
                   </tbody>
                 </table>
               </div>

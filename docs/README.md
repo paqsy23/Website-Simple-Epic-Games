@@ -18,6 +18,12 @@ setiap halaman dikasi penjelasan di bagian App Structure agar lebih jelas dan ti
 ## Environment
 * laravel 7.27.0
 
+## Game Status Info
+* -1 = banned
+*  0 = inactive
+*  1 = active
+
+
 ## App Structure
 contoh structure 
 

@@ -136,14 +136,14 @@
 	<script type="text/javascript">
 		var sticky_navigation_offset_top = $("#header .header-bottom").offset().top;
 		var sticky_navigation = function(){
-									var scroll_top = $(window).scrollTop();
-									if (scroll_top > sticky_navigation_offset_top) {
-										$("#header .header-bottom").addClass("sticky-menu");
-										$("#header .header-bottom").css({ "top":0, "left":0, "right" : 0 });
-									} else {
-										$("#header .header-bottom").removeClass("sticky-menu");
-									}
-								};
+        var scroll_top = $(window).scrollTop();
+            if (scroll_top > sticky_navigation_offset_top) {
+                $("#header .header-bottom").addClass("sticky-menu");
+                $("#header .header-bottom").css({ "top":0, "left":0, "right" : 0 });
+            } else {
+                $("#header .header-bottom").removeClass("sticky-menu");
+            }
+        };
 		sticky_navigation();
 		$(window).scroll(function() {
 			sticky_navigation();

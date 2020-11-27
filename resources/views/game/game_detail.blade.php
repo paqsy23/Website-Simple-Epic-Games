@@ -1,7 +1,7 @@
 @extends('layout.app')
 
 @section('title')
-    <title>{{$game->name}}</title>
+    {{$game->name}}
 @endsection
 
 @section('body')
@@ -44,10 +44,10 @@
 												<div id="product_img_01" class="product-images" data-rtl="false">
 													<div class="product-images-container clearfix thumbnail-bottom">
 														<!-- Image Slider Carousel-->
-                                                        <div id="{{$game->name}}" class="carousel slide slider product-responsive" data-ride="carousel">
+                                                        <div id="tes-carousel" class="carousel slide slider product-responsive" data-ride="carousel">
                                                             <ol class="carousel-indicators">
                                                                 @foreach ($gambar as $item)
-                                                                <li data-target="#{{$game->name}}" data-slide-to="{{$item->index}}"
+                                                                <li data-target="#tes-carousel" data-slide-to="{{$item->index}}"
                                                                      @if ($item->index==0)
                                                                         class="active"
                                                                     @endif>
@@ -58,23 +58,23 @@
                                                                 @foreach ($gambar as $item)
                                                                     @if ($item->index==0)
                                                                         <div class="item active">
-                                                                            <img class="d-block w-100" src="{{url($item->link)}}">
+                                                                            <img class="d-block w-100" src="{{asset('storage/games/'.$item->link)}}" alt="i'm broken :(">
                                                                         </div>
                                                                     @else
                                                                     <div class="item">
-                                                                        <img class="d-block w-100" src="{{url($item->link)}}">
+                                                                        <img class="d-block w-100" src="{{asset('storage/games/'.$item->link)}}" alt="i'm broken :(">
                                                                     </div>
                                                                     @endif
                                                                 @endforeach
                                                             </div>
-                                                            <a class="carousel-control left" href="#{{$game->name}}" data-slide="prev">
+                                                            <a class="carousel-control left" href="#tes-carousel" data-slide="prev">
                                                               <i class="fa fa-arrow-left" aria-hidden="true" style=" margin: 0;
                                                               position: absolute;
                                                               top: 50%;
                                                               -ms-transform: translateY(-50%);
                                                               transform: translateY(-50%);"></i>
                                                             </a>
-                                                            <a class="carousel-control right" href="#{{$game->name}}" data-slide="next">
+                                                            <a class="carousel-control right" href="#tes-carousel" data-slide="next">
                                                                 <i class="fa fa-arrow-right" aria-hidden="true" style=" margin: 0;
                                                                 position: absolute;
                                                                 top: 50%;
