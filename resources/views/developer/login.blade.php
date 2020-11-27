@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Admin | Log in</title>
+  <title>Developer/Publisher | Log in</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
@@ -20,14 +20,14 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <b>Admin</b>
+    <b>Developer/Publisher</b>
   </div>
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
       <p class="login-box-msg">Sign in to start your session</p>
-      {{-- <img class="d-block w-100 mb-3" src="https://eightbornv.com/uploads/monthly_2020_08/large.Admin.gif.6c2aa3cbf4a2eeebf1041ecf4a68f93b.gif" alt="Gif game"> --}}
-      <form action="{{url('/admin/login')}}" method="post">
+      {{-- <img class="d-block w-100 mb-3" src="https://media2.giphy.com/media/3oEjHYlwvUK5p9AIbm/giphy.gif" alt="Gif game"> --}}
+      <form action="{{url('/developer/login')}}" method="post">
         @csrf
         <div class="input-group mb-3">
           <input type="text" class="form-control" name="username" placeholder="username">
@@ -45,7 +45,17 @@
             </div>
           </div>
         </div>
+        @if (Session::has('warning'))
+            <div class="text-center mb-3"> <span style="color:red">{{ Session::get('warning') }}</span></div>
+        @endif
         <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+        <p class="text-center mt-3">- OR -</p>
+        <p class="mb-1 text-center">
+            <a href="forgot-password.html">I forgot my password</a>
+          </p>
+        <p class="mb-0 text-center">
+            <a href="{{url('developer/register')}}" class="text-center">Become a Developer/Publisher</a>
+        </p>
       </form>
   </div>
 </div>

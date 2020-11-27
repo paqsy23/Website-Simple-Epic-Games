@@ -20,6 +20,11 @@ class AdminController extends Controller
 
     public function login(Request $request)
     {
+        $request->validate([
+            'username' => 'required',
+            'password' => 'required'
+        ]);
+
         if($request->username=="admin" && $request->password="admin"){
             return redirect('/admin/home');
         }

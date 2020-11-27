@@ -16,11 +16,13 @@ class GameController extends Controller
         $index = 0;
 
         foreach($game->img as $curGambar){
-            $gambar[]=(object)[
-                'index'=> $index,
-                'link'=> $curGambar->link
-            ];
-            $index= $index+1;
+            if($curGambar->link != $game->id."/logo"){
+                $gambar[]=(object)[
+                    'index'=> $index,
+                    'link'=> $curGambar->link
+                ];
+                $index= $index+1;
+            }
         }
         return view('game.game_detail',["game"=>$game,"gambar"=>$gambar]);
     }

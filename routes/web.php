@@ -44,3 +44,14 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/report','AdminController@report');
     Route::get('/logout','AdminController@logout');
 });
+
+Route::group(['prefix' => 'developer'], function () {
+    Route::get('/',function(){
+        return view('developer.login');
+    });
+    Route::post('/login','DeveloperController@login');
+    Route::get('/register',function(){
+        return view('developer.register');
+    });
+    Route::get('/home','DeveloperController@home');
+});
