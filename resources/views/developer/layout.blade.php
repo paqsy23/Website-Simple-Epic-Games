@@ -7,14 +7,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{asset('vendor/fontawesome-free/css/all.min.css')}}">
+  <link rel="stylesheet" href="{{asset('vendor/fontawesome-free/css/fontawesome.min.css')}}">
+  <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
   <!-- Ionicons -->
   <link rel="stylesheet" href="{{asset('https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css')}}">
   <!-- icheck bootstrap -->
   <link rel="stylesheet" href="{{asset('vendor/icheck-bootstrap/icheck-bootstrap.min.css')}}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('vendor/adminlte/dist/css/adminlte.min.css')}}">
+  <!-- Tempusdominus Bbootstrap 4 -->
+  <link rel="stylesheet" href="{{asset('vendor/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css')}}">
+  {{-- DataTables --}}
+  <link rel="stylesheet" href="{{asset('vendor/datatables/css/dataTables.bootstrap4.min.css')}}">
+  <link rel="stylesheet" href="{{asset('vendor/datatables-plugins/responsive/css/responsive.bootstrap4.min.css')}}">
   <!-- Google Font: Source Sans Pro -->
   <link href="{{asset('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700')}}" rel="stylesheet">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="{{asset('vendor/select2/css/select2.min.css')}}">
+  <link rel="stylesheet" href="{{asset('vendor/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
+  <!-- daterange picker -->
+  <link rel="stylesheet" href="{{asset('vendor/daterangepicker/daterangepicker.css')}}">
+  <!-- bs-custom-file-input -->
+  <script src="{{asset('vendor/bs-custom-file-input/bs-custom-file-input.min.js')}}"></script>
   @yield('header')
 </head>
 <body class="hold-transition sidebar-mini">
@@ -36,7 +50,7 @@
           <a href="index3.html" class="brand-link">
             <img src="{{asset('vendor/adminlte/dist/img/AdminLTELogo.png')}}" alt="Developer Logo" class="brand-image img-circle elevation-3"
                  style="opacity: .8">
-            <span class="brand-text font-weight-light">{{$developer->name}}</span>
+            <span class="brand-text font-weight-light">{{Session::get('developer-login')->name}}</span>
           </a>
 
           <!-- Sidebar -->
@@ -56,7 +70,7 @@
                 </li>
                 <li class="nav-header">GAME SETTINGS</li>
                 <li class="nav-item">
-                    <a href="{{url('developer/game')}}" class="nav-link">
+                    <a href="{{url('developer/gamelist')}}" class="nav-link">
                       <i class="nav-icon fas fa-gamepad"></i>
                       <p>
                         Game List
@@ -103,10 +117,21 @@
 <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
 <!-- Bootstrap 4 -->
 <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<!-- Select2 -->
+<script src="{{asset('vendor/select2/js/select2.full.min.js')}}"></script>
+<!-- Bootstrap4 Duallistbox -->
+<script src="{{asset('vendor/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('vendor/adminlte/dist/js/adminlte.min.js')}}"></script>
 {{-- Chart for home --}}
 <script src="{{asset('vendor/chart.js/Chart.min.js')}}"></script>
+{{-- DateRangePicker --}}
+<script src="{{asset('vendor/daterangepicker/daterangepicker.js')}}"></script>
+<!-- InputMask -->
+<script src="{{asset('vendor/moment/moment.min.js')}}"></script>
+<script src="{{asset('vendor/inputmask/min/jquery.inputmask.bundle.min.js')}}"></script>
+{{-- TempusDominus --}}
+<script src="{{asset('vendor/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js')}}"></script>
 @yield('script')
 </body>
 </html>

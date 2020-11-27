@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\developer;
+use App\Models\Game;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
     public function home()
     {
-        return view('admin.home');
+        $game = Game::where('status','!=',1)->get();
+
+        return view('admin.home',['game'=>$game]);
     }
 
     public function report()
@@ -32,9 +36,17 @@ class AdminController extends Controller
 
     public function developer()
     {
-        return view('admin.developer');
+        $developer = developer::where('status',1)->get();
+
+        return view('admin.developer',['developer'=>$developer]);
     }
 
+    public function developerDetail($id)
+    {
+        $developer = developer::find($id);
+
+        return view('admin.developer_detail',['developer'=>$developer]);
+    }
     public function logout()
     {
         return redirect('/admin');

@@ -1,7 +1,7 @@
 @extends('layout.app')
 
 @section('title')
-    <title>{{$game->name}}</title>
+    {{$game->name}}
 @endsection
 
 @section('body')
@@ -58,11 +58,11 @@
                                                                 @foreach ($gambar as $item)
                                                                     @if ($item->index==0)
                                                                         <div class="item active">
-                                                                            <img class="d-block w-100" src="{{url($item->link)}}">
+                                                                            <img class="d-block w-100" src="{{asset('images/games/'.$item->link)}}">
                                                                         </div>
                                                                     @else
                                                                     <div class="item">
-                                                                        <img class="d-block w-100" src="{{url($item->link)}}">
+                                                                        <img class="d-block w-100" src="{{asset('images/games/'.$item->link)}}">
                                                                     </div>
                                                                     @endif
                                                                 @endforeach

@@ -45,6 +45,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/developer','AdminController@developer');
     Route::get('/report','AdminController@report');
     Route::get('/logout','AdminController@logout');
+    Route::get('/developer/{id}','AdminController@developerDetail');
 });
 
 Route::group(['prefix' => 'developer'], function () {
@@ -56,4 +57,8 @@ Route::group(['prefix' => 'developer'], function () {
         return view('developer.register');
     });
     Route::get('/home','DeveloperController@home');
+    Route::get('/gamelist','DeveloperController@gameList');
+    Route::get('/newGame','DeveloperController@newGame');
+    Route::post('/insertGame','DeveloperController@insertGame');
+    Route::get('/logout','DeveloperController@logout');
 });

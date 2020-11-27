@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Game;
 use App\Models\tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class GameController extends Controller
 {
@@ -16,7 +17,7 @@ class GameController extends Controller
         $index = 0;
 
         foreach($game->img as $curGambar){
-            if($curGambar->link != $game->id."/logo"){
+            if(!Str::contains($curGambar->link,'logo')){
                 $gambar[]=(object)[
                     'index'=> $index,
                     'link'=> $curGambar->link
