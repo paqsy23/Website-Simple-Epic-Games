@@ -37,12 +37,12 @@
                             <!--  Shop Title -->
                             <div class="products-wrapper">
                                 <div class="products-nav clearfix">
-                                    <div class="view-mode-wrap pull-left clearfix">
+                                    {{-- <div class="view-mode-wrap pull-left clearfix">
                                         <div class="view-mode">
                                             <a href="javascript:void(0)" class="grid-view active" title="Grid view"><span>Grid view</span></a>
                                             <a href="javascript:void(0)" class="list-view" title="List view"><span>List view</span></a>
                                         </div>
-                                    </div>
+                                    </div> --}}
 
                                     <div class="catalog-ordering">
                                         <div class="orderby-order-container clearfix">
@@ -109,12 +109,12 @@
                                 <div class="clear"></div>
 
                                 <div class="products-nav clearfix">
-                                    <div class="view-mode-wrap pull-left clearfix">
+                                    {{-- <div class="view-mode-wrap pull-left clearfix">
                                         <div class="view-mode">
                                             <a href="javascript:void(0)" class="grid-view active" title="Grid view"><span>Grid view</span></a>
                                             <a href="javascript:void(0)" class="list-view" title="List view"><span>List view</span></a>
                                         </div>
-                                    </div>
+                                    </div> --}}
 
                                     <div class="catalog-ordering">
                                         <div class="orderby-order-container clearfix">
@@ -194,94 +194,34 @@
                     <div class="widget-5 widget etrostore_best_seller_product-3 etrostore_best_seller_product">
                         <div class="widget-inner">
                             <div class="block-title-widget">
-                                <h2><span>Best Sellers</span></h2>
+                                <h2><span>New Release</span></h2>
                             </div>
 
                             <div id="best-seller-01" class="sw-best-seller-product">
                                 <ul class="list-unstyled">
-                                    <li class="clearfix">
-                                        <div class="item-img">
-                                            <a href="simple_product.html" title="corned beef enim">
-                                                <img width="180" height="180" src="images/1903/65-180x180.jpg" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="" srcset="images/1903/65-180x180.jpg 180w, images/1903/65-150x150.jpg 150w, images/1903/65-300x300.jpg 300w, images/1903/65.jpg 600w" sizes="(max-width: 180px) 100vw, 180px">
-                                            </a>
-                                        </div>
-
-                                        <div class="item-content">
-                                            <div class="reviews-content">
-                                                <div class="star"></div>
-                                                <div class="item-number-rating">
-                                                    0 Review(s)
-                                                </div>
+                                    @foreach ($new_release as $game)
+                                        <li class="clearfix">
+                                            <div class="item-img">
+                                                <a href="{{ url('game/'.$game->id) }}" title="{{ $game->name }}">
+                                                    @foreach ($game->img as $image)
+                                                        @if (strpos($image->link, 'logo'))
+                                                            <img width="180" height="180" src="{{ asset('storage/games/'.$image->link) }}" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="" sizes="(max-width: 180px) 100vw, 180px">
+                                                        @endif
+                                                    @endforeach
+                                                </a>
                                             </div>
 
-                                            <h4><a href="simple_product.html" title="corned beef enim">Corned beef enim</a></h4>
-
-                                            <div class="price"><span class="woocommerce-Price-amount amount">$400.00</span></div>
-                                        </div>
-                                    </li>
-
-                                    <li class="clearfix">
-                                        <div class="item-img">
-                                            <a href="simple_product.html" title="philips stand">
-                                                <img width="180" height="180" src="images/1903/62-180x180.jpg" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="" srcset="images/1903/62-180x180.jpg 180w, images/1903/62-150x150.jpg 150w, images/1903/62-300x300.jpg 300w, images/1903/62.jpg 600w" sizes="(max-width: 180px) 100vw, 180px">
-                                            </a>
-                                        </div>
-
-                                        <div class="item-content">
-                                            <div class="reviews-content">
-                                                <div class="star"></div>
-                                                <div class="item-number-rating">
-                                                    0 Review(s)
+                                            <div class="item-content">
+                                                <div class="reviews-content">
+                                                    <div class="star"><span style="width: @if ($game->rating == null) 0px @else {{ $game->rating/100*67 }}px @endif"></span></div>
                                                 </div>
+
+                                                <h4><a href="{{ url('game/'.$game->id) }}" title="{{ $game->name }}">{{ $game->name }}</a></h4>
+
+                                                <div class="price"><ins><span class="woocommerce-Price-amount amount">${{ number_format($game->price, 2) }}</span></ins></div>
                                             </div>
-
-                                            <h4><a href="simple_product.html" title="philips stand">Philips stand</a></h4>
-
-                                            <div class="price"><del><span class="woocommerce-Price-amount amount">$300.00</span></del> <ins><span class="woocommerce-Price-amount amount">$250.00</span></ins></div>
-                                        </div>
-                                    </li>
-
-                                    <li class="clearfix">
-                                        <div class="item-img">
-                                            <a href="simple_product.html" title="Vacuum cleaner">
-                                                <img width="180" height="180" src="images/1903/26-180x180.jpg" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="" srcset="images/1903/26-180x180.jpg 180w, images/1903/26-150x150.jpg 150w, images/1903/26-300x300.jpg 300w, images/1903/26.jpg 600w" sizes="(max-width: 180px) 100vw, 180px">
-                                            </a>
-                                        </div>
-
-                                        <div class="item-content">
-                                            <div class="reviews-content">
-                                                <div class="star"><span style="width:52.5px"></span></div>
-                                                <div class="item-number-rating">
-                                                    4 Review(s)
-                                                </div>
-                                            </div>
-
-                                            <h4><a href="simple_product.html" title="Vacuum cleaner">Vacuum cleaner</a></h4>
-
-                                            <div class="price"><del><span class="woocommerce-Price-amount amount">$350.00</span></del> <ins><span class="woocommerce-Price-amount amount">$260.00</span></ins></div>
-                                        </div>
-                                    </li>
-
-                                    <li class="clearfix">
-                                        <div class="item-img">
-                                            <a href="simple_product.html" title="veniam dolore">
-                                                <img width="180" height="180" src="images/1903/45-180x180.jpg" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="" srcset="images/1903/45-180x180.jpg 180w, images/1903/45-150x150.jpg 150w, images/1903/45-300x300.jpg 300w, images/1903/45.jpg 600w" sizes="(max-width: 180px) 100vw, 180px">
-                                            </a>
-                                        </div>
-
-                                        <div class="item-content">
-                                            <div class="reviews-content">
-                                                <div class="star"><span style="width:35px"></span></div>
-                                                <div class="item-number-rating">
-                                                    2 Review(s)
-                                                </div>
-                                            </div>
-
-                                            <h4><a href="simple_product.html" title="veniam dolore">Veniam dolore</a></h4>
-
-                                            <div class="price"><del><span class="woocommerce-Price-amount amount">$250.00</span></del> <ins><span class="woocommerce-Price-amount amount">$190.00</span></ins></div>
-                                        </div>
-                                    </li>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>

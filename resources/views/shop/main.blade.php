@@ -11,7 +11,11 @@
                         <span class="onsale">Sale!</span>
                         <a href="{{ url('game/'.$game->id) }}">
                             <div class="product-thumb-hover">
-                                <img width="300" height="300" src="{{ url('images/games/'.$game->id.'/logo.jpg') }}" class="attachment-shop_catalog size-shop_catalog wp-post-image" alt="" sizes="(max-width: 300px) 100vw, 300px">
+                                @foreach ($game->img as $image)
+                                    @if (strpos($image->link, 'logo'))
+                                        <img width="300" height="300" src="{{ asset('storage/games/'.$image->link) }}" class="attachment-shop_catalog size-shop_catalog wp-post-image" alt="" sizes="(max-width: 300px) 100vw, 300px">
+                                    @endif
+                                @endforeach
                             </div>
                         </a>
 

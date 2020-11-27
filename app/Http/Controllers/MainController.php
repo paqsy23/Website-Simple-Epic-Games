@@ -12,16 +12,18 @@ class MainController extends Controller
     {
         $tags = tag::all();
 
-        $games = Game::all();
-        $gamesDisplay = Game::skip(6 * ($id - 1))->take(6)->get();
+        $games = Game::where('status', 1)->get();
+        $gamesDisplay = Game::where('status', 1)->skip(9 * ($id - 1))->take(9)->get();
+        $gamesNew = Game::where('status', 1)->orderBy('release', 'desc')->take(4)->get();
 
-        $totalPage = ceil(count($games) / 6);
+        $totalPage = ceil(count($games) / 9);
 
         return view('shop.main', [
             'tags' => $tags,
             'games' => $gamesDisplay,
             'totalPage' => $totalPage,
-            'current' => $id
+            'current' => $id,
+            'new_release' => $gamesNew
         ]);
     }
 }
