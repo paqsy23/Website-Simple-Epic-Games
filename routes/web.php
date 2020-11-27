@@ -14,9 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'MainController@showHome');
+Route::get('{id}', 'MainController@showHome');
 
 Route::get('login', 'LoginRegisterController@showLogin');
 Route::post('login', 'LoginRegisterController@loginProcess');

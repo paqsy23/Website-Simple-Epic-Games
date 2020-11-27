@@ -139,7 +139,7 @@
             <div class="rows">
                 <!-- LOGO -->
                 <div class="etrostore-logo pull-left">
-                    <a href="home_page_1.html">
+                    <a href="{{ url('/') }}">
                         <img src="{{asset('images/epicGameLogo.svg.png')}}" alt="Epic Game Store" style="width:50px;height:60px">
                     </a>
                 </div>
@@ -333,7 +333,7 @@
                                 <div id="ResMenuprimary_menu" class="collapse menu-responsive-wrapper">
                                     <ul id="menu-primary-menu" class="etrostore_resmenu">
                                         <li class="res-dropdown menu-home">
-                                            <a class="item-link dropdown-toggle" href="home_page_1.html">Home</a>
+                                            <a class="item-link dropdown-toggle" href="{{ url('/') }}">Home</a>
                                             <span class="show-dropdown"></span>
 
                                             <ul class="dropdown-resmenu">
@@ -343,7 +343,7 @@
 
                                                     <ul class="dropdown-resmenu">
                                                         <li class="menu-home-page-1">
-                                                            <a href="home_page_1.html">Home Page 1</a>
+                                                            <a href="{{ url('/') }}">Home Page 1</a>
                                                         </li>
 
                                                         <li class="menu-home-page-2">
@@ -793,7 +793,7 @@
 
                             <ul id="menu-primary-menu-1" class="nav nav-pills nav-mega etrostore-mega etrostore-menures">
                                 <li class="dropdown menu-home etrostore-mega-menu level1">
-                                    <a href="home_page_1.html" class="item-link dropdown-toggle">
+                                    <a href="{{ url('/') }}" class="item-link dropdown-toggle">
                                         <span class="have-title">
                                             <span class="menu-color" data-color="#f034ca"></span>
                                             <span class="menu-title">Store</span>
@@ -810,7 +810,7 @@
 
                                             <ul class="dropdown-sub nav-level2">
                                                 <li class="menu-home-page-1">
-                                                    <a href="home_page_1.html">
+                                                    <a href="{{ url('/') }}">
                                                         <span class="have-title">
                                                             <span class="menu-title">Home Page 1</span>
                                                         </span>
