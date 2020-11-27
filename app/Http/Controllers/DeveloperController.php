@@ -65,9 +65,11 @@ class DeveloperController extends Controller
             'description' => ['required'],
             'price'=>['required'],
             'tags'=>['required'],
+            'gameImage.*' => 'required|mimes:png,jpg,jpeg|max:2048',
+            'gameLogo' => 'required|mimes:png,jpg,jpeg|max:2048',
         ]);
 
-        $id = Game::insertGetId([
+        $gameId = Game::insertGetId([
             'developer_id' => $request->developer,
             'publisher_id' => $request->publisher,
             'name' => $request->name,
@@ -80,10 +82,21 @@ class DeveloperController extends Controller
         foreach($request->tags as $curTag){
             h_tag::create([
                 'tag_id'=>$curTag,
-                'game_id'=>$id
+                'game_id'=>$gameId
             ]);
         }
 
+        $namaPhoto = "logo.".$request->file('gameLogo')->getClientOriginalExtension();
+        $namaFolderPhoto = "games/1";
+        $pathPhoto = $request->gameLogo->storeAs($namaFolderPhoto,$namaPhoto,"public");
+
+        $index = 1;
+        foreach($request->file('gameImage') as $photo){
+            $namaPhoto = $index.".".$photo->getClientOriginalExtension();
+            $namaFolderPhoto = "games/".$gameId;
+            $pathPhoto = $photo->storeAs($namaFolderPhoto,$namaPhoto,"public");
+            $index = $index+1;
+        }
 
         $request->session()->flash('message', 'Game Registered!! Waiting for Admin Confirmation');
 

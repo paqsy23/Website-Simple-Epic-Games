@@ -157,7 +157,7 @@ class ImageTableSeeder extends Seeder
             'link' => '12/logo.jpg'
         ));
         DB::table('image')->insert(array(
-            'game_id' => '3',
+            'game_id' => '13',
             'link' => '13/1.jpg'
         ));
         DB::table('image')->insert(array(

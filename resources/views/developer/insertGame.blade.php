@@ -43,7 +43,7 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="{{url('developer/insertGame')}}" method="POST">
+              <form action="{{url('developer/insertGame')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="card-body">
                     <div class="row">
@@ -132,7 +132,7 @@
                             <label for="exampleInputFile">Insert Logo Image</label>
                             <div class="input-group">
                               <div class="custom-file">
-                                <input type="file" class="custom-file-input" name="gameLogo" id="inputLogo" value="{{old('gameLogo')}}">
+                                <input type="file" class="custom-file-input" name="gameLogo" id="gameLogo">
                                 <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                               </div>
                             </div>
@@ -144,7 +144,7 @@
                             <label for="exampleInputFile">Insert Game Image</label>
                             <div class="input-group">
                               <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="inputImage" name="gameImage[]" multiple>
+                                <input type="file" class="custom-file-input" id="gameImage" name="gameImage[]" multiple>
                                 <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                               </div>
                             </div>
@@ -270,7 +270,7 @@
     //     data.push(tag);
     // }
     })
-    $('#inputLogo').on('change',function(e){
+    $('#gameLogo').on('change',function(e){
         //get the file name
         let nama = e.target.files[0].name;
         nama = nama.substr(0, nama.lastIndexOf('.'));
@@ -278,7 +278,7 @@
         $(this).next('.custom-file-label').html(nama);
     })
 
-    $('#inputImage').on('change',function(e){
+    $('#gameImage').on('change',function(e){
         //get the file name
         let nama = e.target.files[0].name;
         nama = nama.substr(0, nama.lastIndexOf('.'));
