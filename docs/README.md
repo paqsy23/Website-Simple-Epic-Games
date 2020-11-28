@@ -22,7 +22,7 @@ setiap halaman dikasi penjelasan di bagian App Structure agar lebih jelas dan ti
 * -1 = banned
 *  0 = inactive
 *  1 = active
-
+   2 = request activate
 
 ## App Structure
 contoh structure 
