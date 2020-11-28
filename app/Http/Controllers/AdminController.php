@@ -38,8 +38,10 @@ class AdminController extends Controller
 
         if($request->username=="admin" && $request->password="admin"){
             $request->session()->put('admin-login',$admin);
-            return redirect('/admin/home');
+            return redirect('admin/home');
         }
+
+        return redirect('admin/login');
     }
 
     public function developer()
@@ -68,10 +70,13 @@ class AdminController extends Controller
     {
         $game=Game::find($id);
 
+        if($game->status==-1){
+            $request->session()->flash('message', 'Game Reactivated! :D');
+        }else if($game->status==2){
+            $request->session()->flash('message', 'Game Activated! :D');
+        }
         $game->status=1;
         $game->save();
-
-        $request->session()->flash('message', 'Game Reactivated! :D');
 
         return back();
     }

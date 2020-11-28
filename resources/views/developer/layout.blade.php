@@ -52,7 +52,7 @@
           <a href="index3.html" class="brand-link">
             <img src="{{asset('vendor/adminlte/dist/img/AdminLTELogo.png')}}" alt="Developer Logo" class="brand-image img-circle elevation-3"
                  style="opacity: .8">
-            <span class="brand-text font-weight-light">{{Session::get('developer-login')->name}}</span>
+            <span class="brand-text font-weight-light">{{$developer->name}}</span>
           </a>
 
           <!-- Sidebar -->
@@ -89,7 +89,7 @@
                   </li>
                 <li class="nav-header">ACCOUNT SETTINGS</li>
                 <li class="nav-item">
-                  <a href="{{url('developer/editProfile/id')}}" class="nav-link">
+                  <a href="{{url('developer/editprofile/'.$developer->id)}}" class="nav-link">
                     <i class="nav-icon fas fa-user"></i>
                     <p>
                       Edit Profile
@@ -123,6 +123,8 @@
 <script src="{{asset('vendor/select2/js/select2.full.min.js')}}"></script>
 <!-- Bootstrap4 Duallistbox -->
 <script src="{{asset('vendor/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js')}}"></script>
+<!-- Bootstrap Switch -->
+<script src="{{asset('vendor/bootstrap-switch/js/bootstrap-switch.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('vendor/adminlte/dist/js/adminlte.min.js')}}"></script>
 {{-- Chart for home --}}

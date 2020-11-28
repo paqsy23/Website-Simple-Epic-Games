@@ -38,6 +38,7 @@ Route::group(['prefix' => 'account'], function () {
 Route::get('/game/{id}','GameController@showGameDetail');
 Route::get('/tambahTag','GameController@tambahTag');
 
+// Admin
 Route::group(['middleware'=>['AdminOnly'],'prefix' => 'admin'], function () {
     Route::get('/login', function () {
         return view('admin.login');
@@ -54,6 +55,7 @@ Route::group(['middleware'=>['AdminOnly'],'prefix' => 'admin'], function () {
     Route::get('/reject/developer/{id}','AdminController@rejectDeveloper');
 });
 
+// Developer
 Route::group(['middleware'=>['DeveloperOnly'],'prefix' => 'developer'], function () {
     Route::get('/login',function(){
         return view('developer.login');
@@ -62,6 +64,13 @@ Route::group(['middleware'=>['DeveloperOnly'],'prefix' => 'developer'], function
     Route::get('/register',function(){
         return view('developer.register');
     })->withoutMiddleware('DeveloperOnly');
+    Route::get('/forgetpassword',function(){
+        return view('developer.forgotpassword');
+    })->withoutMiddleware('DeveloperOnly');
+    Route::post('/resetPasswordToken','DeveloperController@prosesResetPasswordToken')->withoutMiddleware('DeveloperOnly');
+    Route::post('/forgetpassword','DeveloperController@resetPassword')->withoutMiddleware('DeveloperOnly');
+    Route::get('/editprofile/{id}','DeveloperController@showEditprofile');
+    Route::post('/editprofile','DeveloperController@editProfile');
     Route::post('/register','DeveloperController@Register')->withoutMiddleware('DeveloperOnly');
     Route::get('/home','DeveloperController@home');
     Route::get('/gamelist','DeveloperController@gameList');
@@ -71,3 +80,5 @@ Route::group(['middleware'=>['DeveloperOnly'],'prefix' => 'developer'], function
     Route::post('/insertGame','DeveloperController@insertGame');
     Route::get('/logout','DeveloperController@logout');
 });
+
+Route::get('/resetpassword/{token}','DeveloperController@resetPasswordToken');

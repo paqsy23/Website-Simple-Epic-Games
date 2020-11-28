@@ -27,6 +27,10 @@ setiap halaman dikasi penjelasan di bagian App Structure agar lebih jelas dan ti
 * 1 = active
 * 2 = requested
 
+## Reset Password Token Status Info
+* 0 = still in process
+* 1 = done
+
 ## App Structure
 contoh structure 
 

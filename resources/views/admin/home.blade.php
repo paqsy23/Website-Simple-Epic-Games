@@ -61,7 +61,7 @@
                         <td><a href="{{url('admin/reactivate/game/'.$curGame->id)}}"><button class="btn btn-success">Reactivate</button></a></td>
                     @elseif($curGame->status==2)
                         <td>Requesting Activation</td>
-                        <td><a href="{{url('admin/reactivate/game/'.$curGame->id)}}"><button class="btn btn-success">Reactivate</button></a></td>
+                        <td><a href="{{url('admin/reactivate/game/'.$curGame->id)}}"><button class="btn btn-success">Activate</button></a></td>
                     @endif
                   </tr>
                   @endforeach

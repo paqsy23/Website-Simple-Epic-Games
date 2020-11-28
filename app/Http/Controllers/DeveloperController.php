@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ResetPasswordMail;
+use App\Models\ResetPassword;
 use App\Models\developer;
 use App\Models\Game;
 use App\Models\h_tag;
@@ -9,7 +11,9 @@ use App\Models\Image;
 use App\Models\tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
 
 class DeveloperController extends Controller
 {
@@ -32,7 +36,7 @@ class DeveloperController extends Controller
         } else {
             $request->session()->flash('warning', 'Username / Email not found!');
         }
-        return redirect('developer/');
+        return redirect('developer/login');
     }
 
     public function home()
@@ -53,7 +57,9 @@ class DeveloperController extends Controller
         $developerList = developer::where('status',1)->get();
         $tagList = tag::all();
 
-        return view('developer.insertGame',['developerList'=>$developerList,'tagList'=>$tagList]);
+        $developer = developer::find(Session::get('developer-login')->id);
+
+        return view('developer.insertGame',['developerList'=>$developerList,'tagList'=>$tagList,'developer'=>$developer]);
     }
 
     public function insertGame(Request $request)
@@ -158,9 +164,103 @@ class DeveloperController extends Controller
 
         return back();
     }
+
+    public function showEditProfile($id)
+    {
+        $developer = developer::find($id);
+        return view('developer.editprofile',['developer'=>$developer]);
+    }
+
+    public function editProfile(Request $request)
+    {
+        $request->validate([
+            'name'=>'required',
+            'oldpassword'=>'required_if:mycheckbox,on',
+            'newpassword'=>'required_if:mycheckbox,on'
+        ]);
+
+        $developer = developer::where('username',$request->username)->first();
+
+        if($request->oldpassword!=null && password_verify($request->oldpassword, $developer->password)){
+            $developer->name=$request->name;
+            $developer->password=password_hash($request->newpassword, PASSWORD_BCRYPT);
+            $developer->save();
+            $request->session()->flash('message', 'Edit Profile Successful :)');
+            return back();
+        }else if($request->oldpassword==null && $request->name!=$developer->name){
+            $developer->name=$request->name;
+            $developer->save();
+            $request->session()->flash('message', 'Edit Profile Successful :)');
+            return back();
+        }else if($request->oldpassword!=null){
+            $request->session()->flash('message', 'Old Password Did Not Match Record');
+            return back();
+        }
+        $request->session()->flash('message', 'No Data Change :( Why Are You Even Here...');
+        return back();
+    }
+
     public function logout()
     {
         Session::forget('developer-login');
+        return redirect('developer/login');
+    }
+
+    public function resetPassword(Request $request)
+    {
+        $token = Str::random(60);
+
+        $request->validate([
+            'email'=>'required',
+            'username'=>'required|exists:developer,username'
+        ]);
+
+        $link = "http://127.0.0.1:8000/resetpassword/".$token;
+
+        ResetPassword::create([
+            'token'=>$token,
+            'email'=>$request->email,
+            'username'=>$request->username,
+            'link'=>$link,
+            'status'=>0
+        ]);
+
+        return (new ResetPasswordMail($link))->render();
+        // Mail::to($request->email)->send(new ResetPasswordMail($link));
+
+        // $request->session()->flash('message', 'We have send the link to your email');
+
+        // return back();
+    }
+
+    public function resetPasswordToken(Request $request,$token)
+    {
+        $reset = ResetPassword::where('token',$token)->first();
+
+        if($reset!=null && $reset->status==0){
+            return view('developer.resetpassword',['reset'=>$reset]);
+        }else{
+            $request->session()->flash('warning', 'Link Invalid :|');
+            return redirect('developer/login');
+        }
+    }
+
+    public function prosesResetPasswordToken(Request $request)
+    {
+        $request->validate([
+            'password'=>'required',
+            'confirmPassword'=>'required|same:password'
+        ]);
+
+        $developer = Developer::where('username',$request->username)->first();
+        $developer->password = $request->password;
+        $developer->save();
+
+        $reset = ResetPassword::where('token',$request->token)->first();
+        $reset->status=1;
+        $reset->save();
+
+        $request->session()->flash('message', 'Reset Password Done, Go Login Now :D');
         return redirect('developer/login');
     }
 }
