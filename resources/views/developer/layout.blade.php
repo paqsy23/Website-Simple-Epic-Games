@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="{{asset('vendor/fontawesome-free/css/all.min.css')}}">
   <link rel="stylesheet" href="{{asset('vendor/fontawesome-free/css/fontawesome.min.css')}}">
   <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
+  <!-- Toastr -->
+  <link rel="stylesheet" href="{{asset('vendor/toastr/toastr.min.css')}}">
   <!-- Ionicons -->
   <link rel="stylesheet" href="{{asset('https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css')}}">
   <!-- icheck bootstrap -->
@@ -127,6 +129,8 @@
 <script src="{{asset('vendor/chart.js/Chart.min.js')}}"></script>
 {{-- DateRangePicker --}}
 <script src="{{asset('vendor/daterangepicker/daterangepicker.js')}}"></script>
+<!-- Toastr -->
+<script src="{{asset('vendor/toastr/toastr.min.js')}}"></script>
 <!-- InputMask -->
 <script src="{{asset('vendor/moment/moment.min.js')}}"></script>
 <script src="{{asset('vendor/inputmask/min/jquery.inputmask.bundle.min.js')}}"></script>

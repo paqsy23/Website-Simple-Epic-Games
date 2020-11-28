@@ -45,6 +45,9 @@
             </div>
           </div>
         </div>
+        @if (Session::has('warning'))
+            <div class="text-center mb-3"> <span style="color:red">{{ Session::get('warning') }}</span></div>
+        @endif
         <button type="submit" class="btn btn-primary btn-block">Sign In</button>
       </form>
   </div>

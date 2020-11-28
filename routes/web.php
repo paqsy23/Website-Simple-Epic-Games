@@ -38,29 +38,36 @@ Route::group(['prefix' => 'account'], function () {
 Route::get('/game/{id}','GameController@showGameDetail');
 Route::get('/tambahTag','GameController@tambahTag');
 
-Route::group(['prefix' => 'admin'], function () {
-    Route::get('/', function () {
+Route::group(['middleware'=>['AdminOnly'],'prefix' => 'admin'], function () {
+    Route::get('/login', function () {
         return view('admin.login');
-    });
-    Route::post('/login','AdminController@login');
+    })->withoutMiddleware('AdminOnly');
+    Route::post('/login','AdminController@login')->withoutMiddleware('AdminOnly');
     Route::get('/home','AdminController@home');
     Route::get('/developer','AdminController@developer');
     Route::get('/report','AdminController@report');
     Route::get('/logout','AdminController@logout');
     Route::get('/developer/{id}','AdminController@developerDetail');
+    Route::get('/reactivate/game/{id}','AdminController@reactivateGame');
+    Route::get('/ban/game/{id}','AdminController@banGame');
+    Route::get('/confirm/developer/{id}','AdminController@confirmDeveloper');
+    Route::get('/reject/developer/{id}','AdminController@rejectDeveloper');
 });
 
-Route::group(['prefix' => 'developer'], function () {
-    Route::get('/',function(){
+Route::group(['middleware'=>['DeveloperOnly'],'prefix' => 'developer'], function () {
+    Route::get('/login',function(){
         return view('developer.login');
-    });
-    Route::post('/login','DeveloperController@login');
+    })->withoutMiddleware('DeveloperOnly');
+    Route::post('/login','DeveloperController@login')->withoutMiddleware('DeveloperOnly');
     Route::get('/register',function(){
         return view('developer.register');
-    });
+    })->withoutMiddleware('DeveloperOnly');
+    Route::post('/register','DeveloperController@Register')->withoutMiddleware('DeveloperOnly');
     Route::get('/home','DeveloperController@home');
     Route::get('/gamelist','DeveloperController@gameList');
     Route::get('/newGame','DeveloperController@newGame');
+    Route::get('/reactivate/{id}','DeveloperController@reactivate');
+    Route::get('/deactivate/{id}','DeveloperController@deactivate');
     Route::post('/insertGame','DeveloperController@insertGame');
     Route::get('/logout','DeveloperController@logout');
 });

@@ -135,9 +135,32 @@ class DeveloperController extends Controller
         return back();
     }
 
+    public function reactivate(Request $request,$id)
+    {
+        $game=Game::find($id);
+
+        $game->status=2;
+        $game->save();
+
+        $request->session()->flash('message', 'Waiting for Admin Confirmation :D');
+
+        return back();
+    }
+
+    public function deactivate(Request $request,$id)
+    {
+        $game=Game::find($id);
+
+        $game->status=0;
+        $game->save();
+
+        $request->session()->flash('message', 'Game Deactivated :(');
+
+        return back();
+    }
     public function logout()
     {
         Session::forget('developer-login');
-        return redirect('developer/');
+        return redirect('developer/login');
     }
 }

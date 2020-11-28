@@ -10,7 +10,8 @@
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item"><a href="{{url('admin/home')}}">Home</a></li>
+          <li class="breadcrumb-item"><a href="{{url('admin/developer')}}">Developer List</a></li>
           <li class="breadcrumb-item active">{{$developer->name}}</li>
         </ol>
       </div>
@@ -36,7 +37,7 @@
                     <th>Developer</th>
                     <th>Publisher</th>
                     <th>Game Name</th>
-                    <th>Action</th>
+                    <th>Game Status</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -45,10 +46,13 @@
                     <td>{{$curGame->developer->name}}</td>
                     <td>{{$curGame->publisher->name}}</td>
                     <td>{{$curGame->name}}</td>
-                    <td>
-                        <a href="{{url('admin/confirm/game/'.$curGame->id)}}"><button class="btn btn-success">Confirm</button></a>
-                        <a href="{{url('admin/ban/game/'.$curGame->id)}}"><button class="btn btn-danger">Reject</button></a>
-                    </td>
+                    @if ($curGame->status==-1)
+                        <td>Banned</td>
+                    @elseif($curGame->status==1)
+                        <td>Active</td>
+                    @elseif($curGame->status==2)
+                        <td>Waiting for Admin Confirmation</td>
+                    @endif
                   </tr>
                   @endforeach
                   </tbody>
@@ -68,7 +72,7 @@
                       <th>Developer</th>
                       <th>Publisher</th>
                       <th>Game Name</th>
-                      <th>Action</th>
+                      <th>Game Status</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -77,10 +81,13 @@
                       <td>{{$curGame->developer->name}}</td>
                       <td>{{$curGame->publisher->name}}</td>
                       <td>{{$curGame->name}}</td>
-                      <td>
-                          <a href="{{url('admin/confirm/game/'.$curGame->id)}}"><button class="btn btn-success">Confirm</button></a>
-                          <a href="{{url('admin/ban/game/'.$curGame->id)}}"><button class="btn btn-danger">Reject</button></a>
-                      </td>
+                      @if ($curGame->status==-1)
+                        <td>Banned</td>
+                      @elseif($curGame->status==1)
+                        <td>Active</td>
+                      @elseif($curGame->status==2)
+                        <td>Waiting for Admin Confirmation</td>
+                      @endif
                     </tr>
                     @endforeach
                     </tbody>
