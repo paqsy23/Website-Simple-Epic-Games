@@ -74,4 +74,9 @@ class UserController extends Controller
             $request->session()->put('user-login', $user);
         }
     }
+
+    public function checkout()
+    {
+        return view('game.checkout');
+    }
 }
