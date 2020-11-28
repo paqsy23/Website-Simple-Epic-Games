@@ -176,7 +176,7 @@
                     </div>
                 </div>
 
-                <aside id="right" class="sidebar col-lg-3 col-md-4 col-sm-4">
+                {{-- <aside id="right" class="sidebar col-lg-3 col-md-4 col-sm-4">
                     <div class="widget-1 widget-first widget woocommerce_product_categories-3 woocommerce widget_product_categories">
                         <div class="widget-inner">
                             <div class="block-title-widget">
@@ -189,7 +189,7 @@
                                 @endforeach
                             </ul>
                         </div>
-                    </div>
+                    </div> --}}
 
                     <div class="widget-5 widget etrostore_best_seller_product-3 etrostore_best_seller_product">
                         <div class="widget-inner">
