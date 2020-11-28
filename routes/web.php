@@ -17,13 +17,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'MainController@showHome');
 Route::get('{id}', 'MainController@showHome');
 
-Route::get('login', 'LoginRegisterController@showLogin');
-Route::post('login', 'LoginRegisterController@loginProcess');
-Route::get('register', 'LoginRegisterController@showRegister');
-Route::post('register', 'LoginRegisterController@registerProcess');
-Route::get('logout', 'LoginRegisterController@logout');
+
 
 Route::group(['prefix' => 'account'], function () {
+    Route::get('login', 'LoginRegisterController@showLogin');
+    Route::post('login', 'LoginRegisterController@loginProcess');
+    Route::get('register', 'LoginRegisterController@showRegister');
+    Route::post('register', 'LoginRegisterController@registerProcess');
+    Route::get('logout', 'LoginRegisterController@logout');
+
     Route::get('/', 'UserController@dashboard');
     Route::get('orders', 'UserController@order');
     Route::get('address', 'UserController@addresses');

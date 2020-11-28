@@ -64,7 +64,7 @@
                                 <div class="widget-inner">
                                     <ul id="menu-checkout" class="menu">
                                         <li class="menu-checkout">
-                                            <a href="{{ url('login') }}">
+                                            <a href="{{ url('account/login') }}">
                                                 <span>Login</span>
                                             </a>
                                         </li>
@@ -105,7 +105,7 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="{{ url('logout') }}">
+                                                <a href="{{ url('account/logout') }}">
                                                     <span>Logout</span>
                                                 </a>
                                             </li>
