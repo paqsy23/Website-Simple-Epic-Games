@@ -192,6 +192,5 @@ class ImageTableSeeder extends Seeder
             'game_id' => '15',
             'link' => '15/logo.jpg'
         ));
-
     }
 }

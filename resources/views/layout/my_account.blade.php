@@ -15,7 +15,7 @@
 							<div class="container">
 								<ul class="breadcrumb">
 									<li>
-										<a href="home_page_1.html">Home</a>
+										<a href="{{ url('/') }}">Home</a>
 										<span class="go-page"></span>
 									</li>
 
