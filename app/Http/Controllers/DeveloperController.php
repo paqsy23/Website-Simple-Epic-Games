@@ -245,12 +245,12 @@ class DeveloperController extends Controller
             'status'=>0
         ]);
 
-        return (new ResetPasswordMail($link))->render();
-        // Mail::to($request->email)->send(new ResetPasswordMail($link));
+        // return (new ResetPasswordMail($link))->render();
+        Mail::to($request->email)->send(new ResetPasswordMail($link));
 
-        // $request->session()->flash('message', 'We have send the link to your email');
+        $request->session()->flash('message', 'We have send the link to your email');
 
-        // return back();
+        return back();
     }
 
     public function resetPasswordToken(Request $request,$token)
