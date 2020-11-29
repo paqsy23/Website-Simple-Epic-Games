@@ -1,7 +1,7 @@
 @extends('developer.layout')
 
 @section('header')
-    <title>Insert New Game</title>
+    <title>Edit Game | {{$game->name}}</title>
 
 @endsection
 
@@ -12,12 +12,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Insert New Game</h1>
+            <h1>Edit Game | {{$game->name}}</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{url('developer/home')}}">Home</a></li>
-              <li class="breadcrumb-item active">Insert New Game</li>
+              <li class="breadcrumb-item active">Edit Game</li>
             </ol>
           </div>
         </div>
@@ -39,26 +39,30 @@
             @endif
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Insert New Game</h3>
+                <h3 class="card-title">Edit Game | {{$game->name}}</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="{{url('developer/insertGame')}}" method="POST" enctype="multipart/form-data">
+              <form action="{{url('developer/editGame')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="card-body">
                     <div class="row">
                     {{-- Left Input --}}
+                    <input type="hidden" name="id" value="{{$game->id}}">
+                    <input type="hidden" name="status" value="2">
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Game Name<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" name="name" placeholder="Game Name" value="{{old('name')}}">
+                            <input type="text" class="form-control" name="name" placeholder="Game Name" value="{{$game->name}}">
                             @error('name')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label>Game Description<span class="text-danger">*</span></label>
-                            <textarea rows="3" class="form-control" name="description" placeholder="Game Description"></textarea>
+                            <textarea rows="3" class="form-control" name="description" placeholder="Game Description">
+                                {{$game->description}}
+                            </textarea>
                             @error('description')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
@@ -66,7 +70,7 @@
                         <div class="form-group">
                             <label>Date:<span class="text-danger">*</span></label>
                               <div class="input-group date" id="release" data-target-input="nearest">
-                                  <input type="text" class="form-control datetimepicker-input" name="release" data-target="#release" value="{{old('release')}}"/>
+                                  <input type="text" class="form-control datetimepicker-input" name="release" data-target="#release" value="{{$game->release}}"/>
                                   <div class="input-group-append" data-target="#release" data-toggle="datetimepicker">
                                       <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                   </div>
@@ -78,8 +82,11 @@
                         <div class="form-group">
                             <label>Tags<span class="text-danger">*</span></label>
                             <select class="select2" multiple="multiple" data-placeholder="Select a tag" name="tags[]" style="width: 100%;">
+                               @foreach ($game->tags as $curTag)
+                                    <option value="{{$curTag->id}}" selected>{{$curTag->name}}</option>
+                               @endforeach
                                @foreach ($tagList as $curList)
-                                   <option value="{{$curList->id}}">{{$curList->name}}</option>
+                               <option value="{{$curList->id}}">{{$curList->name}}</option>
                                @endforeach
                             </select>
                             @error('tags')
@@ -92,7 +99,7 @@
                                 <div class="input-group-prepend">
                                 <span class="input-group-text">$</span>
                                 </div>
-                                <input type="number" class="form-control" name="price" placeholder="Game Price" value="{{old('price')}}">
+                                <input type="number" class="form-control" name="price" placeholder="Game Price" value="{{$game->price}}">
                             </div>
                             @error('price')
                                 <small class="text-danger">{{ $message }}</small>
@@ -102,7 +109,7 @@
                             <label>Developer<span class="text-danger">*</span></label>
                             <select class="form-control" name="developer">
                                 @foreach ($developerList as $curList)
-                                    @if ($curList->id == Session::get('developer-login')->id)
+                                    @if ($curList->id == $game->developer_id)
                                     <option value="{{$curList->id}}" selected>{{$curList->name}}</option>
                                     @else
                                     <option value="{{$curList->id}}">{{$curList->name}}</option>
@@ -117,7 +124,7 @@
                             <label>Publisher<span class="text-danger">*</span></label>
                             <select class="form-control" name="publisher">
                                 @foreach ($developerList as $curList)
-                                    @if ($curList->id == Session::get('developer-login')->id)
+                                    @if ($curList->id == $game->publisher_id)
                                     <option value="{{$curList->id}}" selected>{{$curList->name}}</option>
                                     @else
                                     <option value="{{$curList->id}}">{{$curList->name}}</option>
@@ -128,8 +135,12 @@
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
                           </div>
-                          <div class="form-group">
-                            <label for="exampleInputFile">Insert Logo Image<span class="text-danger">*</span></label>
+                          <div class="form-check">
+                            <input class="form-check-input" id="my-checkbox" type="checkbox" name="mycheckbox" onclick="showHideLogo()">
+                            <label class="form-check-label" for="my-checkbox">Change Logo Image ?</label>
+                        </div>
+                          <div class="form-group" id="logo" style="display:none">
+                            <label for="exampleInputFile">Insert Logo Image</label>
                             <div class="input-group">
                               <div class="custom-file">
                                 <input type="file" class="custom-file-input" name="gameLogo" id="gameLogo">
@@ -140,8 +151,12 @@
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
                           </div>
-                          <div class="form-group">
-                            <label for="exampleInputFile">Insert Game Image<span class="text-danger">*</span></label>
+                          <div class="form-check">
+                            <input class="form-check-input" id="my-checkbox2" type="checkbox" name="mycheckbox2" onclick="showHideGameImage()">
+                            <label class="form-check-label" for="my-checkbox2">Change Game Image ?</label>
+                        </div>
+                          <div class="form-group"  id="gameimage" style="display:none">
+                            <label for="exampleInputFile">Insert Game Image</label>
                             <div class="input-group">
                               <div class="custom-file">
                                 <input type="file" class="custom-file-input" id="gameImage" name="gameImage[]" multiple>
@@ -152,17 +167,19 @@
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
                           </div>
+
                           <div class="form-check">
-                            <input class="form-check-input" id="my-checkbox" type="checkbox" name="mycheckbox" onclick="showHideGame()">
-                            <label class="form-check-label" for="my-checkbox">Is This Game an Add-On ?</label>
+                            <input class="form-check-input" id="my-checkbox3" type="checkbox" name="mycheckbox3" onclick="showHideGame()">
+                            <label class="form-check-label" for="my-checkbox3">Is This Game an Add-On ?</label>
                         </div>
                         <div class="form-group" id="gameparent" style="display:none">
                             <label>Game Parent<span class="text-danger">*</span></label>
                             <select class="form-control" name="add_ons">
                                 @foreach ($gameParent as $curGame)
-                                    @if ($curGame->status==1)
-                                    <option value="{{$curGame->id}}">{{$curGame->name}}</option>
+                                    @if ($curGame->status==1 && $curGame->id != $game->id)
+                                    <option value="{{$curGame->id}}" selected>{{$curGame->name}}</option>
                                     @endif
+
                                 @endforeach
                             </select>
                             @error('add_ons')
@@ -180,7 +197,7 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><i class="fa fa-instagram"></i></div>
                                 </div>
-                                <input type="text" class="form-control" name="instagram" placeholder="Instagram Link" value="{{old('instagram')}}">
+                                <input type="text" class="form-control" name="instagram" placeholder="Instagram Link" value="{{$game->instagram}}">
                             </div>
                             @error('instagram')
                                 <small class="text-danger">{{ $message }}</small>
@@ -192,7 +209,7 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><i class="fa fa-dribbble"></i></div>
                                 </div>
-                                <input type="text" class="form-control" name="Website" placeholder="Website Link" value="{{old('website')}}">
+                                <input type="text" class="form-control" name="Website" placeholder="Website Link" value="{{$game->website}}">
                             </div>
                             @error('website')
                                 <small class="text-danger">{{ $message }}</small>
@@ -204,7 +221,7 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><i class="fa fa-reddit"></i></div>
                                 </div>
-                                <input type="text" class="form-control" name="reddit" placeholder="Reddit Link" value="{{old('reddit')}}">
+                                <input type="text" class="form-control" name="reddit" placeholder="Reddit Link" value="{{$game->reddit}}">
                             </div>
                             @error('reddit')
                                 <small class="text-danger">{{ $message }}</small>
@@ -216,7 +233,7 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><i class="fa fa-youtube"></i></div>
                                 </div>
-                                <input type="text" class="form-control" name="youtube" placeholder="Youtube Link" value="{{old('youtube')}}">
+                                <input type="text" class="form-control" name="youtube" placeholder="Youtube Link" value="{{$game->youtube}}">
                             </div>
                             @error('youtube')
                                 <small class="text-danger">{{ $message }}</small>
@@ -228,7 +245,7 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><i class="fa fa-facebook"></i></div>
                                 </div>
-                                <input type="text" class="form-control" name="facebook" placeholder="Facebook Link" value="{{old('facebook')}}">
+                                <input type="text" class="form-control" name="facebook" placeholder="Facebook Link" value="{{$game->facebook}}">
                             </div>
                             @error('facebook')
                                 <small class="text-danger">{{ $message }}</small>
@@ -240,7 +257,7 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><i class="fa fa-twitch"></i></div>
                                 </div>
-                                <input type="text" class="form-control" name="twitch" placeholder="Twitch Link" value="{{old('twitch')}}">
+                                <input type="text" class="form-control" name="twitch" placeholder="Twitch Link" value="{{$game->twitch}}">
                             </div>
                             @error('twitch')
                                 <small class="text-danger">{{ $message }}</small>
@@ -252,7 +269,7 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><i class="fa fa-twitter"></i></div>
                                 </div>
-                                <input type="text" class="form-control" name="twitter" placeholder="Twitter Link" value="{{old('twitter')}}">
+                                <input type="text" class="form-control" name="twitter" placeholder="Twitter Link" value="{{$game->twitter}}">
                             </div>
                             @error('twitter')
                                 <small class="text-danger">{{ $message }}</small>
@@ -261,56 +278,56 @@
 
                         <div class="form-group">
                             <label>OS</label>
-                            <input type="text" class="form-control" name="os" placeholder="OS" value="{{old('os')}}">
+                            <input type="text" class="form-control" name="os" placeholder="OS" value="{{$game->os}}">
                             @error('os')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label>CPU</label>
-                            <input type="text" class="form-control" name="cpu" placeholder="CPU" value="{{old('cpu')}}">
+                            <input type="text" class="form-control" name="cpu" placeholder="CPU" value="{{$game->cpu}}">
                             @error('cpu')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label>Graphics</label>
-                            <input type="text" class="form-control" name="graphics" placeholder="Graphics" value="{{old('graphics')}}">
+                            <input type="text" class="form-control" name="graphics" placeholder="Graphics" value="{{$game->graphics}}">
                             @error('graphics')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label>Processor</label>
-                            <input type="text" class="form-control" name="processor" placeholder="Processor" value="{{old('processor')}}">
+                            <input type="text" class="form-control" name="processor" placeholder="Processor" value="{{$game->processor}}">
                             @error('processor')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label>Memory</label>
-                            <input type="text" class="form-control" name="memory" placeholder="Memory" value="{{old('memory')}}">
+                            <input type="text" class="form-control" name="memory" placeholder="Memory" value="{{$game->memory}}">
                             @error('memory')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label>Storage</label>
-                            <input type="text" class="form-control" name="storage" placeholder="Storage" value="{{old('storage')}}">
+                            <input type="text" class="form-control" name="storage" placeholder="Storage" value="{{$game->storage}}">
                             @error('storage')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label>Direct X</label>
-                            <input type="text" class="form-control" name="directx" placeholder="Direct X" value="{{old('directx')}}">
-                            @error('directx')
+                            <input type="text" class="form-control" name="direct_x" placeholder="Direct X" value="{{$game->direct_x}}">
+                            @error('direct_x')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label>Note</label>
-                            <input type="text" class="form-control" name="note" placeholder="Additional Note" value="{{old('note')}}">
+                            <input type="text" class="form-control" name="note" placeholder="Additional Note" value="{{$game->note}}">
                             @error('note')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
@@ -382,16 +399,38 @@
     })
 
     $('#release').datetimepicker({
-        format: 'L'
+        format: 'L',
+        defaultDate : JSON.parse("{{ json_encode($game->release) }}")
     });
-    function showHideGame() {
-            var checkBox = document.getElementById("my-checkbox");
-            var element=document.getElementById('gameparent');
-            if (checkBox.checked == true){
-                element.style.display='block';
-            } else {
-                element.style.display='none';
-            }
+
+    function showHideLogo() {
+        var checkBox = document.getElementById("my-checkbox");
+        var element=document.getElementById('logo');
+        if (checkBox.checked == true){
+            element.style.display='block';
+        } else {
+            element.style.display='none';
         }
+    }
+
+    function showHideGameImage() {
+        var checkBox = document.getElementById("my-checkbox2");
+        var element=document.getElementById('gameimage');
+        if (checkBox.checked == true){
+            element.style.display='block';
+        } else {
+            element.style.display='none';
+        }
+    }
+
+    function showHideGame() {
+        var checkBox = document.getElementById("my-checkbox3");
+        var element=document.getElementById('gameparent');
+        if (checkBox.checked == true){
+            element.style.display='block';
+        } else {
+            element.style.display='none';
+        }
+    }
     </script>
 @endsection

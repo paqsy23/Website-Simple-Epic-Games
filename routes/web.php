@@ -67,6 +67,14 @@ Route::group(['middleware'=>['DeveloperOnly'],'prefix' => 'developer'], function
     Route::get('/forgetpassword',function(){
         return view('developer.forgotpassword');
     })->withoutMiddleware('DeveloperOnly');
+    Route::group(['middleware' => ['DeveloperActiveOnly']], function () {
+        Route::get('/newGame','DeveloperController@newGame');
+        Route::get('/reactivate/{id}','DeveloperController@reactivate');
+        Route::get('/deactivate/{id}','DeveloperController@deactivate');
+        Route::post('/insertGame','DeveloperController@insertGame');
+        Route::get('/editGame/{id}','DeveloperController@showEditGame');
+        Route::post('/editGame','DeveloperController@editGame');
+    });
     Route::post('/resetPasswordToken','DeveloperController@prosesResetPasswordToken')->withoutMiddleware('DeveloperOnly');
     Route::post('/forgetpassword','DeveloperController@resetPassword')->withoutMiddleware('DeveloperOnly');
     Route::get('/editprofile/{id}','DeveloperController@showEditprofile');
@@ -74,10 +82,6 @@ Route::group(['middleware'=>['DeveloperOnly'],'prefix' => 'developer'], function
     Route::post('/register','DeveloperController@Register')->withoutMiddleware('DeveloperOnly');
     Route::get('/home','DeveloperController@home');
     Route::get('/gamelist','DeveloperController@gameList');
-    Route::get('/newGame','DeveloperController@newGame');
-    Route::get('/reactivate/{id}','DeveloperController@reactivate');
-    Route::get('/deactivate/{id}','DeveloperController@deactivate');
-    Route::post('/insertGame','DeveloperController@insertGame');
     Route::get('/logout','DeveloperController@logout');
 });
 

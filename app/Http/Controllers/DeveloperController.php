@@ -9,6 +9,7 @@ use App\Models\Game;
 use App\Models\h_tag;
 use App\Models\Image;
 use App\Models\tag;
+use App\Rules\CheckGameName;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Mail;
@@ -56,10 +57,10 @@ class DeveloperController extends Controller
     {
         $developerList = developer::where('status',1)->get();
         $tagList = tag::all();
-
         $developer = developer::find(Session::get('developer-login')->id);
+        $gameParent = Game::where('developer_id',$developer->id)->orWhere('publisher_id',$developer->id)->get();
 
-        return view('developer.insertGame',['developerList'=>$developerList,'tagList'=>$tagList,'developer'=>$developer]);
+        return view('developer.insertGame',['developerList'=>$developerList,'tagList'=>$tagList,'developer'=>$developer,'gameParent'=>$gameParent]);
     }
 
     public function insertGame(Request $request)
@@ -74,6 +75,7 @@ class DeveloperController extends Controller
             'tags'=>['required'],
             'gameImage.*' => 'required|mimes:png,jpg,jpeg|max:2048',
             'gameLogo' => 'required|mimes:png,jpg,jpeg|max:2048',
+            'add_ons'=>'required_if:mycheckbox,on',
             'instagram'=>'url|nullable',
             'website'=>'url|nullable',
             'reddit'=>'url|nullable',
@@ -90,6 +92,15 @@ class DeveloperController extends Controller
         $facebook = $request->facebook;
         $twitch = $request->twitch;
         $twitter = $request->twitter;
+        $os = $request->os;
+        $cpu = $request->cpu;
+        $graphics = $request->graphics;
+        $processor = $request->processor;
+        $memory = $request->memory;
+        $storage = $request->storage;
+        $directx = $request->directx;
+        $note = $request->note;
+        $add_ons = $request->add_ons;
 
         $gameId = Game::insertGetId([
             'developer_id' => $request->developer,
@@ -105,7 +116,16 @@ class DeveloperController extends Controller
             'youtube'=>$youtube,
             'facebook'=>$facebook,
             'twitch'=>$twitch,
-            'twitter'=>$twitter
+            'twitter'=>$twitter,
+            'os'=>$os,
+            'cpu'=>$cpu,
+            'graphics'=>$graphics,
+            'processor'=>$processor,
+            'memory'=>$memory,
+            'storage'=>$storage,
+            'direct_x'=>$directx,
+            'note'=>$note,
+            'add_ons'=>$add_ons
         ]);
 
         foreach($request->tags as $curTag){
@@ -253,7 +273,7 @@ class DeveloperController extends Controller
         ]);
 
         $developer = Developer::where('username',$request->username)->first();
-        $developer->password = $request->password;
+        $developer->password = password_hash($request->password, PASSWORD_BCRYPT);
         $developer->save();
 
         $reset = ResetPassword::where('token',$request->token)->first();
@@ -262,5 +282,62 @@ class DeveloperController extends Controller
 
         $request->session()->flash('message', 'Reset Password Done, Go Login Now :D');
         return redirect('developer/login');
+    }
+
+    public function showEditGame($id)
+    {
+        $developer = developer::find(Session::get('developer-login')->id);
+
+        $game = Game::find($id);
+
+        $arr = [];
+
+        foreach($game->tags as $curTag){
+           $arr[] = $curTag->id;
+        }
+
+        $tagList = tag::all();
+        $tagList = $tagList->except($arr);
+
+        $developerList = developer::where('status',1)->get();
+
+        $gameParent = Game::where('developer_id',$developer->id)->orWhere('publisher_id',$developer->id)->get();
+
+        return view('developer.editGame',['game'=>$game,'developer'=>$developer,'tagList'=>$tagList,'developerList'=>$developerList,'gameParent'=>$gameParent]);
+    }
+
+    public function editGame(Request $request)
+    {
+        $game = Game::find($request->id);
+
+        $request->validate([
+            'developer' => ['required'],
+            'publisher' => ['required'],
+            'name' => ['required',new CheckGameName($game->name)],
+            'release' => ['required','date'],
+            'description' => ['required'],
+            'price'=>['required'],
+            'tags'=>['required'],
+            'gameImage.*' => 'required_if:mycheckbox2,on|mimes:png,jpg,jpeg|max:2048',
+            'gameLogo' => 'required_if:mycheckbox,on|mimes:png,jpg,jpeg|max:2048',
+            'add_ons'=>'required_if:mycheckbox3,on',
+            'instagram'=>'url|nullable',
+            'website'=>'url|nullable',
+            'reddit'=>'url|nullable',
+            'youtube'=>'url|nullable',
+            'facebook'=>'url|nullable',
+            'twitch'=>'url|nullable',
+            'twitter'=>'url|nullable',
+        ]);
+
+        $game->update($request->all());
+        //edit tanpa ganti gambar
+        if($request->mycheckbox==null && $request->mycheckbox2==null){
+            $request->session()->flash('message', 'Game Updated!! Waiting for Admin Confirmation');
+            return back();
+        }else if($request->mycheckbox=="on"){
+            //ganti gambar logo game
+        }
+        dd($request->mycheckbox);
     }
 }
