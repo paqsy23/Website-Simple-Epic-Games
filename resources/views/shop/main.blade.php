@@ -2,6 +2,8 @@
 
 @section('title', 'Epic Games')
 
+@include('tawkto')
+
 @section('content')
     @foreach ($games as $game)
         <li class="item col-lg-4 col-md-4 col-sm-6 col-xs-6 post-255 product type-product status-publish has-post-thumbnail product_cat-electronics product_cat-home-appliances product_cat-vacuum-cleaner product_brand-apoteket first instock sale featured shipping-taxable purchasable product-type-simple">
