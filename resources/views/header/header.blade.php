@@ -3,16 +3,16 @@
         <div class="container">
             <div class="rows">
                 <!-- SIDEBAR TOP MENU -->
-                <div class="pull-left top1">
+                {{-- <div class="pull-left top1">
                     <div class="widget text-2 widget_text pull-left">
                         <div class="widget-inner">
-                            {{-- <div class="textwidget">
+                            <div class="textwidget">
                                 <div class="call-us"><span>Call Us Now: </span>0123-444-666654123</div>
-                            </div> --}}
+                            </div>
                         </div>
                     </div>
 
-                    {{-- <div class="widget text-3 widget_text pull-left">
+                    <div class="widget text-3 widget_text pull-left">
                         <div class="widget-inner">
                             <div class="textwidget">
                                 <div id="lang_sel">
@@ -39,9 +39,9 @@
                                 </div>
                             </div>
                         </div>
-                    </div> --}}
+                    </div>
 
-                    {{-- <div class="widget widget_currency_converter pull-left">
+                    <div class="widget widget_currency_converter pull-left">
                         <div class="widget-inner">
                             <ul class="currency_w">
                                 <li>
@@ -53,8 +53,8 @@
                                 </li>
                             </ul>
                         </div>
-                    </div> --}}
-                </div>
+                    </div>
+                </div> --}}
 
                 <div class="wrap-myacc pull-right">
                     @if (Session::get('user-login') == null)
@@ -75,10 +75,10 @@
                     @else
                         {{-- Kalau Sudah Sign In --}}
                         <div class="sidebar-account pull-left">
-                            <div class="account-title">{{ Session::get('user-login')->name }}</div>
+                            <div class="account-title">Hello, {{ Session::get('user-login')->name }}</div>
 
                             <div id="my-account" class="my-account">
-                                <div class="widget-1 widget-first widget nav_menu-4 widget_nav_menu">
+                                <div class="widget-1 widget-first widget nav_menu-2 widget_nav_menu">
                                     <div class="widget-inner">
                                         <ul id="menu-my-account" class="menu">
                                             <li class="menu-my-account">
@@ -87,13 +87,13 @@
                                                 </a>
                                             </li>
 
-                                            <li class="menu-cart">
+                                            {{-- <li class="menu-cart">
                                                 <a class="item-link" href="cart.html">
                                                     <span class="menu-title">Cart</span>
                                                 </a>
-                                            </li>
+                                            </li> --}}
 
-                                            <li class="menu-checkout">
+                                            {{-- <li class="menu-checkout">
                                                 <a class="item-link" href="checkout.html">
                                                     <span class="menu-title">Checkout</span>
                                                 </a>
@@ -103,7 +103,7 @@
                                                 <a class="item-link" href="wishlist.html">
                                                     <span class="menu-title">Wishlist</span>
                                                 </a>
-                                            </li>
+                                            </li> --}}
                                             <li>
                                                 <a href="{{ url('account/logout') }}">
                                                     <span>Logout</span>
@@ -120,8 +120,8 @@
                                 <div class="widget-inner">
                                     <ul id="menu-checkout" class="menu">
                                         <li class="menu-checkout">
-                                            <a class="item-link" href="checkout.html">
-                                                <span class="menu-title">Checkout</span>
+                                            <a class="item-link" href="{{ url('account/wallet') }}">
+                                                <span class="menu-title">$ {{ number_format(Session::get('user-login')->money, 2) }}</span>
                                             </a>
                                         </li>
                                     </ul>
@@ -147,36 +147,17 @@
                 <div class="mid-header pull-right">
                     <div class="widget-1 widget-first widget sw_top-2 sw_top">
                         <div class="widget-inner">
-                            <div class="top-form top-search">
+                            <form class="top-form top-search">
                                 <div class="topsearch-entry">
-                                    <input type="text" value="" name="s" placeholder="Enter your keyword...">
-                                    <div class="cat-wrapper">
-                                        <label class="label-search">
-                                            <select name="search_category" class="s1_option">
-                                                <option value="">All Categories</option>
-                                                <option value="8">Computers & Laptops</option>
-                                                <option value="13">Computers & Networking</option>
-                                                <option value="14">Smartphones & Tablet</option>
-                                                <option value="15">Home Furniture</option>
-                                                <option value="16">Home Appliances</option>
-                                                <option value="17">Electronic Component</option>
-                                                <option value="18">Household Goods</option>
-                                                <option value="32">Appliances</option>
-                                                <option value="49">Accessories</option>
-                                                <option value="51">Electronics</option>
-                                                <option value="78">Televisions</option>
-                                                <option value="80">Cameras & Accessories</option>
-                                            </select>
-                                        </label>
-                                    </div>
+                                    <input type="text" value="" name="search" placeholder="Enter your keyword...">
 
                                     <button type="button" title="Search" class="fa fa-search button-search-pro"></button>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
 
-                    <div class="widget sw_top-3 sw_top pull-left">
+                    {{-- <div class="widget sw_top-3 sw_top pull-left">
                         <div class="widget-inner">
                             <div class="top-form top-form-minicart etrostore-minicart pull-right">
                                 <div class="top-minicart-icon pull-right">
@@ -309,13 +290,13 @@
                                 </li>
                             </ul>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="header-bottom clearfix">
+    {{-- <div class="header-bottom clearfix">
         <div class="container">
             <div class="rows">
                 <!-- Primary navbar -->
@@ -800,7 +781,7 @@
                                         </span>
                                     </a>
 
-                                    {{-- <ul class="dropdown-menu nav-level1 column-3">
+                                    <ul class="dropdown-menu nav-level1 column-3">
                                         <li class="dropdown-submenu column-3 menu-home-pages">
                                             <a href="#">
                                                 <span class="have-title">
@@ -918,7 +899,7 @@
                                                 </li>
                                             </ul>
                                         </li>
-                                    </ul> --}}
+                                    </ul>
                                 </li>
 
                                 <li class="active dropdown menu-shop etrostore-mega-menu level1 etrostore-menu-img">
@@ -1804,5 +1785,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 </header>

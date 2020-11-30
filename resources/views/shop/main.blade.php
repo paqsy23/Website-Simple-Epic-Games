@@ -22,7 +22,7 @@
                         </a>
 
                         <!-- add to cart, wishlist, compare -->
-                        <div class="item-bottom clearfix">
+                        {{-- <div class="item-bottom clearfix">
                             <a rel="nofollow" href="#" class="button product_type_simple add_to_cart_button ajax_add_to_cart" title="Add to Cart">Add to cart</a>
 
                             <a href="javascript:void(0)" class="compare button" rel="nofollow" title="Add to Compare">Compare</a>
@@ -49,7 +49,7 @@
 
                             <div class="clear"></div>
                             <a href="ajax/fancybox/example.html" data-fancybox-type="ajax" class="sm_quickview_handler-list fancybox fancybox.ajax">Quick View </a>
-                        </div>
+                        </div> --}}
                     </div>
 
                     <div class="item-content products-content">

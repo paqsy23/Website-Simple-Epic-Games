@@ -8,4 +8,9 @@ class Transaction extends Model
 {
     protected $table="transaction";
     protected $guarded = ["id"];
+
+    public function games()
+    {
+        return $this->belongsTo(Game::class, 'game_id', 'id');
+    }
 }

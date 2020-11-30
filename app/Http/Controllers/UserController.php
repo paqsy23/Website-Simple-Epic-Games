@@ -31,12 +31,13 @@ class UserController extends Controller
 
     public function order(Request $request)
     {
+        $user_login = $request->session()->get('user-login');
+        $orders = Transaction::where('user_id', $user_login->id)->get();
 
-    }
-
-    public function addresses(Request $request)
-    {
-
+        return view('account.order', [
+            'location' => 'orders',
+            'orders' => $orders
+        ]);
     }
 
     public function accountDetails(Request $request)
@@ -108,6 +109,7 @@ class UserController extends Controller
             'user_id'=>$user->id
         ]);
 
+        $request->session()->put('user-login', $user);
         $request->session()->flash('message', 'Transaction Completed');
 
         //masuk library

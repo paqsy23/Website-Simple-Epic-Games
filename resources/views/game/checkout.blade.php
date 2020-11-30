@@ -44,7 +44,7 @@
                         <div class="col2-set" id="customer_details">
                             <div class="col-lg-12" style="margin-bottom:10%">
                                 <div class="woocommerce-billing-fields">
-                                    <h3>Billing Details <span style="float:right">Your Wallet : ${{$user->money}}</span> </h3>
+                                    <h3>Billing Details <span style="float:right">Your Wallet : ${{number_format($user->money, 2)}}</span> </h3>
                                     <hr>
                                     <div id="order_review" class="woocommerce-checkout-review-order">
 
@@ -72,7 +72,7 @@
                                                         </td>
 
                                                         <td class="product-total">
-                                                            ${{$game->price}}
+                                                            ${{number_format($game->price, 2)}}
                                                         </td>
                                                     </tr>
                                                 </tbody>
@@ -83,7 +83,7 @@
 
                                                         <td>
                                                             <strong>
-                                                                ${{$game->price}}
+                                                                ${{number_format($game->price, 2)}}
                                                             </strong>
                                                         </td>
                                                     </tr>
