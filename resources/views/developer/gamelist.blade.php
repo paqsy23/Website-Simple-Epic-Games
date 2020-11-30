@@ -34,6 +34,12 @@
                 <strong>{{ $message }}</strong>
             </div>
           @endif
+          @if ($message = Session::get('warning'))
+            <div class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>{{ $message }}</strong>
+            </div>
+        @endif
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">List Of Game Developed by {{$developer->name}}</h3>
@@ -65,11 +71,13 @@
                     @if ($curGame->status==1)
                     <td>Active</td>
                     <td>
+                        <a href="{{url('developer/editGame/'.$curGame->id)}}"><button class="btn btn-primary">Edit Game</button></a>
                         <a href="{{url('developer/deactivate/'.$curGame->id)}}"><button class="btn btn-danger">Deactivate</button></a>
                     </td>
                     @elseif($curGame->status==2)
                     <td>Waiting For Admin Confirmation</td>
                     <td>
+                        <a href="{{url('developer/editGame/'.$curGame->id)}}"><button class="btn btn-primary">Edit Game</button></a>
                         <a href="{{url('developer/deactivate/'.$curGame->id)}}"><button class="btn btn-danger">Cancel</button></a>
                     </td>
                     @elseif($curGame->status==-1)
@@ -80,6 +88,7 @@
                     @else
                     <td>Non-Active</td>
                     <td>
+                        <a href="{{url('developer/editGame/'.$curGame->id)}}"><button class="btn btn-primary">Edit Game</button></a>
                         <a href="{{url('developer/reactivate/'.$curGame->id)}}"><button class="btn btn-success toastrDefaultSuccess">Reactivate</button></a>
                     </td>
                     @endif
@@ -118,11 +127,13 @@
                             @if ($curGame->status==1)
                             <td>Active</td>
                             <td>
+                                <a href="{{url('developer/editGame/'.$curGame->id)}}"><button class="btn btn-primary">Edit Game</button></a>
                                 <a href="{{url('developer/deactivate/'.$curGame->id)}}"><button class="btn btn-danger">Deactivate</button></a>
                             </td>
                             @elseif($curGame->status==2)
                             <td>Waiting For Admin Confirmation</td>
                             <td>
+                                <a href="{{url('developer/editGame/'.$curGame->id)}}"><button class="btn btn-primary">Edit Game</button></a>
                                 <a href="{{url('developer/deactivate/'.$curGame->id)}}"><button class="btn btn-danger">Cancel</button></a>
                             </td>
                             @elseif($curGame->status==-1)
@@ -133,6 +144,7 @@
                             @else
                             <td>Non-Active</td>
                             <td>
+                                <a href="{{url('developer/editGame/'.$curGame->id)}}"><button class="btn btn-primary">Edit Game</button></a>
                                 <a href="{{url('developer/reactivate/'.$curGame->id)}}"><button class="btn btn-success">Reactivate</button></a>
                             </td>
                             @endif

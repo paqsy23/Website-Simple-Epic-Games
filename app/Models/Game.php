@@ -24,4 +24,8 @@ class Game extends Model
     public function img(){
         return $this->hasMany(Image::class,'game_id','id');
     }
+
+    public function platforms(){
+        return $this->belongsToMany(platform::class,'h_platform','game_id','platform_id')->withPivot(['id'])->as("game_platform");
+    }
 }

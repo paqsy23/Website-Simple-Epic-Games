@@ -39,17 +39,6 @@
             @error('email')
                 <small class="text-danger">{{ $message }}</small>
             @enderror
-            <div class="input-group mt-2">
-                <input type="text" class="form-control" name="username" placeholder="Username">
-                <div class="input-group-append">
-                  <div class="input-group-text">
-                    <span class="fas fa-user"></span>
-                  </div>
-                </div>
-              </div>
-              @error('username')
-                    <small class="text-danger">{{ $message }}</small>
-                @enderror
             <div class="row mt-3">
               <div class="col-12">
                 <button type="submit" class="btn btn-primary btn-block">Request new password</button>

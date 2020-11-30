@@ -2,10 +2,9 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDeveloperTable extends Migration
+class CreateResetpasswordTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,12 +13,11 @@ class CreateDeveloperTable extends Migration
      */
     public function up()
     {
-        Schema::create('developer', function (Blueprint $table) {
+        Schema::create('resetpassword', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->string('username')->unique();
-            $table->string('email')->unique();
-            $table->string('password');
+            $table->string('token')->unique();
+            $table->string('link');
+            $table->string('email');
             $table->integer('status');
             $table->timestamps();
         });
@@ -32,6 +30,6 @@ class CreateDeveloperTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('developer');
+        Schema::dropIfExists('resetpassword');
     }
 }

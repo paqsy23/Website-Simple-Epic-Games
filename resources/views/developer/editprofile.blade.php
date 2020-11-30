@@ -36,6 +36,12 @@
                   <strong>{{ $message }}</strong>
               </div>
             @endif
+            @if ($message = Session::get('warning'))
+                <div class="alert alert-danger">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                    <strong>{{ $message }}</strong>
+                </div>
+            @endif
             <div class="card card-primary">
               <div class="card-header">
                 <h3 class="card-title">Edit Profile</h3>
@@ -60,6 +66,13 @@
                             <label>Username</label>
                             <input type="text" class="form-control" name="username" placeholder="Developer Username" value="{{$developer->username}}" readonly>
                             @error('username')
+                                <small class="text-danger">{{ $message }}</small>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="text" class="form-control" name="email" placeholder="Developer Email" value="{{$developer->email}}">
+                            @error('email')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>

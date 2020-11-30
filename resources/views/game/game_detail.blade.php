@@ -4,6 +4,14 @@
     {{$game->name}}
 @endsection
 
+<style>
+    .titleabout{
+        color: gray;
+        font-size: 12pt;
+        margin-bottom: 10px;
+    }
+</style>
+
 @section('body')
 <body class="product-template-default single single-product woocommerce woocommerce-page">
 	<div class="body-wrapper theme-clearfix">
@@ -150,8 +158,9 @@
 													</div>
 												</div>
 											</div>
+                                            <button type="button" class="btn btn-success" style="float: right"><i class="fa fa-shopping-cart"></i> BUY NOW</button>
 										</div>
-									</div>
+                                    </div>
 								</div>
 
 								<div class="tabs clearfix">
@@ -161,7 +170,7 @@
 												<a href="#tab-aboutGame" data-toggle="tab">About Game</a>
 											</li>
 											<li class="specification_tab">
-												<a href="#tab-specification" data-toggle="tab">Specification</a>
+												<a href="#tab-specification" data-toggle="tab"> Recommended Specification</a>
 											</li>
 											<li class="reviews_tab ">
 												<a href="#tab-reviews" data-toggle="tab">Reviews (0)</a>
@@ -172,30 +181,99 @@
 
 										<div class=" tab-content">
 											<div class="tab-pane active" id="tab-aboutGame">
-                                                <h4>Developer</h4>
-                                                <h4>{{$game->developer->name}}</h4>
-                                                <h4>Publisher</h4>
-                                                <h4>{{$game->publisher->name}}</h4>
-                                                <h4>Release Date</h4>
-                                                <h4>{{$game->release}}</h4>
-                                                <h4>Tags</h4>
-                                                <h4>
-                                                    {{-- untuk memisah tag dengan koma --}}
-                                                    @foreach ($game->tags as $curTag)
-                                                        @if ($game->tags[0]->name == $curTag->name)
-                                                            {{$curTag->name}}
-                                                        @else
-                                                            , {{$curTag->name}}
-                                                        @endif
-                                                    @endforeach
-                                                </h4>
+                                                <div class='row'>
+                                                    <div class="col-sm-5">
+                                                        <div class="titleabout">Developer</div>
+                                                        <h4>{{$game->developer->name}}</h4>
+                                                    </div>
+                                                    <div class="col-sm-5">
+                                                        <div class="titleabout">Publisher</div>
+                                                        <h4>{{$game->publisher->name}}</h4>
+                                                    </div>
+                                                    <div class="col-sm-5">
+                                                        <div class="titleabout">Release Date</div>
+                                                        <h4>{{$game->release}}</h4>
+                                                    </div>
+                                                    <div class="col-sm-5">
+                                                        <div class="titleabout">Genre</div>
+                                                        <h4>
+                                                            {{-- untuk memisah tag dengan koma --}}
+                                                            @foreach ($game->tags as $curTag)
+                                                                @if ($game->tags[0]->name == $curTag->name)
+                                                                    {{$curTag->name}}
+                                                                @else
+                                                                    , {{$curTag->name}}
+                                                                @endif
+                                                            @endforeach
+                                                        </h4>
+                                                    </div>
+                                                    <div class="col-sm-5">
+                                                        <div class="titleabout">Platform</div>
+                                                        <h4>
+                                                            {{-- untuk memisah tag dengan koma --}}
+                                                            @foreach ($game->platforms as $curplat)
+                                                                @if ($curplat->name == 'Windows')
+                                                                    <i class="fa fa-windows"></i>
+                                                                @else
+                                                                    <i class="fa fa-apple"></i>
+                                                                @endif
+                                                            @endforeach
+                                                        </h4>
+                                                    </div>
+                                                </div>
+
 											</div>
 											<div class="tab-pane" id="tab-specification">
-												<h2>System </h2>
-												<p>Proident adipisicing laborum beef ribs tri-tip dolore meatball tempor rump flank prosciutto elit do. Duis tenderloin culpa excepteur. Fugiat irure est cupim dolor, ut nulla id andouille chicken spare ribs eiusmod brisket biltong. Eiusmod minim tail cupim labore ad filet mignon, andouille esse enim. Sausage salami dolor ex adipisicing consequat. Ground round nostrud ut fatback voluptate consequat in minim drumstick culpa dolore. Ea beef prosciutto in sirloin fatback enim velit consectetur in pork belly pancetta culpa shank.</p>
-												<p>Shank quis in duis, id officia nulla. Pancetta sunt filet mignon porchetta doner turkey occaecat. Meatball corned beef elit ut fugiat. Hamburger biltong tail beef in cupim proident turducken picanha. Sausage chicken incididunt ad occaecat porchetta pancetta corned beef ham hock laborum nisi ullamco pork loin kielbasa aliqua.</p>
-												<p>In jerky minim chicken duis ground round nostrud pork belly occaecat pastrami commodo adipisicing tongue doner short loin. Officia est do, filet mignon shank pork loin anim esse quis kevin corned beef enim. Magna sint sirloin ham hock cupidatat laboris. Boudin spare ribs kevin meatloaf id short loin swine flank brisket aute. Reprehenderit turkey qui, boudin swine voluptate ipsum fugiat.</p>
-												<p>Salami in ball tip pig eiusmod occaecat pork chop, consequat excepteur incididunt. Ground round picanha ut boudin exercitation jerky meatball strip steak ipsum labore spare ribs turducken ribeye ut aliquip. Id ipsum esse nisi ball tip chuck adipisicing sint culpa t-bone brisket bresaola mollit. Enim eu kevin, tail in nisi nulla sirloin adipisicing veniam dolore.</p>
+                                                <div class="row">
+                                                    @if ($game->OS != null)
+                                                        <div class="col-sm-5">
+                                                            <div class="titleabout">OS</div>
+                                                            <h4>{{$game->OS}}</h4>
+                                                        </div>
+                                                    @endif
+                                                    @if ($game->CPU != null)
+                                                        <div class="col-sm-5">
+                                                            <div class="titleabout">CPU</div>
+                                                            <h4>{{$game->CPU}}</h4>
+                                                        </div>
+                                                    @endif
+                                                    @if ($game->processor != null)
+                                                        <div class="col-sm-5">
+                                                            <div class="titleabout">Processor</div>
+                                                            <h4>{{$game->processor}}</h4>
+                                                        </div>
+                                                    @endif
+                                                    @if ($game->memory != null)
+                                                        <div class="col-sm-5">
+                                                            <div class="titleabout">Memory</div>
+                                                            <h4>{{$game->memory}}</h4>
+                                                        </div>
+                                                    @endif
+                                                    @if ($game->storage != null)
+                                                        <div class="col-sm-5">
+                                                            <div class="titleabout">Storage</div>
+                                                            <h4>{{$game->storage}}</h4>
+                                                        </div>
+                                                    @endif
+                                                    @if ($game->direct_x != null)
+                                                        <div class="col-sm-5">
+                                                            <div class="titleabout">Direct X</div>
+                                                            <h4>{{$game->direct_x}}</h4>
+                                                        </div>
+                                                    @endif
+                                                    @if ($game->graphics != null)
+                                                        <div class="col-sm-5">
+                                                            <div class="titleabout">Graphics</div>
+                                                            <h4>{{$game->graphics}}</h4>
+                                                        </div>
+                                                    @endif
+                                                    @if ($game->note != null)
+                                                        <div class="col-sm-5">
+                                                            <div class="titleabout">Developer Note</div>
+                                                            <h4>{{$game->note}}</h4>
+                                                        </div>
+                                                    @endif
+                                                </div>
 											</div>
 											<div class="tab-pane " id="tab-reviews">
 												<div id="reviews">
@@ -593,3 +671,4 @@
 			</div>
 		</div>
 @endsection
+

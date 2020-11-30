@@ -34,7 +34,6 @@ class CreateGamesTable extends Migration
             $table->integer('status');
             $table->string('OS')->nullable();
             $table->string('CPU')->nullable();
-            $table->string('GPU')->nullable();
             $table->string('processor')->nullable();
             $table->string('memory')->nullable();
             $table->string('storage')->nullable();

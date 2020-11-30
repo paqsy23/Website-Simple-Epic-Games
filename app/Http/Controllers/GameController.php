@@ -15,7 +15,7 @@ class GameController extends Controller
         if($game==null){
             return back();
         }
-        // dd($game->img);
+        // dd($game->platforms);
         $gambar = [];
         $index = 0;
 

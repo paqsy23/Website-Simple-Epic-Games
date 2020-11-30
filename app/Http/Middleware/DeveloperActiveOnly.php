@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Session;
 
-class DeveloperOnly
+class DeveloperActiveOnly
 {
     /**
      * Handle an incoming request.
@@ -16,12 +16,12 @@ class DeveloperOnly
      */
     public function handle($request, Closure $next)
     {
-        if(!Session::has('developer-login')){
-            $request->session()->flash('warning', 'You never login as developer :(');
-            return redirect('developer/login');
+        if(Session::get('developer-login')->status!=1){
+            $request->session()->flash('warning', 'You have no access to this site for now...wait for admin confirmation or try signing in again if your status already active');
+            return back();
         }else if(Session::get('developer-login')->status==0){
             $request->session()->flash('warning', 'You have been rejected by admin from becoming a developer...too bad :(');
-            return redirect('developer/login');
+            return back();
         }
         else{
             return $next($request);
