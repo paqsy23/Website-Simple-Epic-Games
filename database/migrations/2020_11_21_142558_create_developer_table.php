@@ -18,6 +18,7 @@ class CreateDeveloperTable extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string('username')->unique();
+            $table->string('email')->unique();
             $table->string('password');
             $table->integer('status');
             $table->timestamps();

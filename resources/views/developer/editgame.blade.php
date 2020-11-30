@@ -135,6 +135,30 @@
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
                           </div>
+                          <div>
+                            <label for="exampleInputFile">Select Game Platform<span class="text-danger">*</span></label>
+                          </div>
+                          @foreach ($game->platforms as $curPlatform)
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="{{$curPlatform->name}}" value="{{$curPlatform->id}}" name="platform[]" checked>
+                            <label class="form-check-label" for="{{$curPlatform->name}}">
+                              {{$curPlatform->name}}
+                            </label>
+                          </div>
+                          @endforeach
+                          @foreach ($platformList as $curPlatform)
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="{{$curPlatform->name}}" value="{{$curPlatform->id}}" name="platform[]">
+                            <label class="form-check-label" for="{{$curPlatform->name}}">
+                              {{$curPlatform->name}}
+                            </label>
+                          </div>
+                          @endforeach
+                          <br>
+                          @error('platform')
+                            <small class="text-danger">{{ $message }}</small>
+                        @enderror
+                          <hr>
                           <div class="form-check">
                             <input class="form-check-input" id="my-checkbox" type="checkbox" name="mycheckbox" onclick="showHideLogo()">
                             <label class="form-check-label" for="my-checkbox">Change Logo Image ?</label>
@@ -278,15 +302,15 @@
 
                         <div class="form-group">
                             <label>OS</label>
-                            <input type="text" class="form-control" name="os" placeholder="OS" value="{{$game->os}}">
-                            @error('os')
+                            <input type="text" class="form-control" name="OS" placeholder="OS" value="{{$game->OS}}">
+                            @error('OS')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label>CPU</label>
-                            <input type="text" class="form-control" name="cpu" placeholder="CPU" value="{{$game->cpu}}">
-                            @error('cpu')
+                            <input type="text" class="form-control" name="CPU" placeholder="CPU" value="{{$game->CPU}}">
+                            @error('CPU')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>

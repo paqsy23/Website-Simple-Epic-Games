@@ -39,7 +39,7 @@
             @error('password')
                 <small class="text-danger">{{ $message }}</small>
             @enderror
-            <input type="hidden" name="username" value="{{$reset->username}}">
+            <input type="hidden" name="email" value="{{$reset->email}}">
             <input type="hidden" name="token" value="{{$reset->token}}">
             <div class="input-group mt-2">
                 <input type="password" class="form-control" name="confirmPassword" placeholder="Re-type Your New Password">

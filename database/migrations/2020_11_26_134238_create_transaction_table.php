@@ -17,8 +17,6 @@ class CreateTransactionTable extends Migration
             $table->id();
             $table->date('tanggal_trans');
             $table->integer('game_price');
-            $table->integer('discount');
-            $table->integer('payed');
             $table->unsignedBigInteger('game_id');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();

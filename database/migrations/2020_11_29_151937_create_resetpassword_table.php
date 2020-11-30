@@ -16,7 +16,6 @@ class CreateResetpasswordTable extends Migration
         Schema::create('resetpassword', function (Blueprint $table) {
             $table->id();
             $table->string('token')->unique();
-            $table->string('username');
             $table->string('link');
             $table->string('email');
             $table->integer('status');

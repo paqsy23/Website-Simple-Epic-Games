@@ -3,8 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Game;
+use App\Models\h_trans;
+use App\Models\Library;
+use App\Models\tag;
+use App\Models\Transaction;
 use App\Rules\CheckPassword;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
@@ -75,8 +82,37 @@ class UserController extends Controller
         }
     }
 
-    public function checkout()
+    public function checkout(Request $request,$id)
     {
-        return view('game.checkout');
+        $user = User::find(Session::get('user-login')->id);
+        $game = Game::find($id);
+
+        return view('game.checkout',["game" => $game, "user" => $user]);
+    }
+
+    public function done(Request $request,$id = 1)
+    {
+
+        $user = User::find(Session::get('user-login')->id);
+        $game = Game::find($id);
+        $money = $user->money - $game->price;
+        $user->money = $money;
+        $user->save();
+
+        $user->games()->attach($game->id);
+
+        Transaction::create([
+            'tanggal_trans'=>Carbon::now(),
+            'game_price'=>$game->price,
+            'game_id'=>$game->id,
+            'user_id'=>$user->id
+        ]);
+
+        $request->session()->flash('message', 'Transaction Completed');
+
+        //masuk library
+
+        return redirect('/');
+
     }
 }

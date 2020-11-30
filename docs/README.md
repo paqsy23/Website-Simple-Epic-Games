@@ -1,6 +1,8 @@
 ## Setelah clone :
-1. composer install
-2. php artisan serve
+1. composer install 
+2. composer require jeroennoten/laravel-adminlte ->untuk adminlte
+3. composer require wildbit/swiftmailer-postmark ->untuk pakai mailtrap
+4. php artisan serve
 
 ## Untuk cek versi laravel :
 1. php artisan --version
