@@ -21,5 +21,6 @@ class DatabaseSeeder extends Seeder
         $this->call(HtagTableSeeder::class);
         $this->call(HplatformTableSeeder::class);
         $this->call(ImageTableSeeder::class);
+        $this->call(TransactionTableSeeder::class);
     }
 }
