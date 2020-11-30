@@ -28,4 +28,8 @@ class Game extends Model
     public function platforms(){
         return $this->belongsToMany(platform::class,'h_platform','game_id','platform_id')->withPivot(['id'])->as("game_platform");
     }
+
+    public function transactions(){
+        return $this->belongsToMany(Transaction::class,'transaction','game_id','id')->withPivot(['id'])->as("transaction_id");
+    }
 }

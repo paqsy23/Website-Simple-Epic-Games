@@ -29,47 +29,94 @@
         <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
       </div>
     </div>
+
     <div class="card-body">
-      <canvas id="pieChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+        <table id="example1" class="table table-bordered table-striped">
+            <thead>
+            <tr>
+              <th>Transaction Date</th>
+              <th>Game Price</th>
+              <th>Game Name</th>
+              <th>User</th>
+            </tr>
+            </thead>
+            <tbody>
+                @foreach ($trans as $trs)
+                    <tr>
+                        <td>{{$trs->tanggal_trans}}</td>
+                        <td>{{$trs->game_price}}</td>
+                        <td>{{$trs->games->name}}</td>
+                        <td>{{$trs->users->name}}</td>
+                        {{-- @if ($curGame->status==-1)
+                            <td>Banned</td>
+                            <td><a href="{{url('admin/reactivate/game/'.$curGame->id)}}"><button class="btn btn-success">Reactivate</button></a></td>
+                        @elseif($curGame->status==2)
+                            <td>Requesting Activation</td>
+                            <td><a href="{{url('admin/reactivate/game/'.$curGame->id)}}"><button class="btn btn-success">Activate</button></a></td>
+                        @endif --}}
+                    </tr>
+                @endforeach
+            </tbody>
+          </table>
+    </div>
+    <!-- /.card-body -->
+  </div>
+  <div class="card card-danger">
+    <div class="card-header">
+      <h3 class="card-title">Top Sale</h3>
+
+      <div class="card-tools">
+        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+        </button>
+        <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+      </div>
+    </div>
+
+    <div class="card-body">
+        <div id="chartContainer" style="height: 370px; width: 100%;"></div>
     </div>
     <!-- /.card-body -->
   </div>
 @stop
 
-@section('css')
-@stop
-
-@section('js')
-<script src="{{asset('vendor/chart.js/Chart.min.js')}}"></script>
-<script>
-    var pieData = {
-      labels: [
-          'Chrome',
-          'IE',
-          'FireFox',
-          'Safari',
-          'Opera',
-          'Navigator',
-      ],
-      datasets: [
-        {
-          data: [700,500,400,600,300,{{$nilai}}],
-          backgroundColor : ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de'],
+<?php
+    $dataPoints = [];
+    foreach ($game as $value) {
+        $i = 0;
+        foreach ($trans as $trs) {
+            if($trs->games->name == $value->name){
+                $i = $i+1;
+            }
         }
-      ]
+        if($i > 0){
+            array_push($dataPoints,array("label"=> $value->name, "y"=> $i));
+        }
     }
+?>
 
-    var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
-    var pieData        = pieData;
-    var pieOptions     = {
-      maintainAspectRatio : false,
-      responsive : true,
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script>
+    window.onload = function () {
+
+    var chart = new CanvasJS.Chart("chartContainer", {
+        animationEnabled: true,
+        exportEnabled: true,
+        title:{
+            text: "Game Sell"
+        },
+        subtitles: [{
+            text: ""
+        }],
+        data: [{
+            type: "pie",
+            showInLegend: "true",
+            legendText: "{label}",
+            indexLabelFontSize: 16,
+            indexLabel: "{label} - #percent%",
+            yValueFormatString: "฿#,##0",
+            dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
+        }]
+    });
+    chart.render();
     }
-
-    var pieChart = new Chart(pieChartCanvas, {
-      type: 'pie',
-      data: pieData,
-      options: pieOptions
-    })
 </script>
-@stop
