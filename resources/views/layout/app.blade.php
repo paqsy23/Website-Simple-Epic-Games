@@ -32,6 +32,7 @@
 	<link rel="stylesheet" href="{{asset('css/woocommerce/woocommerce-smallscreen.css')}}" />
 	<link rel="stylesheet" href="{{asset('css/prettyphoto/prettyPhoto.css')}}" />
 	<link rel="stylesheet" href="{{asset('css/yith-woocommerce-wishlist/style.css')}}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
 	<link rel="stylesheet" href="{{asset('css/custom.css')}}" />
