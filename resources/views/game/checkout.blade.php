@@ -73,7 +73,7 @@
 
                                     <p class="form-row form-row form-row-wide address-field validate-required" id="billing_address_1_field">
                                         <label for="billing_address_1" class="">
-                                            Wallet
+                                            Walletku
                                         </label>
                                         <input type="text" class="input-text " name="wallet" id="wallet" value="{{$uang}}" />
                                     </p>
