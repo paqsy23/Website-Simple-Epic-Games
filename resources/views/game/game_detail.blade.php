@@ -98,8 +98,16 @@
 												</div> --}}
                                                 {{-- Harga Game --}}
 												<div>
-													<p class="price"><span class="woocommerce-Price-amount amount">${{$game->price}}</span></p>
-												</div>
+                                                    <p class="price" class="woocommerce-Price-amount amount">${{$game->price}}
+                                                        <form action="{{ url('account/checkout') }}" method="POST">
+                                                            @csrf
+                                                            <input name="game_name" type="hidden" value="{{$game->name}}">
+                                                            <input name="game_price" type="hidden" value="{{$game->price}}">
+                                                        <Button>Order</Button>
+                                                        </form>
+                                                    </p>
+
+                                                </div>
 
 												{{-- <div class="product-info clearfix">
 													<div class="product-stock pull-left out-stock">

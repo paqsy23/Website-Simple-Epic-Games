@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Game;
+use App\Models\tag;
 use App\Rules\CheckPassword;
 use Illuminate\Http\Request;
 
@@ -75,8 +77,52 @@ class UserController extends Controller
         }
     }
 
-    public function checkout()
+    public function checkout(Request $request)
     {
-        return view('game.checkout');
+        $user_login = $request->session()->get('user-login');
+        $user = User::find($user_login->id);
+        $game = [
+            "name" => $request->input("game_name"),
+            "price" => $request->input("game_price")
+        ];
+
+        return view('game.checkout',["game" => $game, "uang" => $user->money]);
+    }
+
+    public function done(Request $request, $id = 1)
+    {
+        $user_login = $request->session()->get('user-login');
+        $user = User::find($user_login->id);
+        $game = [
+            "name" => $request->input("game_name"),
+            "price" => $request->input("game_price")
+        ];
+        if($game["price"] > $user->money){
+            echo "<script>";
+            echo "alert('Uang anda tidak mencukupi');";
+            echo "</script>";
+            return view('game.checkout',["game" => $game, "uang" => $user->money]);
+        }else{
+
+            $money = $user->money - $game["price"];
+            $user->money = $money;
+            $user->save();
+
+            $tags = tag::all();
+
+        $games = Game::where('status', 1)->get();
+        $gamesDisplay = Game::where('status', 1)->skip(9 * ($id - 1))->take(9)->get();
+        $gamesNew = Game::where('status', 1)->orderBy('release', 'desc')->take(4)->get();
+
+        $totalPage = ceil(count($games) / 9);
+
+        return view('shop.main', [
+            'tags' => $tags,
+            'games' => $gamesDisplay,
+            'totalPage' => $totalPage,
+            'current' => $id,
+            'new_release' => $gamesNew
+        ]);
+        }
     }
 }

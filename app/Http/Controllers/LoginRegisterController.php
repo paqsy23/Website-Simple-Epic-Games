@@ -57,7 +57,9 @@ class LoginRegisterController extends Controller
             'name' => $request->nama,
             'username' => $request->username,
             'email' => $request->email,
-            'password' => password_hash($request->password, PASSWORD_BCRYPT)
+            'password' => password_hash($request->password, PASSWORD_BCRYPT),
+            'status' => 1,
+            'money' => 0
         ]);
 
         $request->session()->flash('message', 'Registration Completed!');
