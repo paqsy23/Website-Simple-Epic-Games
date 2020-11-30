@@ -278,15 +278,15 @@
 
                         <div class="form-group">
                             <label>OS</label>
-                            <input type="text" class="form-control" name="os" placeholder="OS" value="{{$game->os}}">
-                            @error('os')
+                            <input type="text" class="form-control" name="OS" placeholder="OS" value="{{$game->OS}}">
+                            @error('OS')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label>CPU</label>
-                            <input type="text" class="form-control" name="cpu" placeholder="CPU" value="{{$game->cpu}}">
-                            @error('cpu')
+                            <input type="text" class="form-control" name="CPU" placeholder="CPU" value="{{$game->CPU}}">
+                            @error('CPU')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>

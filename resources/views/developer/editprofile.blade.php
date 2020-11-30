@@ -69,6 +69,13 @@
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="text" class="form-control" name="email" placeholder="Developer Email" value="{{$developer->email}}">
+                            @error('email')
+                                <small class="text-danger">{{ $message }}</small>
+                            @enderror
+                        </div>
                         <div class="form-check">
                             <input class="form-check-input" id="my-checkbox" type="checkbox" name="mycheckbox" onclick="showHidePassword()">
                             <label class="form-check-label" for="my-checkbox">Change Password</label>

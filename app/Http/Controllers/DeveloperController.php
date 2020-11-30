@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class DeveloperController extends Controller
@@ -40,6 +41,26 @@ class DeveloperController extends Controller
         return redirect('developer/login');
     }
 
+    public function register(Request $request)
+    {
+        $request->validate([
+            'name'=>'required|unique:App\Models\developer,name',
+            'username' => 'required|unique:App\Models\developer,username',
+            'email'=>'required|email|unique:App\Models\developer,email',
+            'password' => 'required',
+            'confirmPassword'=>'required|same:password'
+        ]);
+        Developer::create([
+            'name'=>$request->name,
+            'username'=>$request->username,
+            'email'=>$request->email,
+            'password'=>password_hash($request->password, PASSWORD_BCRYPT),
+            'status'=>2
+        ]);
+        $request->session()->flash('message', 'Registered...Waiting for Admin Confirmation');
+
+        return redirect('developer/login');
+    }
     public function home()
     {
         $developer = developer::find(Session::get('developer-login')->id);
@@ -195,6 +216,7 @@ class DeveloperController extends Controller
     {
         $request->validate([
             'name'=>'required',
+            'email'=>'required',
             'oldpassword'=>'required_if:mycheckbox,on',
             'newpassword'=>'required_if:mycheckbox,on'
         ]);
@@ -231,8 +253,7 @@ class DeveloperController extends Controller
         $token = Str::random(60);
 
         $request->validate([
-            'email'=>'required',
-            'username'=>'required|exists:developer,username'
+            'email'=>'required|exists:developer,email'
         ]);
 
         $link = "http://127.0.0.1:8000/resetpassword/".$token;
@@ -240,7 +261,6 @@ class DeveloperController extends Controller
         ResetPassword::create([
             'token'=>$token,
             'email'=>$request->email,
-            'username'=>$request->username,
             'link'=>$link,
             'status'=>0
         ]);
@@ -272,7 +292,7 @@ class DeveloperController extends Controller
             'confirmPassword'=>'required|same:password'
         ]);
 
-        $developer = Developer::where('username',$request->username)->first();
+        $developer = Developer::where('email',$request->email)->first();
         $developer->password = password_hash($request->password, PASSWORD_BCRYPT);
         $developer->save();
 
@@ -308,6 +328,7 @@ class DeveloperController extends Controller
 
     public function editGame(Request $request)
     {
+        // dd($request->all());
         $game = Game::find($request->id);
 
         $request->validate([
@@ -336,8 +357,41 @@ class DeveloperController extends Controller
             $request->session()->flash('message', 'Game Updated!! Waiting for Admin Confirmation');
             return back();
         }else if($request->mycheckbox=="on"){
-            //ganti gambar logo game
+            foreach($game->img as $curImage){
+                if(Str::contains($curImage->link,'logo')){
+                    $tempImage = Image::where('link',$curImage->link);
+                    $tempImage->delete();
+                    $namaPhoto = "logo.".$request->file('gameLogo')->extension();
+                    $namaFolderPhoto = "games/".$game->id;
+                    $pathPhoto = $request->gameLogo->storeAs($namaFolderPhoto,$namaPhoto,"public");
+                    Image::create([
+                        'game_id'=>$game->id,
+                        'link'=>$game->id."/".$namaPhoto
+                    ]);
+                }
+            }
+            $request->session()->flash('message', 'Game Updated!! Waiting for Admin Confirmation');
         }
-        dd($request->mycheckbox);
+        if($request->mycheckbox2=="on"){
+            foreach($game->img as $curImage){
+                if(!Str::contains($curImage->link,'logo')){
+                    $tempImage = Image::where('link',$curImage->link);
+                    $tempImage->delete();
+                }
+            }
+            $index = 1;
+            foreach($request->file('gameImage') as $photo){
+                $namaPhoto = $index.".".$photo->extension();
+                $namaFolderPhoto = "games/".$game->id;
+                $pathPhoto = $photo->storeAs($namaFolderPhoto,$namaPhoto,"public");
+                $index = $index+1;
+                Image::create([
+                    'game_id'=>$game->id,
+                    'link'=>$game->id."/".$namaPhoto
+                ]);
+            }
+            $request->session()->flash('message', 'Game Updated!! Waiting for Admin Confirmation');
+        }
+        return back();
     }
 }
