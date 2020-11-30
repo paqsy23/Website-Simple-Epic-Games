@@ -26,8 +26,8 @@ class LoginRegisterController extends Controller
 
         if ($user != null) {
             if (password_verify($request->password, $user->password)) {
-                $request->session()->flash('message', 'Login Success');
                 $request->session()->put('user-login', $user);
+                return redirect('/');
             } else {
                 $request->session()->flash('warning', 'Wrong Password');
             }
@@ -70,6 +70,6 @@ class LoginRegisterController extends Controller
     public function logout(Request $request)
     {
         $request->session()->forget('user-login');
-        return redirect('login');
+        return redirect('account/login');
     }
 }

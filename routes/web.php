@@ -14,9 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'MainController@showHome');
-Route::get('{id}', 'MainController@showHome');
-
 
 
 Route::group(['prefix' => 'account'], function () {
@@ -28,7 +25,6 @@ Route::group(['prefix' => 'account'], function () {
 
     Route::get('/', 'UserController@dashboard');
     Route::get('orders', 'UserController@order');
-    Route::get('address', 'UserController@addresses');
     Route::get('detail', 'UserController@accountDetails');
     Route::post('edit', 'UserController@editDetails');
     Route::post('edit-password', 'UserController@editPassword');
@@ -87,3 +83,6 @@ Route::group(['middleware'=>['DeveloperOnly'],'prefix' => 'developer'], function
 });
 
 Route::get('/resetpassword/{token}','DeveloperController@resetPasswordToken');
+
+Route::get('/', 'MainController@showHome');
+Route::get('{id}', 'MainController@showHome');

@@ -106,7 +106,7 @@
 												</div> --}}
                                                 {{-- Harga Game --}}
 												<div>
-                                                    <p class="price" class="woocommerce-Price-amount amount">${{$game->price}}
+                                                    <p class="price" class="woocommerce-Price-amount amount">${{number_format($game->price, 2)}}
 
                                                     </p>
 

@@ -4,7 +4,7 @@
     <div class="body-wrapper theme-clearfix">
         @include('header.header')
 
-        <div class="listings-title">
+        {{-- <div class="listings-title">
             <div class="container">
                 <div class="wrap-title">
                     <h1>Products</h1>
@@ -27,7 +27,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         <div class="container">
             <div class="row">
@@ -44,7 +44,7 @@
                                         </div>
                                     </div> --}}
 
-                                    <div class="catalog-ordering">
+                                    {{-- <div class="catalog-ordering">
                                         <div class="orderby-order-container clearfix">
                                             <ul class="orderby order-dropdown pull-left">
                                                 <li>
@@ -63,7 +63,7 @@
                                                 <li class="asc"><a href="#"><i class="fa fa-long-arrow-down"></i></a></li>
                                             </ul>
 
-                                            {{-- <div class="product-number pull-left clearfix">
+                                            <div class="product-number pull-left clearfix">
                                                 <span class="show-product pull-left">Show </span>
                                                 <ul class="sort-count order-dropdown pull-left">
                                                     <li>
@@ -75,9 +75,9 @@
                                                         </ul>
                                                     </li>
                                                 </ul>
-                                            </div> --}}
+                                            </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
 
                                     <nav class="woocommerce-pagination pull-right">
                                         <ul class="page-numbers">
@@ -116,7 +116,7 @@
                                         </div>
                                     </div> --}}
 
-                                    <div class="catalog-ordering">
+                                    {{-- <div class="catalog-ordering">
                                         <div class="orderby-order-container clearfix">
                                             <ul class="orderby order-dropdown pull-left">
                                                 <li>
@@ -135,7 +135,7 @@
                                                 <li class="asc"><a href="#"><i class="fa fa-long-arrow-down"></i></a></li>
                                             </ul>
 
-                                            {{-- <div class="product-number pull-left clearfix">
+                                            <div class="product-number pull-left clearfix">
                                                 <span class="show-product pull-left">Show </span>
                                                 <ul class="sort-count order-dropdown pull-left">
                                                     <li>
@@ -147,9 +147,9 @@
                                                         </ul>
                                                     </li>
                                                 </ul>
-                                            </div> --}}
+                                            </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
 
                                     <nav class="woocommerce-pagination pull-right">
                                         <ul class="page-numbers">
