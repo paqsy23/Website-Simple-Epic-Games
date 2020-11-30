@@ -26,7 +26,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Developer List</h3>
+                <h3 class="card-title font-weight-bolder">List of Requested Developer</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -34,8 +34,38 @@
                   <thead>
                   <tr>
                     <th>Developer</th>
-                    <th>Game List</th>
+                    <th>Status</th>
                     <th>Action</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                    @foreach ($requestdeveloper as $curDeveloper)
+                    <tr>
+                        <td>{{$curDeveloper->name}}</td>
+                        <td>Waiting for Confirmation</td>
+                        <td>
+                            <a href="{{url('admin/confirm/developer/'.$curDeveloper->id)}}"><button class="btn btn-success">Confirm</button></a>
+                            <a href="{{url('admin/reject/developer/'.$curDeveloper->id)}}"><button class="btn btn-danger">Reject</button></a>
+                        </td>
+                      </tr>
+                    @endforeach
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title font-weight-bolder">List of Active Developer</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example3" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>Developer</th>
+                    <th>Game List</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -43,10 +73,6 @@
                     <tr>
                         <td>{{$curDeveloper->name}}</td>
                         <td><a href="{{url('admin/developer/'.$curDeveloper->id)}}"><button class="btn btn-primary">Developer Detail</button></a></td>
-                        <td>
-                            <a href="{{url('admin/confirm/game/1')}}"><button class="btn btn-success">Confirm</button></a>
-                            <a href="{{url('admin/ban/game/1')}}"><button class="btn btn-danger">Reject</button></a>
-                        </td>
                       </tr>
                     @endforeach
                   </tbody>
@@ -81,7 +107,14 @@
         "responsive": true,
         "autoWidth": false,
       });
-
+      $("#example2").DataTable({
+        "responsive": true,
+        "autoWidth": false,
+      });
+      $("#example3").DataTable({
+        "responsive": true,
+        "autoWidth": false,
+      });
     });
   </script>
 @stop

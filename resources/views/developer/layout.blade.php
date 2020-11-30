@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="{{asset('vendor/fontawesome-free/css/all.min.css')}}">
   <link rel="stylesheet" href="{{asset('vendor/fontawesome-free/css/fontawesome.min.css')}}">
   <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
+  <!-- Toastr -->
+  <link rel="stylesheet" href="{{asset('vendor/toastr/toastr.min.css')}}">
   <!-- Ionicons -->
   <link rel="stylesheet" href="{{asset('https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css')}}">
   <!-- icheck bootstrap -->
@@ -48,9 +50,7 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
           <!-- Brand Logo -->
           <a href="index3.html" class="brand-link">
-            <img src="{{asset('vendor/adminlte/dist/img/AdminLTELogo.png')}}" alt="Developer Logo" class="brand-image img-circle elevation-3"
-                 style="opacity: .8">
-            <span class="brand-text font-weight-light">{{Session::get('developer-login')->name}}</span>
+            <span class="brand-text font-weight-light">{{$developer->name}}</span>
           </a>
 
           <!-- Sidebar -->
@@ -87,7 +87,7 @@
                   </li>
                 <li class="nav-header">ACCOUNT SETTINGS</li>
                 <li class="nav-item">
-                  <a href="{{url('developer/editProfile/id')}}" class="nav-link">
+                  <a href="{{url('developer/editprofile/'.$developer->id)}}" class="nav-link">
                     <i class="nav-icon fas fa-user"></i>
                     <p>
                       Edit Profile
@@ -121,12 +121,16 @@
 <script src="{{asset('vendor/select2/js/select2.full.min.js')}}"></script>
 <!-- Bootstrap4 Duallistbox -->
 <script src="{{asset('vendor/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js')}}"></script>
+<!-- Bootstrap Switch -->
+<script src="{{asset('vendor/bootstrap-switch/js/bootstrap-switch.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('vendor/adminlte/dist/js/adminlte.min.js')}}"></script>
 {{-- Chart for home --}}
 <script src="{{asset('vendor/chart.js/Chart.min.js')}}"></script>
 {{-- DateRangePicker --}}
 <script src="{{asset('vendor/daterangepicker/daterangepicker.js')}}"></script>
+<!-- Toastr -->
+<script src="{{asset('vendor/toastr/toastr.min.js')}}"></script>
 <!-- InputMask -->
 <script src="{{asset('vendor/moment/moment.min.js')}}"></script>
 <script src="{{asset('vendor/inputmask/min/jquery.inputmask.bundle.min.js')}}"></script>

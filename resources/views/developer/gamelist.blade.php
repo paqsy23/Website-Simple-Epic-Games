@@ -28,6 +28,18 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
+            @if ($message = Session::get('message'))
+            <div class="alert alert-success">
+              <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>{{ $message }}</strong>
+            </div>
+          @endif
+          @if ($message = Session::get('warning'))
+            <div class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>{{ $message }}</strong>
+            </div>
+        @endif
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">List Of Game Developed by {{$developer->name}}</h3>
@@ -46,7 +58,12 @@
                   </thead>
                   <tbody>
                   @foreach ($developer->gameDeveloper as $curGame)
-                  <tr data-toggle="modal" data-target="#modal-xl" data-url="http://127.0.0.1:8000/game/{{$curGame->id}}" data-title="{{$curGame->name}}">
+                  {{-- <tr data-toggle="modal" data-target="#modal-xl" data-url="http://127.0.0.1:8000/game/{{$curGame->id}}" data-title="{{$curGame->name}}"> --}}
+                    @if ($curGame->status==-1)
+                        <tr class="table-danger">
+                    @else
+                        <tr>
+                    @endif
                     <td>{{$curGame->developer->name}}</td>
                     <td>{{$curGame->publisher->name}}</td>
                     <td>{{$curGame->name}}</td>
@@ -54,12 +71,25 @@
                     @if ($curGame->status==1)
                     <td>Active</td>
                     <td>
-                        <a href="{{url('admin/ban/game/'.$curGame->id)}}"><button class="btn btn-danger">Deactivate</button></a>
+                        <a href="{{url('developer/editGame/'.$curGame->id)}}"><button class="btn btn-primary">Edit Game</button></a>
+                        <a href="{{url('developer/deactivate/'.$curGame->id)}}"><button class="btn btn-danger">Deactivate</button></a>
+                    </td>
+                    @elseif($curGame->status==2)
+                    <td>Waiting For Admin Confirmation</td>
+                    <td>
+                        <a href="{{url('developer/editGame/'.$curGame->id)}}"><button class="btn btn-primary">Edit Game</button></a>
+                        <a href="{{url('developer/deactivate/'.$curGame->id)}}"><button class="btn btn-danger">Cancel</button></a>
+                    </td>
+                    @elseif($curGame->status==-1)
+                    <td>Banned</td>
+                    <td>
+                        <a href="{{url('developer/reactivate/'.$curGame->id)}}"><button class="btn btn-secondary" disabled>Just Pray</button></a>
                     </td>
                     @else
                     <td>Non-Active</td>
                     <td>
-                        <a href="{{url('admin/confirm/game/'.$curGame->id)}}"><button class="btn btn-success">Reactivate</button></a>
+                        <a href="{{url('developer/editGame/'.$curGame->id)}}"><button class="btn btn-primary">Edit Game</button></a>
+                        <a href="{{url('developer/reactivate/'.$curGame->id)}}"><button class="btn btn-success toastrDefaultSuccess">Reactivate</button></a>
                     </td>
                     @endif
 
@@ -88,7 +118,8 @@
                           </thead>
                           <tbody>
                           @foreach ($developer->gamePublisher as $curGame)
-                          <tr data-toggle="modal" data-target="#modal-xl" data-url="http://127.0.0.1:8000/game/{{$curGame->id}}" data-title="{{$curGame->name}}">
+                          {{-- <tr data-toggle="modal" data-target="#modal-xl" data-url="http://127.0.0.1:8000/game/{{$curGame->id}}" data-title="{{$curGame->name}}"> --}}
+                            <tr>
                             <td>{{$curGame->developer->name}}</td>
                             <td>{{$curGame->publisher->name}}</td>
                             <td>{{$curGame->name}}</td>
@@ -96,12 +127,25 @@
                             @if ($curGame->status==1)
                             <td>Active</td>
                             <td>
-                                <a href="{{url('admin/ban/game/'.$curGame->id)}}"><button class="btn btn-danger">Deactivate</button></a>
+                                <a href="{{url('developer/editGame/'.$curGame->id)}}"><button class="btn btn-primary">Edit Game</button></a>
+                                <a href="{{url('developer/deactivate/'.$curGame->id)}}"><button class="btn btn-danger">Deactivate</button></a>
+                            </td>
+                            @elseif($curGame->status==2)
+                            <td>Waiting For Admin Confirmation</td>
+                            <td>
+                                <a href="{{url('developer/editGame/'.$curGame->id)}}"><button class="btn btn-primary">Edit Game</button></a>
+                                <a href="{{url('developer/deactivate/'.$curGame->id)}}"><button class="btn btn-danger">Cancel</button></a>
+                            </td>
+                            @elseif($curGame->status==-1)
+                            <td class="table-danger">Banned</td>
+                            <td>
+                                <a href="{{url('developer/reactivate/'.$curGame->id)}}"><button class="btn btn-secondary" disabled>Just Pray</button></a>
                             </td>
                             @else
                             <td>Non-Active</td>
                             <td>
-                                <a href="{{url('admin/confirm/game/'.$curGame->id)}}"><button class="btn btn-success">Reactivate</button></a>
+                                <a href="{{url('developer/editGame/'.$curGame->id)}}"><button class="btn btn-primary">Edit Game</button></a>
+                                <a href="{{url('developer/reactivate/'.$curGame->id)}}"><button class="btn btn-success">Reactivate</button></a>
                             </td>
                             @endif
 
@@ -141,6 +185,7 @@
         </div>
         {{-- End Modal --}}
     </section>
+
 @endsection
 
 @section('script')

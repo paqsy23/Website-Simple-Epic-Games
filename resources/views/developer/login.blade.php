@@ -48,10 +48,13 @@
         @if (Session::has('warning'))
             <div class="text-center mb-3"> <span style="color:red">{{ Session::get('warning') }}</span></div>
         @endif
+        @if (Session::has('message'))
+            <div class="text-center mb-3"> <span class="text-success">{{ Session::get('message') }}</span></div>
+        @endif
         <button type="submit" class="btn btn-primary btn-block">Sign In</button>
         <p class="text-center mt-3">- OR -</p>
         <p class="mb-1 text-center">
-            <a href="forgot-password.html">I forgot my password</a>
+            <a href="{{url('developer/forgetpassword')}}">I forgot my password</a>
           </p>
         <p class="mb-0 text-center">
             <a href="{{url('developer/register')}}" class="text-center">Become a Developer/Publisher</a>

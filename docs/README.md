@@ -11,8 +11,6 @@
 3. pull dan merge + fix error kalau ada
 4. push :D
 
-kalau ada error atau apa yang ga jelas / tidak bisa diatasi sendiri ditulis di note errorForum.md
-
 setiap halaman dikasi penjelasan di bagian App Structure agar lebih jelas dan tidak berantakan
 
 ## Environment
@@ -23,6 +21,15 @@ setiap halaman dikasi penjelasan di bagian App Structure agar lebih jelas dan ti
 *  0 = inactive
 *  1 = active
    2 = request activate
+
+## Developer Status Info
+* 0 = rejected
+* 1 = active
+* 2 = requested
+
+## Reset Password Token Status Info
+* 0 = still in process
+* 1 = done
 
 ## App Structure
 contoh structure 

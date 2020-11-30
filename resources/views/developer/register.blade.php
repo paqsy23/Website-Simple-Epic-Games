@@ -77,7 +77,7 @@
             </div>
             <p class="text-center mt-3">- OR -</p>
             <p class="mb-0 text-center">
-                <a href="{{url('developer/register')}}" class="text-center">I'm Already A Developer/Publisher</a>
+                <a href="{{url('developer/login')}}" class="text-center">I'm Already A Developer/Publisher</a>
             </p>
           </form>
 

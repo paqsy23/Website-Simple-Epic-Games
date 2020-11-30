@@ -249,7 +249,7 @@ return [
         //     'label_color' => 'success',
         // ],
         [
-            'text'        => 'Game Confirmation',
+            'text'        => 'Game List',
             'url'         => 'admin/home',
             'icon'        => 'fa fa-fw fa-gamepad',
         ],

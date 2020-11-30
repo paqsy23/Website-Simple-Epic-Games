@@ -176,8 +176,8 @@
                     </div>
                 </div>
 
-                {{-- <aside id="right" class="sidebar col-lg-3 col-md-4 col-sm-4">
-                    <div class="widget-1 widget-first widget woocommerce_product_categories-3 woocommerce widget_product_categories">
+                <aside id="right" class="sidebar col-lg-3 col-md-4 col-sm-4">
+                    {{-- <div class="widget-1 widget-first widget woocommerce_product_categories-3 woocommerce widget_product_categories">
                         <div class="widget-inner">
                             <div class="block-title-widget">
                                 <h2><span>Categories</span></h2>

@@ -1,87 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layout.app')
 
-<!-- Mirrored from demo.smartaddons.com/templates/html/etrostore/create_account.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 20 Nov 2020 05:51:10 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
-<head>
-	<title>My Account - Premium Multipurpose HTML5/CSS3 Theme</title>
-	<meta charset="utf-8" />
+@section('body')
+    <div class="body-wrapper theme-clearfix">
 
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        @include('header.header')
 
-	<!-- FAVICONS -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="icons/apple-touch-icon-144-precomposed.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="icons/apple-touch-icon-114-precomposed.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="icons/apple-touch-icon-72-precomposed.png" />
-    <link rel="apple-touch-icon-precomposed" href="icons/apple-touch-icon-57-precomposed.png" />
-    <link rel="shortcut icon" href="icons/favicon.png" />
+        <div class="listings-title">
+            <div class="container">
+                <div class="wrap-title">
+                    <h1>My Account</h1>
+                    <div class="bread">
+                        <div class="breadcrumbs theme-clearfix">
+                            <div class="container">
+                                <ul class="breadcrumb">
+                                    <li>
+                                        <a href="home_page_1.html">Home</a>
+                                        <span class="go-page"></span>
+                                    </li>
 
-	<!-- GOOGLE WEB FONTS -->
-	<link rel="stylesheet" href="css/font-awesome.min.css">
+                                    <li class="active">
+                                        <span>My account</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-	<!-- BOOTSTRAP 3.3.7 CSS -->
-	<link rel="stylesheet" href="css/bootstrap.min.css" />
+        <div class="container">
+            <div class="row">
+                <div id="contents" role="main" class="main-page col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="single page type-page status-publish hentry">
+                        <div class="entry">
+                            <div class="entry-content">
+                                {{-- <header>
+                                    <h2 class="entry-title">My Account</h2>
+                                </header> --}}
 
-	<!-- SLICK v1.6.0 CSS -->
-	<link rel="stylesheet" href="css/slick-1.6.0/slick.css" />
-
-	<link rel="stylesheet" href="css/jquery.fancybox.css" />
-	<link rel="stylesheet" href="css/yith-woocommerce-compare/colorbox.css" />
-	<link rel="stylesheet" href="css/owl-carousel/owl.carousel.min.css" />
-	<link rel="stylesheet" href="css/owl-carousel/owl.theme.default.min.css" />
-	<link rel="stylesheet" href="css/js_composer/js_composer.min.css" />
-	<link rel="stylesheet" href="css/woocommerce/woocommerce.css" />
-	<link rel="stylesheet" href="css/yith-woocommerce-wishlist/style.css" />
-
-
-	<link rel="stylesheet" href="css/custom.css" />
-	<link rel="stylesheet" href="css/app-orange.css" id="theme_color" />
-	<link rel="stylesheet" href="#" id="rtl" />
-	<link rel="stylesheet" href="css/app-responsive.css" />
-</head>
-
-<body class="page woocommerce-account woocommerce-page">
-	<div class="body-wrapper theme-clearfix">
-		@include('header.header')
-
-		<div class="listings-title">
-			<div class="container">
-				<div class="wrap-title">
-					<h1>My Account</h1>
-					<div class="bread">
-						<div class="breadcrumbs theme-clearfix">
-							<div class="container">
-								<ul class="breadcrumb">
-									<li>
-										<a href="home_page_1.html">Home</a>
-										<span class="go-page"></span>
-									</li>
-
-									<li class="active">
-										<span>My account</span>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="container">
-			<div class="row">
-				<div id="contents" role="main" class="main-page col-lg-12 col-md-12 col-sm-12 col-xs-12">
-					<div class="single page type-page status-publish hentry">
-						<div class="entry">
-							<div class="entry-content">
-								{{-- <header>
-									<h2 class="entry-title">My Account</h2>
-								</header> --}}
-
-								<div class="entry-content">
-									<div class="woocommerce">
-										<div class="col2-set row" id="customer_login">
-											<div class="col-lg-6 col-lg-offset-3">
+                                <div class="entry-content">
+                                    <div class="woocommerce">
+                                        <div class="col2-set row" id="customer_login">
+                                            <div class="col-lg-6 col-lg-offset-3">
                                                 <h2>Login</h2>
 
                                                 @if (Session::get('message') != null)
@@ -96,663 +57,121 @@
                                                     </div>
                                                 @endif
 
-												<form method="post" class="login">
+                                                <form method="post" class="login">
                                                     @csrf
-													<p class="form-row form-row-wide">
-														<label for="username">
-															Username or email address <span class="required">*</span>
-														</label>
+                                                    <p class="form-row form-row-wide">
+                                                        <label for="username">
+                                                            Username or email address <span class="required">*</span>
+                                                        </label>
 
-														<input type="text" class="input-text" name="username" id="username" />
+                                                        <input type="text" class="input-text" name="username" id="username" />
                                                         @error('username')
                                                             <small class="text-danger">{{ $message }}</small>
                                                         @enderror
-													</p>
+                                                    </p>
 
-													<p class="form-row form-row-wide">
-														<label for="password">
-															Password <span class="required">*</span>
-														</label>
+                                                    <p class="form-row form-row-wide">
+                                                        <label for="password">
+                                                            Password <span class="required">*</span>
+                                                        </label>
 
-														<input class="input-text" type="password" name="password" id="password" />
+                                                        <input class="input-text" type="password" name="password" id="password" />
                                                         @error('password')
                                                             <small class="text-danger">{{ $message }}</small>
                                                         @enderror
-													</p>
+                                                    </p>
 
-													{{-- <p class="form-row">
-														<label for="rememberme" class="inline">
-															<input name="rememberme" type="checkbox" id="rememberme" value="forever" /> Remember me
-														</label>
-													</p> --}}
+                                                    {{-- <p class="form-row">
+                                                        <label for="rememberme" class="inline">
+                                                            <input name="rememberme" type="checkbox" id="rememberme" value="forever" /> Remember me
+                                                        </label>
+                                                    </p> --}}
 
-													<p class="form-row">
-														<input type="submit" class="button" name="login" value="Login" />
-													</p>
+                                                    <p class="form-row">
+                                                        <input type="submit" class="button" name="login" value="Login" />
+                                                    </p>
 
-													<p class="lost_password">
-														Don't have an account? <a href="{{ url('register') }}">Register Now!</a>
-													</p>
-												</form>
+                                                    <p class="lost_password">
+                                                        Don't have an account? <a href="{{ url('account/register') }}">Register Now!</a>
+                                                    </p>
+                                                </form>
                                             </div>
 
-											{{-- <div class="col-lg-6 col-lg-offset-3">
-												<h2>Register</h2>
+                                            {{-- <div class="col-lg-6 col-lg-offset-3">
+                                                <h2>Register</h2>
 
-												<form method="post" class="register">
+                                                <form method="post" class="register">
                                                     @csrf
                                                     <p class="form-row form-row-wide">
-														<label for="reg_name">
-															Name <span class="required">*</span>
-														</label>
+                                                        <label for="reg_name">
+                                                            Name <span class="required">*</span>
+                                                        </label>
 
                                                         <input type="text" class="input-text" name="nama" id="reg_name" value="" />
                                                         @error('nama')
                                                             <small class="text-danger">{{ $message }}</small>
                                                         @enderror
-													</p>
+                                                    </p>
 
                                                     <p class="form-row form-row-wide">
-														<label for="reg_username">
-															Username <span class="required">*</span>
-														</label>
+                                                        <label for="reg_username">
+                                                            Username <span class="required">*</span>
+                                                        </label>
 
                                                         <input type="text" class="input-text" name="username" id="reg_username" value="" />
                                                         @error('username')
                                                             <small class="text-danger">{{ $message }}</small>
                                                         @enderror
-													</p>
+                                                    </p>
 
-													<p class="form-row form-row-wide">
-														<label for="reg_email">
-															Email address <span class="required">*</span>
-														</label>
+                                                    <p class="form-row form-row-wide">
+                                                        <label for="reg_email">
+                                                            Email address <span class="required">*</span>
+                                                        </label>
 
-														<input type="email" class="input-text" name="email" id="reg_email" value="" />
+                                                        <input type="email" class="input-text" name="email" id="reg_email" value="" />
                                                         @error('email')
                                                             <small class="text-danger">{{ $message }}</small>
                                                         @enderror
-													</p>
+                                                    </p>
 
-													<p class="form-row form-row-wide">
-														<label for="reg_password">
-															Password <span class="required">*</span>
-														</label>
+                                                    <p class="form-row form-row-wide">
+                                                        <label for="reg_password">
+                                                            Password <span class="required">*</span>
+                                                        </label>
 
-														<input type="password" class="input-text" name="password" id="reg_password" />
+                                                        <input type="password" class="input-text" name="password" id="reg_password" />
                                                         @error('password')
                                                             <small class="text-danger">{{ $message }}</small>
                                                         @enderror
                                                     </p>
 
                                                     <p class="form-row form-row-wide">
-														<label for="confirm_password">
-															Confirm Password <span class="required">*</span>
-														</label>
+                                                        <label for="confirm_password">
+                                                            Confirm Password <span class="required">*</span>
+                                                        </label>
 
-														<input type="password" class="input-text" name="confirm_password" id="confirm_password" />
+                                                        <input type="password" class="input-text" name="confirm_password" id="confirm_password" />
                                                         @error('confirm_password')
                                                             <small class="text-danger">{{ $message }}</small>
                                                         @enderror
-													</p>
+                                                    </p>
+
+                                                    <p class="form-row">
+                                                        <input type="submit" class="button" name="register" value="Register" />
+                                                    </p>
+                                                </form>
+                                            </div> --}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
 
-													<p class="form-row">
-														<input type="submit" class="button" name="register" value="Register" />
-													</p>
-												</form>
-											</div> --}}
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
 
-		<footer id="footer" class="footer default theme-clearfix">
-			<!-- Content footer -->
-			<div class="container">
-				<div class="vc_row vc_row-fluid">
-					<div class="vc_column_container vc_col-sm-12">
-						<div class="vc_column-inner ">
-							<div class="wpb_wrapper">
-								<div id="sw_testimonial01" class="testimonial-slider client-wrapper-b carousel slide " data-interval="0">
-									<div class="carousel-cl nav-custom">
-										<a class="prev-test fa fa-angle-left" href="#sw_testimonial01" role="button" data-slide="prev"><span></span></a>
-										<a class="next-test fa fa-angle-right" href="#sw_testimonial01" role="button" data-slide="next"><span></span></a>
-									</div>
-
-									<div class="carousel-inner">
-										<div class="item active">
-											<div class="item-inner">
-												<div class="image-client pull-left">
-													<a href="#" title="">
-														<img width="127" height="127" src="images/1903/tm3.jpg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" />
-													</a>
-												</div>
-
-												<div class="client-say-info">
-													<div class="client-comment">
-														In auctor ex id urna faucibus porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit.�
-													</div>
-
-													<div class="name-client">
-														<h2><a href="#" title="">Jerry</a></h2>
-														<p>Web Developer</p>
-													</div>
-												</div>
-											</div>
-
-											<div class="item-inner">
-												<div class="image-client pull-left">
-													<a href="#" title="">
-														<img width="127" height="127" src="images/1903/tm1.png" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" />
-													</a>
-												</div>
-
-												<div class="client-say-info">
-													<div class="client-comment">
-														In auctor ex id urna faucibus porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit.�
-													</div>
-
-													<div class="name-client">
-														<h2>
-															<a href="#" title="">David Gand</a>
-														</h2>
-
-														<p>Designer</p>
-													</div>
-												</div>
-											</div>
-										</div>
-
-										<div class="item ">
-											<div class="item-inner">
-												<div class="image-client pull-left">
-													<a href="#" title="">
-														<img width="127" height="127" src="images/1903/tm2.png" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" />
-													</a>
-												</div>
-
-												<div class="client-say-info">
-													<div class="client-comment">
-														In auctor ex id urna faucibus porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit.�
-													</div>
-
-													<div class="name-client">
-														<h2>
-															<a href="#" title="">Taylor Hill</a>
-														</h2>
-
-														<p>Developer</p>
-													</div>
-												</div>
-											</div>
-
-											<div class="item-inner">
-												<div class="image-client pull-left">
-													<a href="#" title="">
-														<img width="127" height="127" src="images/1903/tm3.jpg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" />
-													</a>
-												</div>
-
-												<div class="client-say-info">
-													<div class="client-comment">
-														In auctor ex id urna faucibus porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit.�
-													</div>
-
-													<div class="name-client">
-														<h2>
-															<a href="#" title="">JOHN DOE</a>
-														</h2>
-
-														<p>Designer</p>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div data-vc-full-width="true" data-vc-full-width-init="false" data-vc-stretch-content="true" class="vc_row vc_row-fluid footer-style1 vc_row-no-padding">
-					<div class="container float vc_column_container vc_col-sm-12">
-						<div class="vc_column-inner ">
-							<div class="wpb_wrapper">
-								<div class="vc_row vc_inner vc_row-fluid footer-top">
-									<div class="vc_column_container vc_col-sm-8">
-										<div class="vc_column-inner ">
-											<div class="wpb_wrapper">
-												<div class="wpb_text_column wpb_content_element ">
-													<div class="wpb_wrapper">
-														<div class="wrap-newletter">
-															<h3>NEWSLETTER SIGNUP</h3>
-
-															<div class="mc4wp-form">
-																<div class="newsletter-content">
-																	<input type="email" class="newsletter-email" name="EMAIL" placeholder="Your email" required="" />
-																	<input class="newsletter-submit" type="submit" value="Subscribe" />
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-
-									<div class="vc_column_container vc_col-sm-4">
-										<div class="vc_column-inner ">
-											<div class="wpb_wrapper">
-												<div class=" wpb_content_element ">
-													<div class="wpb_wrapper">
-														<div class="shop-social">
-															<ul>
-																<li>
-																	<a href="https://www.facebook.com/">
-																		<i class="fa fa-facebook"></i>
-																	</a>
-																</li>
-
-																<li>
-																	<a href="https://twitter.com/">
-																		<i class="fa fa-twitter"></i>
-																	</a>
-																</li>
-
-																<li>
-																	<a href="https://plus.google.com/">
-																		<i class="fa fa-google-plus"></i>
-																	</a>
-																</li>
-
-																<li>
-																	<a href="https://www.linkedin.com/">
-																		<i class="fa fa-linkedin"></i>
-																	</a>
-																</li>
-
-																<li>
-																	<a href="https://www.pinterest.com/">
-																		<i class="fa fa-pinterest-p"></i>
-																	</a>
-																</li>
-															</ul>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="vc_row vc_inner vc_row-fluid footer-bottom">
-									<div class="item-res vc_column_container vc_col-sm-6 vc_col-lg-4 vc_col-md-4 vc_col-xs-12">
-										<div class="vc_column-inner ">
-											<div class="wpb_wrapper">
-												<div class="wpb_text_column wpb_content_element ">
-													<div class="wpb_wrapper">
-														<div class="ya-logo">
-															<a href="home_page_1.html">
-																<img src="images/icons/logo-footer.png" alt="logo" />
-															</a>
-														</div>
-													</div>
-												</div>
-
-												<div class=" wpb_content_element ">
-													<div class="wpb_wrapper">
-														<div class="infomation">
-															<p>
-																Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-															</p>
-
-															<div class="info-support">
-																<ul>
-																   <li>No 1123, Marmora Road, Glasgow, D04 89GR.</li>
-																   <li>(801) 2345 - 6788 / (801) 2345 - 6789</li>
-																   <li><a href="mailto:contact@etrostore.com">support@etrostore.com</a></li>
-																</ul>
-															</div>
-
-															<div class="store">
-																<a href="#">
-																	<img src="images/1903/app-store.png" alt="store" title="store" />
-																</a>
-
-																<a href="#">
-																	<img src="images/1903/google-store.png" alt="store" title="store" />
-																</a>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-
-									<div class="item-res vc_column_container vc_col-sm-6 vc_col-lg-2 vc_col-md-2 vc_col-xs-12">
-										<div class="vc_column-inner ">
-											<div class="wpb_wrapper">
-												<div class="vc_wp_custommenu wpb_content_element">
-													<div class="widget widget_nav_menu">
-														<h2 class="widgettitle">Support</h2>
-
-														<ul id="menu-support" class="menu">
-															<li class="menu-product-support">
-																<a class="item-link" href="#">
-																	<span class="menu-title">Product Support</span>
-																</a>
-															</li>
-
-															<li class="menu-pc-setup-support-services">
-																<a class="item-link" href="#">
-																	<span class="menu-title">PC Setup & Support Services</span>
-																</a>
-															</li>
-
-															<li class="menu-extended-service-plans">
-																<a class="item-link" href="#">
-																	<span class="menu-title">Extended Service Plans</span>
-																</a>
-															</li>
-
-															<li class="menu-community">
-																<a class="item-link" href="#">
-																	<span class="menu-title">Community</span>
-																</a>
-															</li>
-
-															<li class="menu-product-manuals">
-																<a class="item-link" href="#">
-																	<span class="menu-title">Product Manuals</span>
-																</a>
-															</li>
-
-															<li class="menu-product-registration">
-																<a class="item-link" href="#">
-																	<span class="menu-title">Product Registration</span>
-																</a>
-															</li>
-														</ul>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-
-									<div class="item-res vc_column_container vc_col-sm-6 vc_col-lg-2 vc_col-md-2 vc_col-xs-12">
-										<div class="vc_column-inner ">
-											<div class="wpb_wrapper">
-												<div class="vc_wp_custommenu wpb_content_element">
-													<div class="widget widget_nav_menu">
-														<h2 class="widgettitle">Your Links</h2>
-
-														<ul id="menu-your-links" class="menu">
-															<li class="menu-my-account">
-																<a class="item-link" href="my_account.html">
-																	<span class="menu-title">My Account</span>
-																</a>
-															</li>
-
-															<li class="menu-order-tracking">
-																<a class="item-link" href="#">
-																	<span class="menu-title">Order Tracking</span>
-																</a>
-															</li>
-
-															<li class="menu-watch-list">
-																<a class="item-link" href="#">
-																	<span class="menu-title">Watch List</span>
-																</a>
-															</li>
-
-															<li class="menu-customer-service">
-																<a class="item-link" href="#">
-																	<span class="menu-title">Customer Service</span>
-																</a>
-															</li>
-
-															<li class="menu-returns-exchanges">
-																<a class="item-link" href="#">
-																	<span class="menu-title">Returns / Exchanges</span>
-																</a>
-															</li>
-
-															<li class="menu-faqs">
-																<a class="item-link" href="#">
-																	<span class="menu-title">FAQs</span>
-																</a>
-															</li>
-
-															<li class="menu-financing">
-																<a class="item-link" href="#">
-																	<span class="menu-title">Financing</span>
-																</a>
-															</li>
-
-															<li class="menu-card">
-																<a class="item-link" href="#">
-																	<span class="menu-title">Card</span>
-																</a>
-															</li>
-														</ul>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-
-									<div class="item-res vc_column_container vc_col-sm-6 vc_col-lg-4 vc_col-md-4 vc_col-xs-12">
-										<div class="vc_column-inner ">
-											<div class="wpb_wrapper">
-												<div class=" wpb_content_element ">
-													<div class="wpb_wrapper">
-														<div class="sp-map">
-															<div class="title">
-																<h2>find a store</h2>
-															</div>
-
-															<img src="images/1903/map.jpg" alt="map" title="map" />
-
-															<a href="#" class="link-map">Store locator</a>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="vc_wp_custommenu wpb_content_element wrap-cus">
-									<div class="widget widget_nav_menu">
-										<ul id="menu-infomation" class="menu">
-											<li class="menu-about-us">
-												<a class="item-link" href="about_us.html">
-													<span class="menu-title">About Us</span>
-												</a>
-											</li>
-
-											<li class="menu-customer-service">
-												<a class="item-link" href="#">
-													<span class="menu-title">Customer Service</span>
-												</a>
-											</li>
-
-											<li class="menu-privacy-policy">
-												<a class="item-link" href="#">
-													<span class="menu-title">Privacy Policy</span>
-												</a>
-											</li>
-
-											<li class="menu-site-map">
-												<a class="item-link" href="#">
-													<span class="menu-title">Site Map</span>
-												</a>
-											</li>
-
-											<li class="menu-orders-and-returns">
-												<a class="item-link" href="#">
-													<span class="menu-title">Orders and Returns</span>
-												</a>
-											</li>
-
-											<li class="menu-contact-us">
-												<a class="item-link" href="contact_us.html">
-													<span class="menu-title">Contact Us</span>
-												</a>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="vc_row-full-width vc_clearfix"></div>
-			</div>
-
-			<div class="footer-copyright style1">
-				<div class="container">
-					<!-- Copyright text -->
-					<div class="copyright-text pull-left">
-						<p>Etro Store - Premium Multipurpose HTML5/CSS3 Theme Designed by <a href="http://www.smartaddons.com/">SmartAddons.Com</a>.</p>
-					</div>
-
-					<div class="sidebar-copyright pull-right">
-						<div class="widget-1 widget-first widget text-4 widget_text">
-							<div class="widget-inner">
-								<div class="textwidget">
-									<div class="payment">
-										<a href="#">
-											<img src="images/1903/paypal.png" alt="payment" title="payment" />
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</footer>
-	</div>
-
-	<!-- DIALOGS -->
-
-   <div class="modal fade" id="login_form" tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="modal-dialog block-popup-login">
-			<a href="javascript:void(0)" title="Close" class="close close-login" data-dismiss="modal">Close</a>
-
-			<div class="tt_popup_login">
-				<strong>Sign in Or Register</strong>
-			</div>
-
-			<div class="block-content">
-				<div class="col-reg registered-account">
-					<div class="email-input">
-						<input type="text" class="form-control input-text username" name="username" id="username" placeholder="Username" />
-					</div>
-
-					<div class="pass-input">
-						<input class="form-control input-text password" type="password" placeholder="Password" name="password" id="password" />
-					</div>
-
-					<div class="ft-link-p">
-						<a href="lost_password.html" title="Forgot your password">Forgot your password?</a>
-					</div>
-
-					<div class="actions">
-						<div class="submit-login">
-							<input type="submit" class="button btn-submit-login" name="login" value="Login" />
-						</div>
-					</div>
-				</div>
-
-				<div class="col-reg login-customer">
-					<h2>NEW HERE?</h2>
-
-					<p class="note-reg">Registration is free and easy!</p>
-
-					<ul class="list-log">
-						<li>Faster checkout</li>
-
-						<li>Save multiple shipping addresses</li>
-
-						<li>View and track orders and more</li>
-					</ul>
-
-					<a href="create_account.html" title="Register" class="btn-reg-popup">Create an account</a>
-				</div>
-			</div>
-			<div class="clear"></div>
-		</div>
-	</div>
-
-	<a id="etrostore-totop" href="#"></a>
-
-	<script type="text/javascript">
-	/* <![CDATA[ */
-	var wc_password_strength_meter_params = {"min_password_strength":"3","i18n_password_error":"Please enter a stronger password.","i18n_password_hint":"The password should be at least seven characters long. To make it stronger, use upper and lower case letters, numbers and symbols like ! \" ? $ % ^ & )."};
-	var pwsL10n = {"unknown":"Password strength unknown","short":"Very weak","bad":"Weak","good":"Medium","strong":"Strong","mismatch":"Mismatch"};
-	/* ]]> */
-	</script>
-
-	<script type="text/javascript" src="js/jquery/jquery.min.js"></script>
-	<script type="text/javascript" src="js/jquery/jquery-migrate.min.js"></script>
-	<script type="text/javascript" src="js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="js/jquery/js.cookie.min.js"></script>
-	<script type="text/javascript" src="js/zxcvbn.min.js"></script>
-
-	<!-- OPEN LIBS JS -->
-	<script type="text/javascript" src="js/owl-carousel/owl.carousel.min.js"></script>
-	<script type="text/javascript" src="js/slick-1.6.0/slick.min.js"></script>
-
-	<script type="text/javascript" src="js/yith-woocommerce-compare/jquery.colorbox-min.js"></script>
-	<script type="text/javascript" src="js/isotope/isotope.js"></script>
-	<script type="text/javascript" src="js/fancybox/jquery.fancybox.pack.js"></script>
-	<script type="text/javascript" src="js/sw_woocommerce/category-ajax.js"></script>
-	<script type="text/javascript" src="js/sw_woocommerce/jquery.countdown.min.js"></script>
-	<script type="text/javascript" src="js/wp-admin/password-strength-meter.min.js"></script>
-	{{-- <script type="text/javascript" src="js/woocommerce/password-strength-meter.min.js"></script> --}}
-	<script type="text/javascript" src="js/js_composer/js_composer_front.min.js"></script>
-
-	<script type="text/javascript" src="js/plugins.js"></script>
-	<script type="text/javascript" src="js/megamenu.min.js"></script>
-	<script type="text/javascript" src="js/main.min.js"></script>
-
-	<script type="text/javascript">
-		var sticky_navigation_offset_top = $("#header .header-bottom").offset().top;
-		var sticky_navigation = function(){
-									var scroll_top = $(window).scrollTop();
-									if (scroll_top > sticky_navigation_offset_top) {
-										$("#header .header-bottom").addClass("sticky-menu");
-										$("#header .header-bottom").css({ "top":0, "left":0, "right" : 0 });
-									} else {
-										$("#header .header-bottom").removeClass("sticky-menu");
-									}
-								};
-		sticky_navigation();
-		$(window).scroll(function() {
-			sticky_navigation();
-		});
-
-		$(document).ready (function () {
-			$( ".show-dropdown" ).each(function(){
-				$(this).on("click", function(){
-					$(this).toggleClass("show");
-					var $element = $(this).parent().find( "> ul" );
-					$element.toggle( 300 );
-				});
-			});
-		});
-   </script>
-
-   </body>
-
-<!-- Mirrored from demo.smartaddons.com/templates/html/etrostore/create_account.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 20 Nov 2020 05:51:11 GMT -->
-</html>
