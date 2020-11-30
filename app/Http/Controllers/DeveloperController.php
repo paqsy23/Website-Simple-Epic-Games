@@ -6,8 +6,10 @@ use App\Mail\ResetPasswordMail;
 use App\Models\ResetPassword;
 use App\Models\developer;
 use App\Models\Game;
+use App\Models\h_platform;
 use App\Models\h_tag;
 use App\Models\Image;
+use App\Models\platform;
 use App\Models\tag;
 use App\Rules\CheckGameName;
 use Illuminate\Http\Request;
@@ -80,8 +82,9 @@ class DeveloperController extends Controller
         $tagList = tag::all();
         $developer = developer::find(Session::get('developer-login')->id);
         $gameParent = Game::where('developer_id',$developer->id)->orWhere('publisher_id',$developer->id)->get();
+        $platformList = platform::all();
 
-        return view('developer.insertGame',['developerList'=>$developerList,'tagList'=>$tagList,'developer'=>$developer,'gameParent'=>$gameParent]);
+        return view('developer.insertGame',['developerList'=>$developerList,'tagList'=>$tagList,'developer'=>$developer,'gameParent'=>$gameParent,'platformList'=>$platformList]);
     }
 
     public function insertGame(Request $request)
@@ -104,6 +107,7 @@ class DeveloperController extends Controller
             'facebook'=>'url|nullable',
             'twitch'=>'url|nullable',
             'twitter'=>'url|nullable',
+            'platform'=>'required'
         ]);
 
         $instagram = $request->instagram;
@@ -130,7 +134,7 @@ class DeveloperController extends Controller
             'release' => Carbon::parse($request->release),
             'description'=> $request->description,
             'price'=>$request->price,
-            'status'=>0,
+            'status'=>2,
             'instagram'=>$instagram,
             'website'=>$website,
             'reddit'=>$reddit,
@@ -152,6 +156,13 @@ class DeveloperController extends Controller
         foreach($request->tags as $curTag){
             h_tag::create([
                 'tag_id'=>$curTag,
+                'game_id'=>$gameId
+            ]);
+        }
+
+        foreach($request->platform as $curPlatform){
+            h_platform::create([
+                'platform_id'=>$curPlatform,
                 'game_id'=>$gameId
             ]);
         }
@@ -321,14 +332,23 @@ class DeveloperController extends Controller
 
         $developerList = developer::where('status',1)->get();
 
+        $arr = [];
+
+        foreach($game->platforms as $curPlatform){
+           $arr[] = $curPlatform->id;
+        }
+
+        $platformList = platform::all();
+        $platformList = $platformList->except($arr);
+
         $gameParent = Game::where('developer_id',$developer->id)->orWhere('publisher_id',$developer->id)->get();
 
-        return view('developer.editGame',['game'=>$game,'developer'=>$developer,'tagList'=>$tagList,'developerList'=>$developerList,'gameParent'=>$gameParent]);
+        return view('developer.editGame',['game'=>$game,'developer'=>$developer,'tagList'=>$tagList,'developerList'=>$developerList,'gameParent'=>$gameParent,'platformList'=>$platformList]);
     }
 
     public function editGame(Request $request)
     {
-        // dd($request->all());
+        // dd($request->tags);
         $game = Game::find($request->id);
 
         $request->validate([
@@ -349,9 +369,37 @@ class DeveloperController extends Controller
             'facebook'=>'url|nullable',
             'twitch'=>'url|nullable',
             'twitter'=>'url|nullable',
+            'platform'=>'required'
         ]);
 
         $game->update($request->all());
+
+        //update game tag
+        foreach($game->tags as $curTag){
+            $htag = h_tag::find($curTag->id);
+            $htag->delete();
+        }
+
+        foreach($request->tags as $curTag){
+            h_tag::create([
+                'tag_id'=>$curTag,
+                'game_id'=>$game->id
+            ]);
+        }
+
+        //update game platform
+        foreach($game->platforms as $curplatforms){
+            $hplatform= h_platform::find($curplatforms->id);
+            $hplatform->delete();
+        }
+
+        foreach($request->platform as $curPlatform){
+            h_platform::create([
+                'platform_id'=>$curPlatform,
+                'game_id'=>$game->id
+            ]);
+        }
+
         //edit tanpa ganti gambar
         if($request->mycheckbox==null && $request->mycheckbox2==null){
             $request->session()->flash('message', 'Game Updated!! Waiting for Admin Confirmation');
