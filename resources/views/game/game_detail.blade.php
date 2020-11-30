@@ -107,12 +107,7 @@
                                                 {{-- Harga Game --}}
 												<div>
                                                     <p class="price" class="woocommerce-Price-amount amount">${{$game->price}}
-                                                        <form action="{{ url('account/checkout') }}" method="POST">
-                                                            @csrf
-                                                            <input name="game_name" type="hidden" value="{{$game->name}}">
-                                                            <input name="game_price" type="hidden" value="{{$game->price}}">
-                                                        <Button>Order</Button>
-                                                        </form>
+
                                                     </p>
 
                                                 </div>
@@ -127,6 +122,7 @@
 													<p>{{$game->description}}</p>
 												</div>
 
+                                                <a href="{{url('account/checkout/'.$game->id)}}"><button type="button" class="btn btn-success"><i class="fa fa-shopping-cart"></i> BUY NOW</button></a>
 												{{-- <p class="stock out-of-stock">Out of stock</p> --}}
 
 												<div class="social-share">
@@ -155,10 +151,11 @@
 														<a href="https://plus.google.com/" onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"><i class="fa fa-google-plus"></i></a>
 														<a href="#"><i class="fa fa-dribbble"></i></a>
 														<a href="#"><i class="fa fa-instagram"></i></a> --}}
-													</div>
-												</div>
+                                                    </div>
+                                                </div>
+
 											</div>
-                                            <button type="button" class="btn btn-success" style="float: right"><i class="fa fa-shopping-cart"></i> BUY NOW</button>
+
 										</div>
                                     </div>
 								</div>

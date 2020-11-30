@@ -406,27 +406,4 @@
 				</div>
 				<div class="vc_row-full-width vc_clearfix"></div>
 			</div>
-
-			<div class="footer-copyright style1">
-				<div class="container">
-					<!-- Copyright text -->
-					<div class="copyright-text pull-left">
-						<p>Etro Store - Premium Multipurpose HTML5/CSS3 Theme Designed by <a href="http://www.smartaddons.com/">SmartAddons.Com</a>.</p>
-					</div>
-
-					<div class="sidebar-copyright pull-right">
-						<div class="widget-1 widget-first widget text-4 widget_text">
-							<div class="widget-inner">
-								<div class="textwidget">
-									<div class="payment">
-										<a href="#">
-											<img src="{{asset('images/1903/paypal.png" alt="payment" title="payment" />
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
 		</footer>

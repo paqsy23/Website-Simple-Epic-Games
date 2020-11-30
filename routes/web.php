@@ -32,8 +32,8 @@ Route::group(['prefix' => 'account'], function () {
     Route::get('detail', 'UserController@accountDetails');
     Route::post('edit', 'UserController@editDetails');
     Route::post('edit-password', 'UserController@editPassword');
-    Route::post('checkout','UserController@checkout');
-    Route::post('done','UserController@done');
+    Route::get('checkout/{id}','UserController@checkout');
+    Route::get('done/{id}','UserController@done');
 });
 
 Route::get('/game/{id}','GameController@showGameDetail');

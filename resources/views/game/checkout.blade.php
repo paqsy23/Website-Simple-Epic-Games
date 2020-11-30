@@ -40,85 +40,73 @@
         <div class="page type-page status-publish hentry">
             <div class="entry-content">
                 <div class="woocommerce">
-                    <form name="checkout" method="post" class="checkout woocommerce-checkout" action="#" enctype="multipart/form-data">
+                    <form name="checkout" method="post" class="checkout woocommerce-checkout" action="#">
                         <div class="col2-set" id="customer_details">
-                            <div class="col-1">
+                            <div class="col-lg-12" style="margin-bottom:10%">
                                 <div class="woocommerce-billing-fields">
-                                    <h3>Billing Details</h3>
+                                    <h3>Billing Details <span style="float:right">Your Wallet : ${{$user->money}}</span> </h3>
+                                    <hr>
+                                    <div id="order_review" class="woocommerce-checkout-review-order">
 
-                                    <p class="form-row form-row-first validate-required" id="billing_first_name_field">
-                                        <label for="billing_first_name" class="">
-                                            Nama
-                                        </label>
-                                        <input type="text" class="input-text " name="name" id="name" value="{{ Session::get('user-login')->name }}" />
-                                    </p>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            @foreach ($game->img as $image)
+                                                @if (strpos($image->link, 'logo'))
+                                                    <img width="180" height="180" src="{{ asset('storage/games/'.$image->link) }}" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="" sizes="(max-width: 180px) 100vw, 180px">
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                        <div class="col-md-10" style="margin-bottom:10px">
+                                            <table class="shop_table woocommerce-checkout-review-order-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="product-name">Product</th>
+                                                        <th class="product-total">Total</th>
+                                                    </tr>
+                                                </thead>
 
-                                    <p class="form-row form-row-last validate-required" id="billing_last_name_field">
-                                        <label for="billing_last_name" class="">
-                                            Username
-                                        </label>
-                                        <input type="text" class="input-text " name="username" id="username" value="{{ Session::get('user-login')->username }}" />
-                                    </p>
+                                                <tbody>
+                                                    <tr class="cart_item">
+                                                        <td class="product-name">
+                                                        {{$game->name}}
+                                                        </td>
 
-                                    <div class="clear"></div>
+                                                        <td class="product-total">
+                                                            ${{$game->price}}
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
 
-                                    <p class="form-row form-row-first validate-required validate-email" id="billing_email_field">
-                                        <label for="billing_email" class="">
-                                            Email Address
-                                        </label>
-                                        <input type="email" class="input-text " name="email" id="email" value="{{ Session::get('user-login')->email }}" />
-                                    </p>
+                                                <tfoot>
+                                                    <tr class="order-total">
+                                                        <th>Total</th>
 
-                                    <div class="clear"></div>
+                                                        <td>
+                                                            <strong>
+                                                                ${{$game->price}}
+                                                            </strong>
+                                                        </td>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
 
-                                    <p class="form-row form-row form-row-wide address-field validate-required" id="billing_address_1_field">
-                                        <label for="billing_address_1" class="">
-                                            Walletku
-                                        </label>
-                                        <input type="text" class="input-text " name="wallet" id="wallet" value="{{$uang}}" />
-                                    </p>
+                                            @if ($user->money-$game->price<0)
+                                            <span class="text-danger">Your wallet is not enough to buy this game </span>
+                                            <button type="button" class="btn btn-success" style="float:right" disabled>Checkout</button>
+                                            @else
+                                            <a href="{{url('account/done/'.$game->id)}}"><button type="button" class="btn btn-success" style="float:right">Checkout</button></a>
+                                            @endif
 
-                                    <div class="clear"></div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
-                        <h3 id="order_review_heading">Your order</h3>
-
-                        <div id="order_review" class="woocommerce-checkout-review-order">
-                            <table class="shop_table woocommerce-checkout-review-order-table">
-                                <thead>
-                                    <tr>
-                                        <th class="product-name">Product</th>
-                                        <th class="product-total">Total</th>
-                                    </tr>
-                                </thead>
-
-                                <tbody>
-                                    <tr class="cart_item">
-                                        <td class="product-name">
-                                            {{$game["name"]}}
-                                        </td>
-
-                                        <td class="product-total">
-                                            <span class="woocommerce-Price-amount amount">${{$game["price"]}}</span>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
                     </form>
-                    <form action="{{ url('account/done') }}" method="POST">
-                        @csrf
-                        <input name="game_name" type="hidden" value="{{$game["name"]}}">
-                        <input name="game_price" type="hidden" value="{{$game["price"]}}">
-                        <button class="button alt" name="woocommerce_checkout_place_order" id="place_order" value="Buy" data-value="Place order">
-                        Buy</button>
-                    </form>
-                    <br><br>
                 </div>
             </div>
         </div>
     </div>
 </div>
-</div>@endsection
+</div>
+@endsection

@@ -4,9 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Game;
+use App\Models\h_trans;
+use App\Models\Library;
 use App\Models\tag;
+use App\Models\Transaction;
 use App\Rules\CheckPassword;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
@@ -77,52 +82,37 @@ class UserController extends Controller
         }
     }
 
-    public function checkout(Request $request)
+    public function checkout(Request $request,$id)
     {
-        $user_login = $request->session()->get('user-login');
-        $user = User::find($user_login->id);
-        $game = [
-            "name" => $request->input("game_name"),
-            "price" => $request->input("game_price")
-        ];
+        $user = User::find(Session::get('user-login')->id);
+        $game = Game::find($id);
 
-        return view('game.checkout',["game" => $game, "uang" => $user->money]);
+        return view('game.checkout',["game" => $game, "user" => $user]);
     }
 
-    public function done(Request $request, $id = 1)
+    public function done(Request $request,$id = 1)
     {
-        $user_login = $request->session()->get('user-login');
-        $user = User::find($user_login->id);
-        $game = [
-            "name" => $request->input("game_name"),
-            "price" => $request->input("game_price")
-        ];
-        if($game["price"] > $user->money){
-            echo "<script>";
-            echo "alert('Uang anda tidak mencukupi');";
-            echo "</script>";
-            return view('game.checkout',["game" => $game, "uang" => $user->money]);
-        }else{
 
-            $money = $user->money - $game["price"];
-            $user->money = $money;
-            $user->save();
+        $user = User::find(Session::get('user-login')->id);
+        $game = Game::find($id);
+        $money = $user->money - $game->price;
+        $user->money = $money;
+        $user->save();
 
-            $tags = tag::all();
+        $user->games()->attach($game->id);
 
-        $games = Game::where('status', 1)->get();
-        $gamesDisplay = Game::where('status', 1)->skip(9 * ($id - 1))->take(9)->get();
-        $gamesNew = Game::where('status', 1)->orderBy('release', 'desc')->take(4)->get();
-
-        $totalPage = ceil(count($games) / 9);
-
-        return view('shop.main', [
-            'tags' => $tags,
-            'games' => $gamesDisplay,
-            'totalPage' => $totalPage,
-            'current' => $id,
-            'new_release' => $gamesNew
+        Transaction::create([
+            'tanggal_trans'=>Carbon::now(),
+            'game_price'=>$game->price,
+            'game_id'=>$game->id,
+            'user_id'=>$user->id
         ]);
-        }
+
+        $request->session()->flash('message', 'Transaction Completed');
+
+        //masuk library
+
+        return redirect('/');
+
     }
 }
