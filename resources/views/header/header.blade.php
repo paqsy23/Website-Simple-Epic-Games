@@ -86,7 +86,11 @@
                                                     <span class="menu-title">My Account</span>
                                                 </a>
                                             </li>
-
+                                            <li>
+                                                <a href="{{ url('account/wallet') }}">
+                                                    <span>Top Up </span>
+                                                </a>
+                                            </li>
                                             {{-- <li class="menu-cart">
                                                 <a class="item-link" href="cart.html">
                                                     <span class="menu-title">Cart</span>

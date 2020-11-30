@@ -122,17 +122,17 @@
 
 	<script type="text/javascript" src="{{asset('js/yith-woocommerce-compare/jquery.colorbox-min.js')}}"></script>
 	<script type="text/javascript" src="{{asset('js/isotope/isotope.js')}}"></script>
-	<script type="text/javascript" src="{{asset('js/fancybox/jquery.fancybox.pack.js')}}"></script>
+	{{-- <script type="text/javascript" src="{{asset('js/fancybox/jquery.fancybox.pack.js')}}"></script> --}}
 	<script type="text/javascript" src="{{asset('js/sw_woocommerce/category-ajax.js')}}"></script>
 	<script type="text/javascript" src="{{asset('js/sw_woocommerce/jquery.countdown.min.js')}}"></script>
 	<script type="text/javascript" src="{{asset('js/woocommerce/price-slider.min.js')}}"></script>
 	<script type="text/javascript" src="{{asset('js/woocommerce/single-product.min.js')}}"></script>
-	<script type="text/javascript" src="{{asset('js/woocommerce/prettyPhoto/jquery.prettyPhoto.init.min.js')}}"></script>
-	<script type="text/javascript" src="{{asset('js/woocommerce/prettyPhoto/jquery.prettyPhoto.min.js')}}"></script>
+	{{-- <script type="text/javascript" src="{{asset('js/woocommerce/prettyPhoto/jquery.prettyPhoto.init.min.js')}}"></script>
+	<script type="text/javascript" src="{{asset('js/woocommerce/prettyPhoto/jquery.prettyPhoto.min.js')}}"></script> --}}
 
 	<script type="text/javascript" src="{{asset('js/plugins.js')}}"></script>
 	<script type="text/javascript" src="{{asset('js/megamenu.min.js')}}"></script>
-	<script type="text/javascript" src="{{asset('js/main.min.js')}}"></script>
+	{{-- <script type="text/javascript" src="{{asset('js/main.min.js')}}"></script> --}}
 
 	<script type="text/javascript">
 		var sticky_navigation_offset_top = $("#header .header-bottom").offset().top;

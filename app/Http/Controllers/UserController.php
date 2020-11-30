@@ -115,6 +115,21 @@ class UserController extends Controller
         //masuk library
 
         return redirect('/');
+    }
 
+    public function showTopUp()
+    {
+        return view('account.topupwallet');
+    }
+
+    public function topup(Request $request,$value)
+    {
+        $user = User::find(Session::get('user-login')->id);
+        $user->money = $user->money + $value;
+        $user->save();
+
+        $request->session()->put('user-login', $user);
+        $request->session()->flash('message', 'Transaction Completed');
+        return redirect('/');
     }
 }
