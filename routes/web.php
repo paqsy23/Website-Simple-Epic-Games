@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+Route::get('search', 'MainController@search');
 
 Route::group(['prefix' => 'account'], function () {
     Route::get('login', 'LoginRegisterController@showLogin');

@@ -151,13 +151,13 @@
                 <div class="mid-header pull-right">
                     <div class="widget-1 widget-first widget sw_top-2 sw_top">
                         <div class="widget-inner">
-                            <form class="top-form top-search">
-                                <div class="topsearch-entry">
-                                    <input type="text" value="" name="search" placeholder="Enter your keyword...">
+                            <div class="top-form top-search">
+                                <form class="topsearch-entry" action="{{ url('search') }}" method="get">
+                                    <input type="text" value="" name="name" placeholder="Enter your keyword...">
 
-                                    <button type="button" title="Search" class="fa fa-search button-search-pro"></button>
-                                </div>
-                            </form>
+                                    <button title="Search" type="submit" class="fa fa-search button-search-pro"></button>
+                                </form>
+                            </div>
                         </div>
                     </div>
 
