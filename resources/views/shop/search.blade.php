@@ -1,12 +1,8 @@
-@extends('layout.shop')
-
-@section('title', 'Epic Games')
-
-@include('tawkto')
+@extends('layout.search')
 
 @section('content')
     @foreach ($games as $game)
-        <li class="item col-lg-4 col-md-4 col-sm-6 col-xs-6 post-255 product type-product status-publish has-post-thumbnail product_cat-electronics product_cat-home-appliances product_cat-vacuum-cleaner product_brand-apoteket first instock sale featured shipping-taxable purchasable product-type-simple">
+        <li class="item col-lg-3 col-md-4 col-sm-6 col-xs-6 post-255 product type-product status-publish has-post-thumbnail product_cat-electronics product_cat-home-appliances product_cat-vacuum-cleaner product_brand-apoteket first instock sale featured shipping-taxable purchasable product-type-simple">
             <div class="products-entry item-wrap clearfix">
                 <div class="item-detail">
                     <div class="item-img products-thumb">
@@ -27,7 +23,7 @@
 
                             <a href="javascript:void(0)" class="compare button" rel="nofollow" title="Add to Compare">Compare</a>
 
-                            <div class="yith-wcwl-add-to-wishlist ">
+                            <div class="yith-wcwl-add-to-wishlist add-to-wishlist-248">
                                 <div class="yith-wcwl-add-button show" style="display:block">
                                     <a href="wishlist.html" rel="nofollow" class="add_to_wishlist">Add to Wishlist</a>
                                     <img src="images/wpspin_light.gif" class="ajax-loading" alt="loading" width="16" height="16" style="visibility:hidden" />
@@ -58,19 +54,8 @@
                         </div>
 
                         <h4><a href="{{ url('game/'.$game->id) }}" title="{{ $game->name }}">{{ $game->name }}</a></h4>
-                        <h4>
-                            {{$game->developer->name}}
-                            @if ($game->developer != $game->publisher)
-                                | {{$game->publisher->name}}
-                            @endif
-                        </h4>
-                        <span class="item-price"><ins><span class="woocommerce-Price-amount amount">
-                            @if ($game->price==0)
-                                Free
-                            @else
-                                ${{ number_format($game->price, 2) }}
-                            @endif
-                        </span></ins></span>
+
+                        <span class="item-price"><ins><span class="woocommerce-Price-amount amount">${{ number_format($game->price, 2) }}</span></ins></span>
 
                         <div class="item-description">{{ $game->description }}</div>
 
@@ -80,7 +65,7 @@
 
                             <a href="javascript:void(0)" class="compare button" rel="nofollow" title="Add to Compare">Compare</a>
 
-                            <div class="yith-wcwl-add-to-wishlist ">
+                            <div class="yith-wcwl-add-to-wishlist add-to-wishlist-248">
                                 <div class="yith-wcwl-add-button show" style="display:block">
                                     <a href="wishlist.html" rel="nofollow" class="add_to_wishlist">Add to Wishlist</a>
                                     <img src="images/wpspin_light.gif" class="ajax-loading" alt="loading" width="16" height="16" style="visibility:hidden" />

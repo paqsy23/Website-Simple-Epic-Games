@@ -97,7 +97,7 @@
 </div>
 
 </div>
-<a id="etrostore-totop" href="#"></a>
+{{-- <a id="etrostore-totop" href="#"></a> --}}
 
 <script type="text/javascript" src="{{asset('js/jquery/jquery.min.js')}}"></script>
 	<script type="text/javascript" src="{{asset('js/jquery/jquery-migrate.min.js')}}"></script>
