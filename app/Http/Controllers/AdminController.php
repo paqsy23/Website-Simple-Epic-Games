@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\developer;
 use App\Models\Game;
 use App\Models\Transaction;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -23,8 +24,9 @@ class AdminController extends Controller
         $nilai = 350;
         $transaction = Transaction::all();
         $game = Game::all();
+        $user = User::all();
         // dd($transaction[0]->games[0]->name);
-        return view('admin.report',["nilai"=>$nilai,"trans"=>$transaction,'game'=>$game]);
+        return view('admin.report',["nilai"=>$nilai,"trans"=>$transaction,'game'=>$game,'user'=>$user]);
     }
 
     public function login(Request $request)

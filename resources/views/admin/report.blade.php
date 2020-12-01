@@ -77,6 +77,22 @@
     </div>
     <!-- /.card-body -->
   </div>
+  <div class="card card-danger">
+    <div class="card-header">
+      <h3 class="card-title">Top Sale</h3>
+
+      <div class="card-tools">
+        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+        </button>
+        <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+      </div>
+    </div>
+
+    <div class="card-body">
+        <div id="chartContainer2" style="height: 370px; width: 100%;"></div>
+    </div>
+    <!-- /.card-body -->
+  </div>
 @stop
 
 <?php
@@ -92,31 +108,63 @@
             array_push($dataPoints,array("label"=> $value->name, "y"=> $i));
         }
     }
+    $dataPoints2 = [];
+    foreach ($user as $value) {
+        $i = 0;
+        foreach ($trans as $trs) {
+            if($trs->users->id == $value->id){
+                $i = $i+1;
+            }
+        }
+        if($i > 0){
+            array_push($dataPoints2,array("label"=> $value->name, "y"=> $i));
+        }
+    }
 ?>
 
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <script>
     window.onload = function () {
+        var chart = new CanvasJS.Chart("chartContainer", {
+            animationEnabled: true,
+            exportEnabled: true,
+            title:{
+                text: "Game Sell"
+            },
+            subtitles: [{
+                text: ""
+            }],
+            data: [{
+                type: "pie",
+                showInLegend: "true",
+                legendText: "{label}",
+                indexLabelFontSize: 16,
+                indexLabel: "{label} - #percent%",
+                yValueFormatString: "฿#,##0",
+                dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
+            }]
+        });
+        chart.render();
 
-    var chart = new CanvasJS.Chart("chartContainer", {
-        animationEnabled: true,
-        exportEnabled: true,
-        title:{
-            text: "Game Sell"
-        },
-        subtitles: [{
-            text: ""
-        }],
-        data: [{
-            type: "pie",
-            showInLegend: "true",
-            legendText: "{label}",
-            indexLabelFontSize: 16,
-            indexLabel: "{label} - #percent%",
-            yValueFormatString: "฿#,##0",
-            dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
-        }]
-    });
-    chart.render();
+        var chart2 = new CanvasJS.Chart("chartContainer2", {
+            animationEnabled: true,
+            exportEnabled: true,
+            title:{
+                text: "Top Buyer"
+            },
+            subtitles: [{
+                text: ""
+            }],
+            data: [{
+                type: "pie",
+                showInLegend: "true",
+                legendText: "{label}",
+                indexLabelFontSize: 16,
+                indexLabel: "{label} - #percent%",
+                yValueFormatString: "฿#,##0",
+                dataPoints: <?php echo json_encode($dataPoints2, JSON_NUMERIC_CHECK); ?>
+            }]
+        });
+        chart2.render();
     }
 </script>
