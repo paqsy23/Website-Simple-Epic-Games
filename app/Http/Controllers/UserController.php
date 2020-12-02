@@ -111,8 +111,12 @@ class UserController extends Controller
 
         $request->session()->put('user-login', $user);
         $request->session()->flash('message', 'Transaction Completed');
-
         //masuk library
+        $library = new library;
+        $library->game_id = $game->id;
+        $library->user_id = $user->id;
+        $library->save();
+
 
         return redirect('/');
     }
