@@ -35,8 +35,6 @@ class AdminController extends Controller
         ->get();
         $game = Game::all();
         $user = User::all();
-        // dd($sorttransaction->id);
-        // dd($transaction[0]->games[0]->name);
         return view('admin.report',["nilai"=>$nilai,"trans"=>$transaction,'game'=>$game,'user'=>$user,'topuser'=>$sorttransaction,'topgames'=>$sortgames]);
     }
 
