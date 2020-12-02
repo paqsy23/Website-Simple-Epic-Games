@@ -97,6 +97,10 @@ class UserController extends Controller
         $user = User::find(Session::get('user-login')->id);
         $game = Game::find($id);
         $money = $user->money - $game->price;
+        if($money<0){
+            $request->session()->flash('warning', 'Your wallet is not enough to buy this game');
+            return back();
+        }
         $user->money = $money;
         $user->save();
 
