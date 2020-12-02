@@ -24,6 +24,7 @@ Route::group(['prefix' => 'account'], function () {
     Route::get('logout', 'LoginRegisterController@logout');
 
     Route::get('/', 'UserController@dashboard');
+    Route::get('/library', 'UserController@library');
     Route::get('orders', 'UserController@order');
     Route::get('detail', 'UserController@accountDetails');
     Route::post('edit', 'UserController@editDetails');

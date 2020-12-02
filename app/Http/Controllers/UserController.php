@@ -132,4 +132,12 @@ class UserController extends Controller
         $request->session()->flash('message', 'Transaction Completed');
         return redirect('/');
     }
+    public function library(Request $request)
+    {
+        $user = User::find(Session::get('user-login')->id);
+        $library = library::where('user_id',$user->id)->get();
+        $game = Game::all();
+        // dd($library[0]->game_id);
+        return view('account.library',['library'=>$library,'games'=>$game]);
+    }
 }
