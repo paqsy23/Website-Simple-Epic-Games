@@ -38,7 +38,11 @@
 	<link rel="stylesheet" href="{{asset('css/custom.css')}}" />
 	<link rel="stylesheet" href="{{asset('css/app-orange.css')}}" id="theme_color" />
 	<link rel="stylesheet" href="#" id="rtl" />
-	<link rel="stylesheet" href="{{asset('css/app-responsive.css')}}" />
+    <link rel="stylesheet" href="{{asset('css/app-responsive.css')}}" />
+
+    <style>
+        li.cat-item.active { color: #ffaa00; }
+    </style>
 </head>
 
 {{-- include header di body --}}
