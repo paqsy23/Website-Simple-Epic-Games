@@ -36,15 +36,15 @@
                         <div id="content" role="main">
                             <!--  Shop Title -->
                             <div class="products-wrapper">
-                                <div class="products-nav clearfix">
-                                    {{-- <div class="view-mode-wrap pull-left clearfix">
+                                {{-- <div class="products-nav clearfix">
+                                    <div class="view-mode-wrap pull-left clearfix">
                                         <div class="view-mode">
                                             <a href="javascript:void(0)" class="grid-view active" title="Grid view"><span>Grid view</span></a>
                                             <a href="javascript:void(0)" class="list-view" title="List view"><span>List view</span></a>
                                         </div>
-                                    </div> --}}
+                                    </div>
 
-                                    {{-- <div class="catalog-ordering">
+                                    <div class="catalog-ordering">
                                         <div class="orderby-order-container clearfix">
                                             <ul class="orderby order-dropdown pull-left">
                                                 <li>
@@ -77,7 +77,7 @@
                                                 </ul>
                                             </div>
                                         </div>
-                                    </div> --}}
+                                    </div>
 
                                     <nav class="woocommerce-pagination pull-right">
                                         <ul class="page-numbers">
@@ -98,7 +98,7 @@
                                             @endif
                                         </ul>
                                     </nav>
-                                </div>
+                                </div> --}}
 
                                 <div class="clear"></div>
 
@@ -185,7 +185,7 @@
 
                             <ul class="product-categories">
                                 @foreach ($tags as $tag)
-                                    <li class="cat-item"><a href="shop.html">{{ $tag->name }}</a> <span class="count">({{ count($tag->games) }})</span></li>
+                                    <li class="cat-item @if($target == $tag->name) active @endif"><a href="shop.html">{{ $tag->name }}</a> <span class="count">({{ count($tag->games) }})</span></li>
                                 @endforeach
                             </ul>
                         </div>
