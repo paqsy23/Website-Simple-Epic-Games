@@ -97,9 +97,14 @@ class UserController extends Controller
         $user = User::find(Session::get('user-login')->id);
         $game = Game::find($id);
         $money = $user->money - $game->price;
+        if($money<0){
+            $request->session()->flash('warning', 'Your wallet is not enough to buy this game');
+            return back();
+        }
         $user->money = $money;
         $user->save();
 
+        //masuk library ikiii
         $user->games()->attach($game->id);
 
         Transaction::create([
@@ -111,8 +116,6 @@ class UserController extends Controller
 
         $request->session()->put('user-login', $user);
         $request->session()->flash('message', 'Transaction Completed');
-
-        //masuk library
 
         return redirect('/');
     }

@@ -3,19 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\Game;
+use App\Models\library;
 use App\Models\tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class GameController extends Controller
 {
-    public function showGameDetail($id){
+    public function showGameDetail(Request $request,$id){
         $game = Game::where('id',$id)->where('status',1)->first();
+        $user = $request->session()->get('user-login');
+        $library = library::where('user_id',$user->id)->get();
 
         if($game==null){
             return back();
         }
-        // dd($game->platforms);
         $gambar = [];
         $index = 0;
 
@@ -28,9 +30,7 @@ class GameController extends Controller
                 $index= $index+1;
             }
         }
-
-        // dd($gambar);
-        return view('game.game_detail',["game"=>$game,"gambar"=>$gambar]);
+        return view('game.game_detail',["game"=>$game,"gambar"=>$gambar,"library"=>$library]);
     }
 
     //note buat kalau mau insert tag game
