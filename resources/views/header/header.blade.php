@@ -91,6 +91,11 @@
                                                     <span>Top Up </span>
                                                 </a>
                                             </li>
+                                            <li class="menu-my-account">
+                                                <a class="item-link" href="{{ url('account/library') }}">
+                                                    <span class="menu-title">Library</span>
+                                                </a>
+                                            </li>
                                             {{-- <li class="menu-cart">
                                                 <a class="item-link" href="cart.html">
                                                     <span class="menu-title">Cart</span>

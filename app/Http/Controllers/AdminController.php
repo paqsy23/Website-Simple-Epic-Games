@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\developer;
 use App\Models\Game;
 use App\Models\Transaction;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -22,9 +23,19 @@ class AdminController extends Controller
     {
         $nilai = 350;
         $transaction = Transaction::all();
+        $sorttransaction = Transaction::selectRaw("user_id,count(id) as counts")
+        ->groupBy('user_id')
+        ->orderBy('counts','DESC')
+        ->limit('10')
+        ->get();
+        $sortgames = Transaction::selectRaw("game_id,count(id) as counts")
+        ->groupBy('game_id')
+        ->orderBy('counts','DESC')
+        ->limit('10')
+        ->get();
         $game = Game::all();
-        // dd($transaction[0]->games[0]->name);
-        return view('admin.report',["nilai"=>$nilai,"trans"=>$transaction,'game'=>$game]);
+        $user = User::all();
+        return view('admin.report',["nilai"=>$nilai,"trans"=>$transaction,'game'=>$game,'user'=>$user,'topuser'=>$sorttransaction,'topgames'=>$sortgames]);
     }
 
     public function login(Request $request)
