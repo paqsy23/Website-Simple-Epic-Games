@@ -11,7 +11,7 @@ class User extends Model
 
     public function games()
     {
-        return $this->belongsToMany(Game::class,'library','game_id','user_id')->withPivot(['id'])->as("user_library");
+        return $this->belongsToMany(Game::class,'library','user_id','game_id')->withPivot(['id'])->as("user_library");
     }
 
 }

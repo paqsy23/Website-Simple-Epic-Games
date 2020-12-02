@@ -52,10 +52,6 @@
 												   <a href="{{ url('account/orders') }}">Orders</a>
                                                 </li>
 
-                                                <li class="@if ($location == 'wallet') is-active @endif">
-                                                    <a href="{{ url('account/wallet') }}">Wallet</a>
-                                                 </li>
-
 												<li class="@if ($location == 'account-details') is-active @endif">
 												   <a href="{{ url('account/detail') }}">Account Details</a>
 												</li>

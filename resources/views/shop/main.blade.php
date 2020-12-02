@@ -56,8 +56,19 @@
                         </div>
 
                         <h4><a href="{{ url('game/'.$game->id) }}" title="{{ $game->name }}">{{ $game->name }}</a></h4>
-
-                        <span class="item-price"><ins><span class="woocommerce-Price-amount amount">${{ number_format($game->price, 2) }}</span></ins></span>
+                        <h4>
+                            {{$game->developer->name}}
+                            @if ($game->developer != $game->publisher)
+                                | {{$game->publisher->name}}
+                            @endif
+                        </h4>
+                        <span class="item-price"><ins><span class="woocommerce-Price-amount amount">
+                            @if ($game->price==0)
+                                Free
+                            @else
+                                ${{ number_format($game->price, 2) }}
+                            @endif
+                        </span></ins></span>
 
                         <div class="item-description">{{ $game->description }}</div>
 
