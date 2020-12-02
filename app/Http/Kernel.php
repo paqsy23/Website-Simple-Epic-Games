@@ -66,5 +66,7 @@ class Kernel extends HttpKernel
         'DeveloperOnly' =>\App\Http\Middleware\DeveloperOnly::class,
         'AdminOnly' =>\App\Http\Middleware\AdminOnly::class,
         'DeveloperActiveOnly' =>\App\Http\Middleware\DeveloperActiveOnly::class,
+        'UserOnly' =>\App\Http\Middleware\UserOnly::class,
+        'UserWithoutLogin' =>\App\Http\Middleware\UserWithoutLogin::class,
     ];
 }

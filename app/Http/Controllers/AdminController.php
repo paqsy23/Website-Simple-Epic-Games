@@ -75,8 +75,9 @@ class AdminController extends Controller
 
         return view('admin.developer_detail',['developer'=>$developer]);
     }
-    public function logout()
+    public function logout(Request $request)
     {
+        $request->session()->forget('admin-login');
         return redirect('/admin/login');
     }
 

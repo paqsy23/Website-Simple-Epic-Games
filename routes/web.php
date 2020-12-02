@@ -17,22 +17,26 @@ use Illuminate\Support\Facades\Route;
 Route::get('search', 'MainController@search');
 
 Route::group(['prefix' => 'account'], function () {
-    Route::get('login', 'LoginRegisterController@showLogin');
-    Route::post('login', 'LoginRegisterController@loginProcess');
-    Route::get('register', 'LoginRegisterController@showRegister');
-    Route::post('register', 'LoginRegisterController@registerProcess');
-    Route::get('logout', 'LoginRegisterController@logout');
+    Route::group(['middleware' => ['UserWithoutLogin']], function () {
+        Route::get('login', 'LoginRegisterController@showLogin');
+        Route::post('login', 'LoginRegisterController@loginProcess');
+        Route::get('register', 'LoginRegisterController@showRegister');
+        Route::post('register', 'LoginRegisterController@registerProcess');
+    });
 
-    Route::get('/', 'UserController@dashboard');
-    Route::get('/library', 'UserController@library');
-    Route::get('orders', 'UserController@order');
-    Route::get('detail', 'UserController@accountDetails');
-    Route::post('edit', 'UserController@editDetails');
-    Route::post('edit-password', 'UserController@editPassword');
-    Route::get('checkout/{id}','UserController@checkout');
-    Route::get('done/{id}','UserController@done');
-    Route::get('/wallet','UserController@showTopup');
-    Route::get('/topup/{value}','UserController@topup');
+    Route::group(['middleware' => ['UserOnly']], function () {
+        Route::get('/', 'UserController@dashboard');
+        Route::get('/library', 'UserController@library');
+        Route::get('orders', 'UserController@order');
+        Route::get('detail', 'UserController@accountDetails');
+        Route::post('edit', 'UserController@editDetails');
+        Route::post('edit-password', 'UserController@editPassword');
+        Route::get('checkout/{id}','UserController@checkout');
+        Route::get('done/{id}','UserController@done');
+        Route::get('/wallet','UserController@showTopup');
+        Route::get('/topup/{value}','UserController@topup');
+        Route::get('logout', 'LoginRegisterController@logout');
+    });
 });
 
 Route::get('/game/{id}','GameController@showGameDetail');
