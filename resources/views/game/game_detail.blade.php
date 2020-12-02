@@ -121,8 +121,18 @@
 												<div class="description" itemprop="description">
 													<p>{{$game->description}}</p>
 												</div>
+                                                <?php $ada = false;?>
+                                                @foreach ($library as $item)
+                                                    @if ($item->game_id == $game->id)
+                                                        <?php $ada = true;?>
+                                                    @endif
+                                                @endforeach
+                                                @if ($ada == false)
+                                                    <a href="{{url('account/checkout/'.$game->id)}}"><button type="button" class="btn btn-success"><i class="fa fa-shopping-cart"></i> BUY NOW</button></a>
+                                                @else
+                                                <button type="button" class="btn btn-success" disabled>OWNED</button>
+                                                @endif
 
-                                                <a href="{{url('account/checkout/'.$game->id)}}"><button type="button" class="btn btn-success"><i class="fa fa-shopping-cart"></i> BUY NOW</button></a>
 												{{-- <p class="stock out-of-stock">Out of stock</p> --}}
 
 												<div class="social-share">
