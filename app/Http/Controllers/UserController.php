@@ -139,7 +139,7 @@ class UserController extends Controller
     {
         $user = User::find(Session::get('user-login')->id);
         $library = library::where('user_id',$user->id)->get();
-        $game = Game::all();
+        $game = Game::where('status', 1)->get();
         // dd($library[0]->game_id);
         return view('account.library',['library'=>$library,'games'=>$game]);
     }
