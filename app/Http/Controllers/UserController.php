@@ -8,6 +8,7 @@ use App\Models\h_trans;
 use App\Models\Library;
 use App\Models\tag;
 use App\Models\Transaction;
+use App\Notifications\InvoiceGame;
 use App\Rules\CheckPassword;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -85,6 +86,7 @@ class UserController extends Controller
 
     public function checkout(Request $request,$id)
     {
+
         $user = User::find(Session::get('user-login')->id);
         $game = Game::find($id);
 
@@ -113,6 +115,11 @@ class UserController extends Controller
             'game_id'=>$game->id,
             'user_id'=>$user->id
         ]);
+
+        $ip = $request->ip();
+        $user->notify(new InvoiceGame($user,$game,$ip));
+
+        // return (new InvoiceGame($user,$game))->render();
 
         $request->session()->put('user-login', $user);
         $request->session()->flash('message', 'Transaction Completed');
