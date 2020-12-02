@@ -99,8 +99,8 @@
     $dataPoints = [];
     foreach ($game as $value) {
         $i = 0;
-        foreach ($trans as $trs) {
-            if($trs->games->name == $value->name){
+        foreach ($topgames as $trs) {
+            if($trs->game_id == $value->id){
                 $i = $i+1;
             }
         }
@@ -111,8 +111,8 @@
     $dataPoints2 = [];
     foreach ($user as $value) {
         $i = 0;
-        foreach ($trans as $trs) {
-            if($trs->users->id == $value->id){
+        foreach ($topuser as $trs) {
+            if($trs->user_id == $value->id){
                 $i = $i+1;
             }
         }

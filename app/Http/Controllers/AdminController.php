@@ -23,10 +23,21 @@ class AdminController extends Controller
     {
         $nilai = 350;
         $transaction = Transaction::all();
+        $sorttransaction = Transaction::selectRaw("user_id,count(id) as counts")
+        ->groupBy('user_id')
+        ->orderBy('counts','DESC')
+        ->limit('10')
+        ->get();
+        $sortgames = Transaction::selectRaw("game_id,count(id) as counts")
+        ->groupBy('game_id')
+        ->orderBy('counts','DESC')
+        ->limit('10')
+        ->get();
         $game = Game::all();
         $user = User::all();
+        // dd($sorttransaction->id);
         // dd($transaction[0]->games[0]->name);
-        return view('admin.report',["nilai"=>$nilai,"trans"=>$transaction,'game'=>$game,'user'=>$user]);
+        return view('admin.report',["nilai"=>$nilai,"trans"=>$transaction,'game'=>$game,'user'=>$user,'topuser'=>$sorttransaction,'topgames'=>$sortgames]);
     }
 
     public function login(Request $request)
