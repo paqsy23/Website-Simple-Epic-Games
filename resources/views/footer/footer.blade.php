@@ -180,7 +180,7 @@
 										</div>
 									</div>
 								</div> --}}
-
+{{--
 								<div class="vc_row vc_inner vc_row-fluid footer-bottom">
 									<div class="item-res vc_column_container vc_col-sm-6 vc_col-lg-4 vc_col-md-4 vc_col-xs-12">
 										<div class="vc_column-inner ">
@@ -357,7 +357,7 @@
 											</div>
 										</div>
 									</div>
-								</div>
+								</div> --}}
 
 								<div class="vc_wp_custommenu wpb_content_element wrap-cus">
 									<div class="widget widget_nav_menu">
