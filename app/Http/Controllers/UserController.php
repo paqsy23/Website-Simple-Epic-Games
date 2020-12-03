@@ -102,29 +102,32 @@ class UserController extends Controller
         if($money<0){
             $request->session()->flash('warning', 'Your wallet is not enough to buy this game');
             return back();
+        }else{
+            $user->money = $money;
+            $user->save();
+
+            //masuk library ikiii
+            $user->games()->attach($game->id);
+
+            Transaction::create([
+                'tanggal_trans'=>Carbon::now(),
+                'game_price'=>$game->price,
+                'game_id'=>$game->id,
+                'user_id'=>$user->id
+            ]);
+
+            $ip = $request->ip();
+            $user->notify(new InvoiceGame($user,$game,$ip));
+
+            // return (new InvoiceGame($user,$game))->render();
+
+            $request->session()->put('user-login', $user);
+            $request->session()->flash('message', 'Transaction Completed');
+
+            return redirect('/');
         }
-        $user->money = $money;
-        $user->save();
 
-        //masuk library ikiii
-        $user->games()->attach($game->id);
 
-        Transaction::create([
-            'tanggal_trans'=>Carbon::now(),
-            'game_price'=>$game->price,
-            'game_id'=>$game->id,
-            'user_id'=>$user->id
-        ]);
-
-        $ip = $request->ip();
-        $user->notify(new InvoiceGame($user,$game,$ip));
-
-        // return (new InvoiceGame($user,$game))->render();
-
-        $request->session()->put('user-login', $user);
-        $request->session()->flash('message', 'Transaction Completed');
-
-        return redirect('/');
     }
 
     public function showTopUp()

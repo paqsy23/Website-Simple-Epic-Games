@@ -20,6 +20,8 @@ class WithoutLogin
             return redirect('developer/home');
         }else if(Session::has('admin-login')){
             return redirect('admin/home');
+        }else if(Session::has('user-login')){
+            return redirect('/');
         }
         return $next($request);
     }
