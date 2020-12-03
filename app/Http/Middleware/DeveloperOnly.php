@@ -22,8 +22,10 @@ class DeveloperOnly
         }else if(Session::get('developer-login')->status==0){
             $request->session()->flash('warning', 'You have been rejected by admin from becoming a developer...too bad :(');
             return redirect('developer/login');
-        }
-        else{
+        }else if(Session::has('user-login')||Session::has('admin-login')){
+            $request->session()->flash('warning', 'Please logout from your current session ');
+            return redirect('developer/login');
+        }else{
             return $next($request);
         }
     }

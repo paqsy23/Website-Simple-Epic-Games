@@ -19,6 +19,9 @@ class AdminOnly
         if(!Session::has('admin-login')){
             $request->session()->flash('warning', 'You never login as admin :(');
             return redirect('admin/login');
+        }else if(Session::has('user-login')||Session::has('developer-login')){
+            $request->session()->flash('warning', 'Please logout from your current session ');
+            return redirect('admin/login');
         }else{
             return $next($request);
         }
