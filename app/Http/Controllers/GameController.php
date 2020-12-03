@@ -13,7 +13,13 @@ class GameController extends Controller
     public function showGameDetail(Request $request,$id){
         $game = Game::where('id',$id)->where('status',1)->first();
         $user = $request->session()->get('user-login');
-        $library = library::where('user_id',$user->id)->get();
+        if($user != null){
+            $library = library::where('user_id',$user->id)->get();
+        }
+        else{
+            $library = [];
+        }
+
 
         if($game==null){
             return back();
