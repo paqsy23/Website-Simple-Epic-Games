@@ -60,14 +60,20 @@ Library
                                                             </a>
                                                         </div>
 
-                                                        <div class="item-content products-content">
-                                                            <div class="reviews-content">
+                                                        <div class="item-content products-content" style="height: 10em;">
+                                                            {{-- <div class="reviews-content">
                                                                 <div class="star"><span style="width: @if ($game->rating == null) 0px @else {{ $game->rating/100*67 }}px @endif"></span></div>
-                                                            </div>
+                                                            </div> --}}
 
                                                             <h4><a href="{{ url('game/'.$game->id) }}" title="{{ $game->name }}">{{ $game->name }}</a></h4>
+                                                            <h4>
+                                                                {{$game->developer->name}}
+                                                                @if ($game->developer != $game->publisher)
+                                                                    | {{$game->publisher->name}}
+                                                                @endif
+                                                            </h4>
 
-                                                            <span class="item-price"><ins><span class="woocommerce-Price-amount amount">${{ number_format($game->price, 2) }}</span></ins></span>
+                                                            <span class="item-price"><ins><span class="woocommerce-Price-amount amount">Owned</span></ins></span>
                                                         </div>
                                                     </div>
                                                 </div>

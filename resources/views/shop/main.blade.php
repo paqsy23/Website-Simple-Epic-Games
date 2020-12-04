@@ -50,7 +50,7 @@
                         </div> --}}
                     </div>
 
-                    <div class="item-content products-content">
+                    <div class="item-content products-content" style="height: 12em;">
                         <div class="reviews-content">
                             <div class="star"><span style="width: @if ($game->rating == null) 0px @else {{ $game->rating/100*67 }}px @endif"></span></div>
                         </div>
