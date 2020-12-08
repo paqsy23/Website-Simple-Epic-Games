@@ -11,6 +11,8 @@ use App\Models\h_tag;
 use App\Models\Image;
 use App\Models\platform;
 use App\Models\tag;
+use App\Models\Transaction;
+use App\Models\User;
 use App\Rules\CheckGameName;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -441,5 +443,28 @@ class DeveloperController extends Controller
             $request->session()->flash('message', 'Game Updated!! Waiting for Admin Confirmation');
         }
         return back();
+    }
+    public function report(Request $request)
+    {
+        $developer = developer::find(Session::get('developer-login')->id);
+        $bulan = $request->bulan;
+        $tahun = $request->tahun;
+        $transaction = Transaction::whereYear('tanggal_trans', '=', $tahun)
+        ->whereMonth('tanggal_trans', '=', $bulan)->get();
+        $sorttransaction = Transaction::selectRaw("user_id,count(id) as counts")->whereYear('tanggal_trans', '=', $tahun)
+        ->whereMonth('tanggal_trans', '=', $bulan)
+        ->groupBy('user_id')
+        ->orderBy('counts','DESC')
+        ->limit('10')
+        ->get();
+        $sortgames = Transaction::selectRaw("game_id,count(id) as counts")->whereYear('tanggal_trans', '=', $tahun)
+        ->whereMonth('tanggal_trans', '=', $bulan)
+        ->groupBy('game_id')
+        ->orderBy('counts','DESC')
+        ->limit('10')
+        ->get();
+        $game = Game::all();
+        $user = User::all();
+        return view('developer.report',["bulan"=>$bulan,"tahun"=>$tahun,"trans"=>$transaction,'game'=>$game,'user'=>$user,'topuser'=>$sorttransaction,'topgames'=>$sortgames,'developer'=>$developer]);
     }
 }

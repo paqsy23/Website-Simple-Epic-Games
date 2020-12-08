@@ -19,6 +19,81 @@
 @stop
 
 @section('content')
+<form action="{{url('admin/report')}}" method="POST">
+    @csrf
+    <div>Filter: </div>
+    Month:
+    <select name="bulan" class="form-select" aria-label="Default select example" style="margin-bottom: 10px">
+        @if ($bulan == 1)
+            <option value="1" selected>1</option>
+        @else
+            <option value="1">1</option>
+        @endif
+        @if ($bulan == 2)
+            <option value="2" selected>2</option>
+        @else
+            <option value="2">2</option>
+        @endif
+        @if ($bulan == 3)
+            <option value="3" selected>3</option>
+        @else
+            <option value="3">3</option>
+        @endif
+        @if ($bulan == 4)
+            <option value="4" selected>4</option>
+        @else
+            <option value="4">4</option>
+        @endif
+        @if ($bulan == 5)
+            <option value="5" selected>5</option>
+        @else
+            <option value="5">5</option>
+        @endif
+        @if ($bulan == 6)
+            <option value="6" selected>6</option>
+        @else
+            <option value="6">6</option>
+        @endif
+        @if ($bulan == 7)
+            <option value="7" selected>7</option>
+        @else
+            <option value="7">7</option>
+        @endif
+        @if ($bulan == 8)
+            <option value="8" selected>8</option>
+        @else
+            <option value="8">8</option>
+        @endif
+        @if ($bulan == 9)
+            <option value="9" selected>9</option>
+        @else
+            <option value="9">9</option>
+        @endif
+        @if ($bulan == 10)
+            <option value="10" selected>10</option>
+        @else
+            <option value="10">10</option>
+        @endif
+        @if ($bulan == 11)
+            <option value="11" selected>11</option>
+        @else
+            <option value="11">11</option>
+        @endif
+        @if ($bulan == 12)
+            <option value="12" selected>12</option>
+        @else
+            <option value="12">12</option>
+        @endif
+    </select>
+    Year:
+    <select name="tahun" class="form-select" aria-label="Default select example" style="margin-bottom: 10px">
+        <option value="2019">2019</option>
+        <option value="2020" selected>2020</option>
+        <option value="2021">2021</option>
+    </select>
+    <button type="submit" class="btn btn-success btn-sm" style="margin-top:-5px">Filter</button>
+</form>
+
 <div class="card card-danger">
     <div class="card-header">
       <h3 class="card-title">Game Selling</h3>
@@ -93,6 +168,36 @@
     </div>
     <!-- /.card-body -->
   </div>
+@stop
+
+@section('css')
+<link rel="stylesheet" href="{{asset('vendor/datatables/css/dataTables.bootstrap4.min.css')}}">
+<link rel="stylesheet" href="{{asset('vendor/datatables-plugins/responsive/css/responsive.bootstrap4.min.css')}}">
+@stop
+
+@section('js')
+<script src="{{asset('js/jquery/jquery.min.js')}}"></script>
+<!-- Bootstrap 4 -->
+<script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<!-- DataTables -->
+<script src="{{asset('vendor/datatables/js/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('vendor/datatables/js/dataTables.bootstrap4.min.js')}}"></script>
+<script src="{{asset('vendor/datatables-plugins/responsive/js/dataTables.responsive.min.js')}}"></script>
+<script src="{{asset('vendor/datatables-plugins/responsive/js/responsive.bootstrap4.min.js')}}"></script>
+<!-- AdminLTE App -->
+{{-- <script src="{{asset('vendor/js/adminlte.min.js')}}"></script> --}}
+<script>
+    $(function () {
+      $("#example1").DataTable({
+        "responsive": true,
+        "autoWidth": false,
+      });
+      $("#example2").DataTable({
+        "responsive": true,
+        "autoWidth": false,
+      });
+    });
+  </script>
 @stop
 
 <?php

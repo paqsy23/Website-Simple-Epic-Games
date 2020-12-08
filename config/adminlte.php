@@ -260,7 +260,7 @@ return [
         ],
         [
             'text'        => 'Report',
-            'url'         => 'admin/report',
+            'url'         => 'admin/report/12/2020',
             'icon'        => 'far fa-fw fa-file',
         ],
         ['header' => 'account_settings'],

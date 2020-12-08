@@ -19,23 +19,27 @@ class AdminController extends Controller
         return view('admin.home',['requestgame'=>$requestgame,'game'=>$game]);
     }
 
-    public function report()
+    public function report(Request $request)
     {
-        $nilai = 350;
-        $transaction = Transaction::all();
-        $sorttransaction = Transaction::selectRaw("user_id,count(id) as counts")
+        $bulan = $request->bulan;
+        $tahun = $request->tahun;
+        $transaction = Transaction::whereYear('tanggal_trans', '=', $tahun)
+        ->whereMonth('tanggal_trans', '=', $bulan)->get();
+        $sorttransaction = Transaction::selectRaw("user_id,count(id) as counts")->whereYear('tanggal_trans', '=', $tahun)
+        ->whereMonth('tanggal_trans', '=', $bulan)
         ->groupBy('user_id')
         ->orderBy('counts','DESC')
         ->limit('10')
         ->get();
-        $sortgames = Transaction::selectRaw("game_id,count(id) as counts")
+        $sortgames = Transaction::selectRaw("game_id,count(id) as counts")->whereYear('tanggal_trans', '=', $tahun)
+        ->whereMonth('tanggal_trans', '=', $bulan)
         ->groupBy('game_id')
         ->orderBy('counts','DESC')
         ->limit('10')
         ->get();
         $game = Game::all();
         $user = User::all();
-        return view('admin.report',["nilai"=>$nilai,"trans"=>$transaction,'game'=>$game,'user'=>$user,'topuser'=>$sorttransaction,'topgames'=>$sortgames]);
+        return view('admin.report',["tahun"=>$tahun,"bulan"=>$bulan,"trans"=>$transaction,'game'=>$game,'user'=>$user,'topuser'=>$sorttransaction,'topgames'=>$sortgames]);
     }
 
     public function login(Request $request)

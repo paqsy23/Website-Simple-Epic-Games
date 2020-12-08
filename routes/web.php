@@ -52,7 +52,8 @@ Route::group(['middleware'=>['AdminOnly'],'prefix' => 'admin'], function () {
     });
     Route::get('/home','AdminController@home');
     Route::get('/developer','AdminController@developer');
-    Route::get('/report','AdminController@report');
+    Route::get('/report/{bulan}/{tahun}','AdminController@report');
+    Route::post('/report','AdminController@report');
     Route::get('/logout','AdminController@logout');
     Route::get('/developer/{id}','AdminController@developerDetail');
     Route::get('/reactivate/game/{id}','AdminController@reactivateGame');
@@ -77,6 +78,8 @@ Route::group(['middleware'=>['DeveloperOnly'],'prefix' => 'developer'], function
     });
     Route::group(['middleware' => ['DeveloperActiveOnly']], function () {
         Route::get('/newGame','DeveloperController@newGame');
+        Route::get('/report/{bulan}/{tahun}','DeveloperController@report');
+        Route::post('/report','DeveloperController@report');
         Route::get('/reactivate/{id}','DeveloperController@reactivate');
         Route::get('/deactivate/{id}','DeveloperController@deactivate');
         Route::post('/insertGame','DeveloperController@insertGame');

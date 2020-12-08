@@ -68,6 +68,14 @@
                     </p>
                   </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{url('developer/report/12/2020')}}" class="nav-link">
+                      <i class="nav-icon fas fa-bar-chart"></i>
+                      <p>
+                        Report
+                      </p>
+                    </a>
+                  </li>
                 <li class="nav-header">GAME SETTINGS</li>
                 <li class="nav-item">
                     <a href="{{url('developer/gamelist')}}" class="nav-link">
