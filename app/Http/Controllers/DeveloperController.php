@@ -449,22 +449,41 @@ class DeveloperController extends Controller
         $developer = developer::find(Session::get('developer-login')->id);
         $bulan = $request->bulan;
         $tahun = $request->tahun;
+        $tempgameuser = [];
+        $tempiduser = [];
+        $game = Game::where('developer_id', '=', $developer->id)->orWhere('publisher_id', '=', $developer->id)->get();
+        $user = User::all();
+        foreach($game as $item){
+            array_push($tempgameuser,$item->id);
+        }
+        foreach($tempiduser as $item){
+            var_dump($item);
+        }
         $transaction = Transaction::whereYear('tanggal_trans', '=', $tahun)
-        ->whereMonth('tanggal_trans', '=', $bulan)->get();
-        $sorttransaction = Transaction::selectRaw("user_id,count(id) as counts")->whereYear('tanggal_trans', '=', $tahun)
         ->whereMonth('tanggal_trans', '=', $bulan)
+        ->whereIn('game_id', $tempgameuser)
+        ->get();
+        foreach($transaction as $item){
+            array_push($tempiduser,$item->user_id);
+        }
+        $sorttransaction = Transaction::selectRaw("user_id,count(id) as counts")
+        ->whereYear('tanggal_trans', '=', $tahun)
+        ->whereMonth('tanggal_trans', '=', $bulan)
+        ->whereIn('user_id', $tempiduser)
+        ->whereIn('game_id', $tempgameuser)
         ->groupBy('user_id')
         ->orderBy('counts','DESC')
         ->limit('10')
         ->get();
-        $sortgames = Transaction::selectRaw("game_id,count(id) as counts")->whereYear('tanggal_trans', '=', $tahun)
+        $sortgames = Transaction::selectRaw("game_id,count(id) as counts")
+        ->whereYear('tanggal_trans', '=', $tahun)
         ->whereMonth('tanggal_trans', '=', $bulan)
+        ->whereIn('game_id', $tempgameuser)
         ->groupBy('game_id')
         ->orderBy('counts','DESC')
         ->limit('10')
         ->get();
-        $game = Game::all();
-        $user = User::all();
+        // dd($sortgames);
         return view('developer.report',["bulan"=>$bulan,"tahun"=>$tahun,"trans"=>$transaction,'game'=>$game,'user'=>$user,'topuser'=>$sorttransaction,'topgames'=>$sortgames,'developer'=>$developer]);
     }
 }
