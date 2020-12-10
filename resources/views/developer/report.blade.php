@@ -128,13 +128,6 @@
                                 <td>{{$trs->game_price}}</td>
                                 <td>{{$trs->games->name}}</td>
                                 <td>{{$trs->users->name}}</td>
-                                {{-- @if ($curGame->status==-1)
-                                    <td>Banned</td>
-                                    <td><a href="{{url('admin/reactivate/game/'.$curGame->id)}}"><button class="btn btn-success">Reactivate</button></a></td>
-                                @elseif($curGame->status==2)
-                                    <td>Requesting Activation</td>
-                                    <td><a href="{{url('admin/reactivate/game/'.$curGame->id)}}"><button class="btn btn-success">Activate</button></a></td>
-                                @endif --}}
                             </tr>
                         @endforeach
                     </tbody>
@@ -242,7 +235,7 @@
         $i = 0;
         foreach ($topgames as $trs) {
             if($trs->game_id == $value->id){
-                $i = $i+1;
+                $i = $trs->counts;
             }
         }
         if($i > 0){
@@ -254,7 +247,7 @@
         $i = 0;
         foreach ($topuser as $trs) {
             if($trs->user_id == $value->id){
-                $i = $i+1;
+                $i = $trs->counts;
             }
         }
         if($i > 0){

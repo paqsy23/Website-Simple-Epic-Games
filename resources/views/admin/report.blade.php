@@ -206,7 +206,7 @@
         $i = 0;
         foreach ($topgames as $trs) {
             if($trs->game_id == $value->id){
-                $i = $i+1;
+                $i = $trs->counts;
             }
         }
         if($i > 0){
@@ -218,7 +218,7 @@
         $i = 0;
         foreach ($topuser as $trs) {
             if($trs->user_id == $value->id){
-                $i = $i+1;
+                $i = $trs->counts;
             }
         }
         if($i > 0){
