@@ -179,9 +179,9 @@
 											<li class="specification_tab">
 												<a href="#tab-specification" data-toggle="tab"> Recommended Specification</a>
 											</li>
-											<li class="reviews_tab ">
+											{{-- <li class="reviews_tab ">
 												<a href="#tab-reviews" data-toggle="tab">Reviews (0)</a>
-											</li>
+											</li> --}}
 										</ul>
 
 										<div class="clear"></div>
@@ -282,7 +282,7 @@
                                                     @endif
                                                 </div>
 											</div>
-											<div class="tab-pane " id="tab-reviews">
+											{{-- <div class="tab-pane " id="tab-reviews">
 												<div id="reviews">
 													<div id="comments">
 														<h2>Reviews</h2>
@@ -325,7 +325,7 @@
 
 													<div class="clear"></div>
 												</div>
-											</div>
+											</div> --}}
 										</div>
 									</div>
                                 </div>
